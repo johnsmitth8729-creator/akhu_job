@@ -1081,3 +1081,64 @@ html[data-theme="light"] .logo-dark-only {
     border-color: var(--glass-border) var(--glass-border) var(--bg-secondary) !important;
 }
 
+/* ── Light Mode: Bootstrap Table Overrides ─────────────────────────────────── */
+html[data-theme="light"] .table {
+    color: var(--text-primary) !important;
+    border-color: var(--glass-border) !important;
+}
+html[data-theme="light"] .table thead th,
+html[data-theme="light"] .table th {
+    color: var(--text-secondary) !important;
+    background-color: var(--bg-tertiary) !important;
+    border-color: var(--glass-border) !important;
+}
+html[data-theme="light"] .table tbody tr {
+    background-color: var(--bg-secondary) !important;
+    border-color: var(--glass-border) !important;
+    color: var(--text-primary) !important;
+}
+html[data-theme="light"] .table tbody tr:hover {
+    background-color: var(--bg-tertiary) !important;
+}
+html[data-theme="light"] .table td,
+html[data-theme="light"] .table th {
+    border-color: var(--glass-border) !important;
+}
+html[data-theme="light"] .table-dark {
+    color: var(--text-primary) !important;
+    background-color: var(--bg-secondary) !important;
+}
+
+/* ── Light Mode: bg-dark / bg-dark-subtle Overrides ────────────────────────── */
+html[data-theme="light"] .bg-dark {
+    background-color: var(--bg-tertiary) !important;
+    color: var(--text-primary) !important;
+}
+html[data-theme="light"] .bg-dark-subtle {
+    background-color: #f1f5f9 !important;
+    color: var(--text-primary) !important;
+}
+html[data-theme="light"] .bg-dark .text-white,
+html[data-theme="light"] .bg-dark-subtle .text-white,
+html[data-theme="light"] .bg-dark .fw-bold,
+html[data-theme="light"] .bg-dark-subtle .fw-bold {
+    color: var(--text-primary) !important;
+}
+html[data-theme="light"] .bg-dark .text-secondary,
+html[data-theme="light"] .bg-dark-subtle .text-secondary,
+html[data-theme="light"] .bg-dark small,
+html[data-theme="light"] .bg-dark-subtle small {
+    color: var(--text-secondary) !important;
+}
+
+/* ── Light Mode: Glass Panel inner dark backgrounds ─────────────────────────── */
+html[data-theme="light"] .glass-panel .bg-dark {
+    background-color: #f1f5f9 !important;
+    color: var(--text-primary) !important;
+}
+html[data-theme="light"] .rounded.bg-dark {
+    background-color: #f1f5f9 !important;
+    border-color: var(--glass-border) !important;
+    color: var(--text-primary) !important;
+}
+/* ─────────────────────────────────────────────────────────────────────────── */
