@@ -1,0 +1,26 @@
+name: Deploy AKHU
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+      - name: Update project
+        run: |
+          cd /home/boss/akhu_job
+          git pull origin main
+
+      - name: Install requirements
+        run: |
+          cd /home/boss/akhu_job
+          source venv/bin/activate
+          pip install -r requirements.txt
+
+      - name: Restart service
+        run: |
+          sudo systemctl restart akhu
