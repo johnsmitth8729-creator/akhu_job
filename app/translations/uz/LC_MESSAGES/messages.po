@@ -1,0 +1,1485 @@
+# Uzbek translations for PROJECT.
+# Copyright (C) 2026 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2026-06-18 10:55+0500\n"
+"PO-Revision-Date: 2026-06-18 09:51+0500\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: uz\n"
+"Language-Team: uz <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: app/templates/apply.html:9
+msgid "Back to Position Details"
+msgstr "Lavozim tafsilotlariga qaytish"
+
+#: app/templates/apply.html:16
+msgid "Application Form"
+msgstr "Ariza topshirish shakli"
+
+#: app/templates/apply.html:18
+msgid "Applying for the position of:"
+msgstr "Quyidagi lavozimga ariza topshirilmoqda:"
+
+#: app/templates/apply.html:26
+msgid "Personal Information"
+msgstr "Shaxsiy ma'lumotlar"
+
+#: app/templates/admin/users.html:19 app/templates/admin/users.html:59
+#: app/templates/admin/users.html:138 app/templates/apply.html:29
+msgid "Full Name"
+msgstr "To'liq ism-sharif"
+
+#: app/templates/apply.html:30
+msgid "e.g., Al-Khwarizmi Muhammad"
+msgstr "Masalan: Al-Xorazmiy Muhammad"
+
+#: app/templates/apply.html:34
+msgid "Birth Date"
+msgstr "Tug'ilgan sana"
+
+#: app/templates/apply.html:39 app/templates/contact.html:27
+msgid "Phone Number"
+msgstr "Telefon raqami"
+
+#: app/templates/admin/users.html:21 app/templates/admin/users.html:63
+#: app/templates/admin/users.html:142 app/templates/apply.html:44
+#: app/templates/contact.html:22
+msgid "Email Address"
+msgstr "Elektron pochta manzili"
+
+#: app/templates/apply.html:49
+msgid "Current Address"
+msgstr "Hozirgi yashash manzili"
+
+#: app/templates/apply.html:50
+msgid "Street, Apartment, City, Country"
+msgstr "Ko'cha, xonadon, shahar, mamlakat"
+
+#: app/templates/apply.html:55
+msgid "Educational Background"
+msgstr "Ma'lumoti haqida ma'lumot"
+
+#: app/templates/apply.html:58
+msgid "Highest Academic Degree"
+msgstr "Eng yuqori ilmiy daraja"
+
+#: app/templates/apply.html:60
+msgid "-- Select Degree --"
+msgstr ""
+
+#: app/templates/apply.html:61
+msgid "Bachelor"
+msgstr "Bakalavr"
+
+#: app/templates/apply.html:62
+msgid "Master"
+msgstr "Magistr"
+
+#: app/templates/apply.html:63
+msgid "PhD / Doctor of Sciences"
+msgstr "PhD / Fan doktori"
+
+#: app/templates/apply.html:64
+msgid "Associate Degree"
+msgstr "Assotsiatsiya darajasi"
+
+#: app/templates/apply.html:65
+msgid "Other"
+msgstr "Boshqa"
+
+#: app/templates/apply.html:70
+msgid "University Name"
+msgstr "Universitet nomi"
+
+#: app/templates/apply.html:71
+msgid "e.g., Al-Khwarizmi University"
+msgstr "Masalan: Al-Xorazmiy Universiteti"
+
+#: app/templates/apply.html:75
+msgid "Graduation Year"
+msgstr "Tamomlagan yili"
+
+#: app/templates/apply.html:81
+msgid "Documents Upload"
+msgstr "Hujjatlarni yuklash"
+
+#: app/templates/apply.html:83
+msgid ""
+"Supported formats: PDF, DOC, DOCX, JPG, JPEG, PNG. Maximum file size: 20 "
+"MB per file."
+msgstr "Qo'llab-quvvatlanadigan formatlar: PDF, DOC, DOCX, JPG, JPEG, PNG. Maksimal fayl hajmi: har bir fayl uchun 20 MB."
+
+#: app/templates/apply.html:90
+msgid "Passport Scan"
+msgstr "Pasport nusxasi"
+
+#: app/templates/apply.html:94
+msgid "Drag and drop passport here"
+msgstr "Pasport nusxasini shu yerga sudrab tashlang"
+
+#: app/templates/apply.html:95 app/templates/apply.html:109
+#: app/templates/apply.html:123 app/templates/apply.html:137
+#: app/templates/apply.html:151
+msgid "or click to browse local files"
+msgstr "yoki fayllarni tanlash uchun bosing"
+
+#: app/templates/apply.html:104
+msgid "Resume / CV"
+msgstr "Rezyume / CV"
+
+#: app/templates/apply.html:108
+msgid "Drag and drop resume here"
+msgstr "Rezyumeni shu yerga sudrab tashlang"
+
+#: app/templates/apply.html:118
+msgid "Diploma scan"
+msgstr "Diplom nusxasi"
+
+#: app/templates/apply.html:122
+msgid "Drag and drop diploma here"
+msgstr "Diplom nusxasini shu yerga sudrab tashlang"
+
+#: app/templates/apply.html:132
+msgid "Academic Certificates (Optional)"
+msgstr "Ilmiy sertifikatlar (ixtiyoriy)"
+
+#: app/templates/apply.html:136
+msgid "Drag and drop certificates here"
+msgstr "Sertifikatlarni shu yerga sudrab tashlang"
+
+#: app/templates/apply.html:146
+msgid "Additional Documents (Optional)"
+msgstr "Qo'shimcha hujjatlar (ixtiyoriy)"
+
+#: app/templates/apply.html:150
+msgid "Drag and drop additional files"
+msgstr "Qo'shimcha fayllarni shu yerga sudrab tashlang"
+
+#: app/templates/apply.html:161
+msgid "Submit Application"
+msgstr "Arizani yuborish"
+
+#: app/templates/base.html:7
+msgid "Al-Khwarizmi University Recruitment"
+msgstr "Al-Xorazmiy Universiteti Ishga Qabul Qilish"
+
+#: app/templates/base.html:32 app/templates/base.html:188
+msgid "Home"
+msgstr "Bosh sahifa"
+
+#: app/templates/base.html:37 app/templates/base.html:189
+msgid "Vacancies"
+msgstr "Bo'sh ish o'rinlari"
+
+#: app/templates/base.html:42 app/templates/base.html:190
+msgid "Track Application"
+msgstr "Arizani Kuzatish"
+
+#: app/templates/base.html:47 app/templates/base.html:191
+msgid "Contact"
+msgstr "Aloqa"
+
+#: app/templates/base.html:57
+msgid "Admin Panel"
+msgstr "Admin paneli"
+
+#: app/templates/base.html:61
+msgid "HR Panel"
+msgstr "HR paneli"
+
+#: app/templates/base.html:69
+msgid "Portal Login"
+msgstr "Portalga Kirish"
+
+#: app/templates/base.html:119
+msgid "Chat with HR"
+msgstr "HR bilan suhbat"
+
+#: app/templates/base.html:134
+msgid ""
+"Welcome to AKHU Admissions & HR Help Desk. Send a message to start "
+"chatting with support."
+msgstr ""
+"AKHU qabul komissiyasi va HR yordam bo'limiga xush kelibsiz. Suhbatni "
+"boshlash uchun xabar yuboring."
+
+#: app/templates/base.html:144
+msgid "HR agent is typing..."
+msgstr "HR xodim yozmoqda..."
+
+#: app/templates/base.html:150 app/templates/hr/chats.html:77
+msgid "Attach Document"
+msgstr "Fayl biriktirish"
+
+#: app/templates/base.html:153
+msgid "Type a message..."
+msgstr "Xabarni kiriting..."
+
+#: app/templates/base.html:174
+msgid ""
+"Al-Khwarizmi University in Urgench is dedicated to fostering academic "
+"excellence, pioneering research, and building the future leaders of "
+"science and technology."
+msgstr "Urganch shahridagi Al-Xorazmiy Universiteti ilmiy salohiyatni rivojlantirishga, ilg'or tadqiqotlarga va fan hamda texnologiyaning bo'lajak yetakchilarini tayyorlashga bag'ishlangan."
+
+#: app/templates/base.html:186
+msgid "Quick Links"
+msgstr "Tezkor havolalar"
+
+#: app/templates/base.html:197
+#, fuzzy
+msgid "Contact Info"
+msgstr "Aloqa"
+
+#: app/templates/base.html:218
+msgid "Location Map"
+msgstr "Manzil xaritasi"
+
+#: app/templates/base.html:231
+msgid "Al-Khwarizmi University Recruitment Portal"
+msgstr "Al-Xorazmiy Universiteti Ishga Qabul Qilish Portali"
+
+#: app/templates/base.html:234
+msgid "Designed in partnership with Al-Khwarizmi IT Department."
+msgstr "Al-Xorazmiy IT departamenti bilan hamkorlikda ishlab chiqilgan."
+
+#: app/templates/contact.html:8
+msgid "Contact Admissions & HR"
+msgstr ""
+
+#: app/templates/contact.html:10
+msgid ""
+"Have questions about open vacancies, application requirements, or the "
+"hiring process? Send us a message and our team will respond."
+msgstr "Bo'sh ish o'rinlari, ariza talablari yoki ishga qabul qilish jarayoni bo'yicha savollaringiz bormi? Bizga xabar yuboring va bizning jamoamiz javob beradi."
+
+#: app/templates/contact.html:17
+msgid "Your Name"
+msgstr "Ismingiz"
+
+#: app/templates/contact.html:18
+msgid "e.g., Muhammad ibn Musa"
+msgstr "masalan: Muhammad ibn Musa"
+
+#: app/templates/contact.html:32
+msgid "Your Message"
+msgstr "Sizning xabaringiz"
+
+#: app/templates/contact.html:33
+msgid "Describe your question or request details here..."
+msgstr "Savolingiz yoki so'rovingiz tafsilotlarini shu yerda bayon eting..."
+
+#: app/templates/contact.html:38
+msgid "Send Message"
+msgstr "Xabar yuborish"
+
+#: app/templates/dashboard_base.html:19
+msgid "Dashboard Statistics"
+msgstr "Boshqaruv paneli statistikasi"
+
+#: app/templates/dashboard_base.html:22
+msgid "HR Recruiters CRUD"
+msgstr "HR rekruterlarini boshqarish"
+
+#: app/templates/dashboard_base.html:25
+msgid "Manage Vacancies"
+msgstr "Bo'sh ish o'rinlarini boshqarish"
+
+#: app/templates/dashboard_base.html:28
+msgid "Manage Applications"
+msgstr "Arizalarni boshqarish"
+
+#: app/templates/dashboard_base.html:31
+msgid "Scheduled Interviews"
+msgstr "Rejalashtirilgan suhbatlar"
+
+#: app/templates/dashboard_base.html:34 app/templates/dashboard_base.html:57
+msgid "Faculties & Depts"
+msgstr "Fakultetlar va bo'limlar"
+
+#: app/templates/dashboard_base.html:37
+msgid "System & API Settings"
+msgstr "Tizim va API sozlamalari"
+
+#: app/templates/dashboard_base.html:42
+msgid "Overview Statistics"
+msgstr "Umumiy statistika"
+
+#: app/templates/dashboard_base.html:45
+msgid "Job Vacancies"
+msgstr "Bo'sh ish o'rinlari"
+
+#: app/templates/dashboard_base.html:48
+msgid "Job Applications"
+msgstr "Ishga topshirilgan arizalar"
+
+#: app/templates/dashboard_base.html:51
+msgid "Contact Requests"
+msgstr ""
+
+#: app/templates/dashboard_base.html:54
+msgid "Live Support Chats"
+msgstr "Jonli muloqot yordam xizmati"
+
+#: app/templates/dashboard_base.html:62
+msgid "Sign Out"
+msgstr "Chiqish"
+
+#: app/templates/home.html:11
+msgid "Shape the Future"
+msgstr "Kelajakni shakllantiring"
+
+#: app/templates/home.html:12
+#, fuzzy
+msgid "with Al-Khwarizmi University"
+msgstr "Al-Xorazmiy Universiteti Ishga Qabul Qilish Portali"
+
+#: app/templates/home.html:18
+msgid "Empowering minds. Advancing knowledge."
+msgstr "Zehnlarni kuchaytirish. Bilimlarni boyitish."
+
+#: app/templates/home.html:19
+msgid "Building a better tomorrow."
+msgstr ""
+
+#: app/templates/home.html:24
+msgid "BROWSE VACANCIES"
+msgstr ""
+
+#: app/templates/home.html:27
+msgid "LEARN MORE"
+msgstr "BATAFSIL MA'LUMOT"
+
+#: app/templates/home.html:58
+msgid "Open Vacancies"
+msgstr "Ochiq bo'sh ish o'rinlari"
+
+#: app/templates/admin/vacancies.html:18 app/templates/home.html:70
+msgid "Applications"
+msgstr "Arizalar"
+
+#: app/templates/home.html:82 app/templates/hr/faculties_departments.html:18
+msgid "Faculties"
+msgstr "Fakultetlar"
+
+#: app/templates/admin/dashboard.html:37 app/templates/home.html:94
+msgid "Interviews Scheduled"
+msgstr "Belgilangan suhbatlar"
+
+#: app/templates/home.html:103
+msgid "INNOVATION • EDUCATION • EXCELLENCE"
+msgstr ""
+
+#: app/templates/home.html:114
+msgid "Latest Open Positions"
+msgstr "So'nggi bo'sh ish o'rinlari"
+
+#: app/templates/home.html:115
+msgid "Explore our most recently published academic and administrative roles."
+msgstr "Eng so'nggi e'lon qilingan akademik va ma'muriy lavozimlarimiz bilan tanishing."
+
+#: app/templates/home.html:137 app/templates/vacancies.html:97
+msgid "Deadline:"
+msgstr "Muddati:"
+
+#: app/templates/home.html:143 app/templates/vacancies.html:103
+msgid "View Details"
+msgstr "Batafsil ko'rish"
+
+#: app/templates/home.html:154
+msgid "View All Opportunities"
+msgstr "Barcha imkoniyatlarni ko'rish"
+
+#: app/templates/home.html:161 app/templates/vacancies.html:115
+msgid "No Open Positions Found"
+msgstr "Bo'sh ish o'rinlari topilmadi"
+
+#: app/templates/home.html:162
+msgid "There are currently no open vacancies. Please check back later."
+msgstr "Hozirda bo'sh ish o'rinlari mavjud emas. Keyinroq tekshirib ko'ring."
+
+#: app/templates/login.html:10
+msgid "Portal Staff Login"
+msgstr "Xodimlar portali"
+
+#: app/templates/login.html:11
+msgid "Access Admin and HR dashboards."
+msgstr ""
+
+#: app/templates/admin/users.html:20 app/templates/admin/users.html:130
+#: app/templates/login.html:18
+msgid "Username"
+msgstr "Foydalanuvchi nomi"
+
+#: app/templates/login.html:21
+msgid "Enter username"
+msgstr "Foydalanuvchi nomini kiriting"
+
+#: app/templates/admin/users.html:134 app/templates/login.html:26
+msgid "Password"
+msgstr "Parol"
+
+#: app/templates/admin/users.html:135 app/templates/login.html:29
+msgid "Enter password"
+msgstr "Parolni kiriting"
+
+#: app/templates/login.html:35
+msgid "Remember me on this device"
+msgstr "Meni eslab qol"
+
+#: app/templates/login.html:40
+msgid "Secure Login"
+msgstr "Xavfsiz kirish"
+
+#: app/templates/login.html:47
+msgid "Default Development Logins:"
+msgstr "Tizimga kirish ma'lumotlari:"
+
+#: app/templates/status.html:9
+msgid "Track Application Status"
+msgstr "Ariza holatini kuzatish"
+
+#: app/templates/status.html:11
+msgid ""
+"Enter your unique application tracking number and registered email "
+"address to check your current recruitment status."
+msgstr "Joriy ishga qabul qilish holatingizni tekshirish uchun noyob ariza kuzatuv raqamingizni va ro'yxatdan o'tgan elektron pochta manzilingizni kiriting."
+
+#: app/templates/status.html:18
+msgid "Application Tracking Number"
+msgstr ""
+
+#: app/templates/status.html:22
+msgid "Registered Email"
+msgstr "Ro'yxatdan o'tgan elektron pochta"
+
+#: app/templates/status.html:27
+msgid "Check"
+msgstr ""
+
+#: app/templates/hr/application_details.html:18 app/templates/status.html:41
+msgid "Tracking Code:"
+msgstr "Kuzatuv kodi:"
+
+#: app/templates/admin/applications.html:40
+#: app/templates/admin/dashboard.html:54 app/templates/admin/dashboard.html:133
+#: app/templates/hr/application_details.html:22
+#: app/templates/hr/application_details.html:155
+#: app/templates/hr/applications.html:40 app/templates/hr/dashboard.html:72
+#: app/templates/status.html:47
+msgid "Received"
+msgstr "Qabul qilindi"
+
+#: app/templates/admin/dashboard.html:65
+#: app/templates/hr/application_details.html:24
+#: app/templates/hr/application_details.html:156
+#: app/templates/hr/applications.html:42 app/templates/hr/dashboard.html:74
+#: app/templates/status.html:49 app/templates/status.html:104
+msgid "Under Review"
+msgstr "Ko'rib chiqilmoqda"
+
+#: app/templates/hr/application_details.html:26 app/templates/status.html:51
+msgid "Interview Scheduled"
+msgstr "Suhbat belgilandi"
+
+#: app/templates/status.html:53
+msgid "Accepted / Offer"
+msgstr ""
+
+#: app/templates/status.html:55
+msgid "Closed / Unsuccessful"
+msgstr "Yopilgan / Muvaffaqiyatsiz"
+
+#: app/templates/status.html:63
+msgid "Candidate Name:"
+msgstr "Nomzod ismi:"
+
+#: app/templates/status.html:66
+msgid "Position Applied:"
+msgstr "Topshirilgan lavozim:"
+
+#: app/templates/status.html:69 app/templates/vacancy_details.html:36
+msgid "Department:"
+msgstr "Bo'lim:"
+
+#: app/templates/status.html:72
+msgid "Submission Date:"
+msgstr "Topshirilgan sana:"
+
+#: app/templates/status.html:77
+msgid "Recruitment Workflow Timeline"
+msgstr "Ishga qabul qilish bosqichlari xaritasi"
+
+#: app/templates/status.html:96
+msgid "Submitted"
+msgstr "Yuborildi"
+
+#: app/templates/admin/applications.html:44
+#: app/templates/admin/dashboard.html:76 app/templates/admin/dashboard.html:137
+#: app/templates/hr/application_details.html:157
+#: app/templates/hr/applications.html:44 app/templates/hr/dashboard.html:76
+#: app/templates/status.html:112
+msgid "Interview"
+msgstr "Suhbat"
+
+#: app/templates/status.html:120
+msgid "Decision"
+msgstr "Qaror"
+
+#: app/templates/status.html:129
+msgid "Interview Schedule Details"
+msgstr "Suhbat jadvali tafsilotlari"
+
+#: app/templates/status.html:132
+msgid "Interview Mode:"
+msgstr "Suhbat shakli:"
+
+#: app/templates/status.html:138
+msgid "Date & Time (Tashkent Time):"
+msgstr "Sana va vaqt (Toshkent vaqti):"
+
+#: app/templates/hr/application_details.html:124 app/templates/status.html:142
+msgid "Zoom Link:"
+msgstr "Zoom havola:"
+
+#: app/templates/status.html:142
+msgid "University Location:"
+msgstr "Universitet manzili:"
+
+#: app/templates/hr/application_details.html:133 app/templates/status.html:151
+msgid "HR Notes:"
+msgstr "HR eslatmalari:"
+
+#: app/templates/status.html:162
+msgid "Application Successful!"
+msgstr "Ariza muvaffaqiyatli topshirildi!"
+
+#: app/templates/status.html:163
+msgid ""
+"We have accepted your application. Our recruitment staff will email you "
+"with your official employment agreement and orientation details."
+msgstr "Sizning arizangiz qabul qilindi. Bizning ishga qabul qilish bo'limimiz rasmiy mehnat shartnomasi va yo'riqnoma tafsilotlarini elektron pochta orqali yuboradi."
+
+#: app/templates/status.html:167
+msgid "Application Completed"
+msgstr "Ariza yakunlandi"
+
+#: app/templates/status.html:168
+msgid ""
+"Thank you for your application and interest in Al-Khwarizmi University. "
+"Regrettably, we have decided to advance other candidates at this time."
+msgstr "Al-Xorazmiy Universitetiga qiziqish bildirganingiz va ariza topshirganingiz uchun tashakkur. Afsuski, bu safar biz boshqa nomzodlarni tanlashga qaror qildik."
+
+#: app/templates/vacancies.html:7
+msgid "Explore Job Opportunities"
+msgstr "Bo'sh ish o'rinlarini o'rganing"
+
+#: app/templates/vacancies.html:9
+msgid ""
+"Join our progressive academic community. Search vacancies, filter by "
+"faculty or department, and submit your application online."
+msgstr "Bizning ilg'or akademik hamjamiyatimizga qo'shiling. Bo'sh ish o'rinlarini qidiring, fakultet yoki bo'lim bo'yicha filtrlang va arizangizni onlayn yuboring."
+
+#: app/templates/vacancies.html:21
+msgid "Search Keyword"
+msgstr "Kalit so'z bo'yicha qidiruv"
+
+#: app/templates/vacancies.html:24
+msgid "e.g., Professor, Assistant..."
+msgstr "masalan: Professor, Assistent..."
+
+#: app/templates/vacancies.html:30
+msgid "Faculty"
+msgstr "Fakultet"
+
+#: app/templates/vacancies.html:32
+msgid "-- All Faculties --"
+msgstr ""
+
+#: app/templates/hr/vacancy_form.html:29 app/templates/vacancies.html:43
+msgid "Department"
+msgstr "Bo'lim"
+
+#: app/templates/vacancies.html:45
+msgid "-- All Departments --"
+msgstr ""
+
+#: app/templates/vacancies.html:57
+msgid "Search"
+msgstr "Qidirish"
+
+#: app/templates/vacancies.html:60
+msgid "Reset Filters"
+msgstr "Filtrlarni tozalash"
+
+#: app/templates/vacancies.html:74
+msgid "Available Positions"
+msgstr ""
+
+#: app/templates/vacancies.html:75
+msgid "vacancies found"
+msgstr "ta bo'sh ish o'rni topildi"
+
+#: app/templates/vacancies.html:116
+msgid ""
+"No vacancies match your active search filters. Try adjusting your "
+"selections."
+msgstr "Sizning qidiruv filtrlaringizga mos keladigan bo'sh ish o'rinlari topilmadi. Tanlovlarni o'zgartirib ko'ring."
+
+#: app/templates/vacancy_details.html:9
+msgid "Back to Vacancies"
+msgstr "Bo'sh ish o'rinlariga qaytish"
+
+#: app/templates/hr/vacancy_form.html:49 app/templates/vacancy_details.html:23
+msgid "Open & Active"
+msgstr "Ochiq va faol"
+
+#: app/templates/admin/vacancies.html:42 app/templates/hr/vacancies.html:42
+#: app/templates/hr/vacancy_form.html:50 app/templates/vacancy_details.html:27
+msgid "Closed"
+msgstr "Yopilgan"
+
+#: app/templates/vacancy_details.html:35
+msgid "Faculty:"
+msgstr "Fakultet:"
+
+#: app/templates/vacancy_details.html:42
+msgid "Job Description"
+msgstr "Ish tavsifi"
+
+#: app/templates/vacancy_details.html:49
+msgid "Candidate Requirements"
+msgstr "Nomzodga qo'yiladigan talablar"
+
+#: app/templates/vacancy_details.html:56
+msgid "Responsibilities"
+msgstr "Majburiyatlar"
+
+#: app/templates/vacancy_details.html:66
+msgid "Job Overview"
+msgstr "Ish haqida umumiy ma'lumot"
+
+#: app/templates/hr/vacancies.html:19 app/templates/vacancy_details.html:74
+msgid "Salary"
+msgstr "Ish haqi"
+
+#: app/templates/vacancy_details.html:84
+msgid "Employment Type"
+msgstr "Bandlik turi"
+
+#: app/templates/hr/vacancy_form.html:41 app/templates/vacancy_details.html:94
+msgid "Application Deadline"
+msgstr "Ariza topshirish muddati"
+
+#: app/templates/vacancy_details.html:102
+msgid "Apply For Position"
+msgstr ""
+
+#: app/templates/vacancy_details.html:106
+msgid "Applications Closed"
+msgstr "Arizalar qabul qilish yopilgan"
+
+#: app/templates/admin/applications.html:6
+msgid "Global Applicant Database"
+msgstr "Nomzodlarning umumiy ma'lumotlar bazasi"
+
+#: app/templates/admin/applications.html:14
+#: app/templates/admin/dashboard.html:118
+#: app/templates/admin/interviews.html:14 app/templates/hr/applications.html:14
+msgid "Applicant"
+msgstr "Ariza beruvchi"
+
+#: app/templates/admin/applications.html:15
+#: app/templates/admin/interviews.html:15 app/templates/hr/applications.html:15
+#: app/templates/hr/dashboard.html:55
+msgid "Position Applied"
+msgstr "Topshirilgan lavozim"
+
+#: app/templates/admin/applications.html:16
+msgid "Degree / School"
+msgstr "Daraja / Ta'lim muassasasi"
+
+#: app/templates/admin/applications.html:17
+#: app/templates/hr/applications.html:17
+msgid "Submitted Date"
+msgstr "Yuborilgan sana"
+
+#: app/templates/admin/applications.html:18
+#: app/templates/admin/dashboard.html:120 app/templates/admin/vacancies.html:19
+#: app/templates/hr/applications.html:18 app/templates/hr/dashboard.html:57
+#: app/templates/hr/vacancies.html:21
+msgid "Status"
+msgstr "Holat"
+
+#: app/templates/admin/applications.html:19
+#: app/templates/admin/applications.html:42
+#: app/templates/admin/dashboard.html:29 app/templates/admin/dashboard.html:135
+#: app/templates/hr/applications.html:19 app/templates/hr/applications.html:53
+#: app/templates/hr/dashboard.html:20
+msgid "Review"
+msgstr "Ko'rib chiqish"
+
+#: app/templates/admin/applications.html:46
+#: app/templates/admin/dashboard.html:139
+#: app/templates/hr/application_details.html:28
+#: app/templates/hr/applications.html:46 app/templates/hr/dashboard.html:78
+msgid "Accepted"
+msgstr "Qabul qilindi"
+
+#: app/templates/admin/applications.html:48
+#: app/templates/admin/dashboard.html:141
+#: app/templates/hr/application_details.html:30
+#: app/templates/hr/application_details.html:159
+#: app/templates/hr/applications.html:48 app/templates/hr/dashboard.html:80
+msgid "Rejected"
+msgstr "Rad etildi"
+
+#: app/templates/admin/applications.html:65
+#: app/templates/admin/dashboard.html:151 app/templates/hr/applications.html:64
+#: app/templates/hr/dashboard.html:95
+msgid "No job applications submitted yet."
+msgstr "Hozircha arizalar kelib tushmagan."
+
+#: app/templates/admin/dashboard.html:10
+msgid "HR Recruiter Users"
+msgstr "HR rekruter foydalanuvchilari"
+
+#: app/templates/admin/dashboard.html:11 app/templates/hr/dashboard.html:11
+msgid "Manage"
+msgstr "Boshqarish"
+
+#: app/templates/admin/dashboard.html:19
+msgid "Active Vacancies"
+msgstr "Faol bo'sh ish o'rinlari"
+
+#: app/templates/admin/dashboard.html:20
+msgid "View all"
+msgstr "Barchasini ko'rish"
+
+#: app/templates/admin/dashboard.html:28
+msgid "New Applications"
+msgstr "Yangi arizalar"
+
+#: app/templates/admin/dashboard.html:38
+msgid "View schedule"
+msgstr "Jadvalni ko'rish"
+
+#: app/templates/admin/dashboard.html:47
+msgid "Application Funnel"
+msgstr "Ariza voronkasi"
+
+#: app/templates/admin/dashboard.html:87
+msgid "Accepted Offer"
+msgstr "Taklif qabul qilindi"
+
+#: app/templates/admin/dashboard.html:98
+msgid "Unsuccessful"
+msgstr "Muvaffaqiyatsiz"
+
+#: app/templates/admin/dashboard.html:111
+msgid "Recent Submissions"
+msgstr "So'nggi arizalar"
+
+#: app/templates/admin/dashboard.html:119
+msgid "Vacancy"
+msgstr "Bo'sh ish o'rni"
+
+#: app/templates/admin/interviews.html:6
+msgid "Scheduled Academic Interviews"
+msgstr "Rejalashtirilgan akademik suhbatlar"
+
+#: app/templates/admin/interviews.html:16
+msgid "Evaluation Mode"
+msgstr "Baholash tartibi"
+
+#: app/templates/admin/interviews.html:17
+msgid "Scheduled Date & Time"
+msgstr "Rejalashtirilgan sana va vaqt"
+
+#: app/templates/admin/interviews.html:18
+msgid "Location / Meeting Link"
+msgstr "Manzil / Uchrashuv havolasi"
+
+#: app/templates/admin/interviews.html:34
+msgid "Online"
+msgstr "Onlayn (masofaviy)"
+
+#: app/templates/admin/interviews.html:36
+msgid "On-Site"
+msgstr "Universitetda (oflayn)"
+
+#: app/templates/admin/interviews.html:57
+msgid "No interviews scheduled yet."
+msgstr "Hozircha suhbatlar rejalashtirilmagan."
+
+#: app/templates/admin/settings.html:6
+msgid "System Configurations & API Integrations"
+msgstr "Tizim sozlamalari va API integratsiyalari"
+
+#: app/templates/admin/settings.html:13
+msgid "General Institution Details"
+msgstr "Muassasa haqida umumiy ma'lumotlar"
+
+#: app/templates/admin/settings.html:16
+msgid "University Name (EN)"
+msgstr "Universitet nomi (EN)"
+
+#: app/templates/admin/settings.html:20
+msgid "University Name (UZ)"
+msgstr "Universitet nomi (UZ)"
+
+#: app/templates/admin/settings.html:24
+msgid "University Name (RU)"
+msgstr "Universitet nomi (RU)"
+
+#: app/templates/admin/settings.html:32
+msgid "Telegram Bot Alerts"
+msgstr "Telegram bot ogohlantirishlari"
+
+#: app/templates/admin/settings.html:34
+msgid ""
+"Receive immediate mobile notifications on new applications, contact form "
+"submissions, chat messages, and reminders."
+msgstr "Yangi arizalar, aloqa formasi murojaatlari, chat xabarlari va eslatmalar haqida darhol xabar oling."
+
+#: app/templates/admin/settings.html:38
+msgid "Telegram Bot Token"
+msgstr "Telegram bot tokeni"
+
+#: app/templates/admin/settings.html:42
+msgid "Target Chat / Group ID"
+msgstr "Target Chat / Guruh ID-si"
+
+#: app/templates/admin/settings.html:50
+msgid "SMTP Outbound Email Service"
+msgstr "Chiquvchi SMTP xizmati"
+
+#: app/templates/admin/settings.html:52
+msgid ""
+"Configure connection parameters to send automatic confirmation emails, "
+"interview invitations, and decision notices to applicants."
+msgstr ""
+
+#: app/templates/admin/settings.html:56
+msgid "SMTP Host"
+msgstr "SMTP serveri"
+
+#: app/templates/admin/settings.html:60
+msgid "SMTP Port"
+msgstr "SMTP porti"
+
+#: app/templates/admin/settings.html:64
+msgid "Enable TLS"
+msgstr "TLS-ni yoqish"
+
+#: app/templates/admin/settings.html:66
+msgid "Yes (Recommended)"
+msgstr "Ha (Tavsiya etiladi)"
+
+#: app/templates/admin/settings.html:67
+msgid "No"
+msgstr "Yo'q"
+
+#: app/templates/admin/settings.html:72
+msgid "SMTP Username / Email"
+msgstr "SMTP foydalanuvchi nomi / pochta"
+
+#: app/templates/admin/settings.html:76
+msgid "SMTP Password"
+msgstr "SMTP paroli"
+
+#: app/templates/admin/settings.html:80
+msgid "From Sender Address"
+msgstr "Yuboruvchi manzili"
+
+#: app/templates/admin/settings.html:88
+msgid "Save Configurations"
+msgstr "Sozlamalarni saqlash"
+
+#: app/templates/admin/users.html:6
+msgid "HR Recruiting Staff Management"
+msgstr "HR xodimlarini boshqarish"
+
+#: app/templates/admin/users.html:9
+msgid "Add Recruiter User"
+msgstr ""
+
+#: app/templates/admin/users.html:22
+msgid "Joined Date"
+msgstr "Qo'shilgan sana"
+
+#: app/templates/admin/users.html:23 app/templates/hr/vacancies.html:22
+msgid "Actions"
+msgstr "Amallar"
+
+#: app/templates/admin/users.html:52
+msgid "Edit HR Recruiter Details"
+msgstr "HR rekruter ma'lumotlarini tahrirlash"
+
+#: app/templates/admin/users.html:67
+msgid "New Password"
+msgstr "Yangi parol"
+
+#: app/templates/admin/users.html:67
+msgid "Leave blank to keep current"
+msgstr "O'zgarishsiz qoldirish uchun bo'sh qoldiring"
+
+#: app/templates/admin/users.html:68
+msgid "Enter new password"
+msgstr "Yangi parolni kiriting"
+
+#: app/templates/admin/users.html:72 app/templates/admin/users.html:97
+#: app/templates/admin/users.html:147 app/templates/hr/vacancy_form.html:186
+msgid "Cancel"
+msgstr "Bekor qilish"
+
+#: app/templates/admin/users.html:73 app/templates/hr/vacancy_form.html:188
+msgid "Save Changes"
+msgstr "O'zgarishlarni saqlash"
+
+#: app/templates/admin/users.html:85
+msgid "Confirm Account Deletion"
+msgstr ""
+
+#: app/templates/admin/users.html:89
+msgid "Are you sure you want to permanently delete the HR account for:"
+msgstr ""
+
+#: app/templates/admin/users.html:94
+msgid "This action cannot be undone."
+msgstr "Ushbu amalni bekor qilib bo'lmaydi."
+
+#: app/templates/admin/users.html:100
+msgid "Delete Account"
+msgstr "Hisobni o'chirish"
+
+#: app/templates/admin/users.html:113
+msgid "No HR Recruiter accounts created yet. Add a user above to get started."
+msgstr "Hozircha HR rekruter hisoblari yaratilmagan. Boshlash uchun foydalanuvchi qo'shing."
+
+#: app/templates/admin/users.html:123
+msgid "Create HR Recruiter Account"
+msgstr ""
+
+#: app/templates/admin/users.html:131
+msgid "e.g. hr_recruiter"
+msgstr "masalan, hr_recruiter"
+
+#: app/templates/admin/users.html:139
+msgid "e.g., Jane Cooper"
+msgstr "masalan: Jane Cooper"
+
+#: app/templates/admin/users.html:148
+msgid "Create Account"
+msgstr ""
+
+#: app/templates/admin/vacancies.html:6
+msgid "University Vacancies Overview"
+msgstr "Universitet bo'sh ish o'rinlari sharhi"
+
+#: app/templates/admin/vacancies.html:14
+msgid "Position Title"
+msgstr "Lavozim nomi"
+
+#: app/templates/admin/vacancies.html:15 app/templates/hr/vacancies.html:18
+msgid "Faculty / Department"
+msgstr "Fakultet / Bo'lim"
+
+#: app/templates/admin/vacancies.html:16
+msgid "Type"
+msgstr "Turi"
+
+#: app/templates/admin/vacancies.html:17 app/templates/hr/vacancies.html:20
+msgid "Deadline"
+msgstr "Muddati"
+
+#: app/templates/admin/vacancies.html:40 app/templates/hr/vacancies.html:40
+msgid "Open"
+msgstr "Ochiq"
+
+#: app/templates/admin/vacancies.html:53
+msgid "No vacancies created yet."
+msgstr "Hozircha bo'sh ish o'rinlari yaratilmagan."
+
+#: app/templates/hr/application_details.html:8
+msgid "Back to Applications"
+msgstr ""
+
+#: app/templates/hr/application_details.html:38
+msgid "Position:"
+msgstr "Lavozim:"
+
+#: app/templates/hr/application_details.html:41
+msgid "Birth Date:"
+msgstr "Tug'ilgan sana:"
+
+#: app/templates/hr/application_details.html:44
+msgid "Phone:"
+msgstr "Telefon:"
+
+#: app/templates/hr/application_details.html:47
+msgid "Email:"
+msgstr "Elektron pochta:"
+
+#: app/templates/hr/application_details.html:50
+msgid "Address:"
+msgstr "Manzil:"
+
+#: app/templates/hr/application_details.html:57
+msgid "Education Profile"
+msgstr "Ma'lumot profili"
+
+#: app/templates/hr/application_details.html:60
+msgid "Academic Degree:"
+msgstr ""
+
+#: app/templates/hr/application_details.html:63
+msgid "University:"
+msgstr "Universitet:"
+
+#: app/templates/hr/application_details.html:66
+msgid "Graduation Year:"
+msgstr "Tamomlagan yili:"
+
+#: app/templates/hr/application_details.html:73
+msgid "Uploaded Documents"
+msgstr "Yuklangan hujjatlar"
+
+#: app/templates/hr/application_details.html:90
+msgid "Open Preview"
+msgstr "Ko'rish"
+
+#: app/templates/hr/application_details.html:102
+msgid "No files uploaded."
+msgstr "Fayllar yuklanmagan."
+
+#: app/templates/hr/application_details.html:110
+msgid "Interview History"
+msgstr "Suhbatlar tarixi"
+
+#: app/templates/hr/application_details.html:116
+msgid "Type:"
+msgstr "Turi:"
+
+#: app/templates/hr/application_details.html:120
+msgid "Date & Time:"
+msgstr "Sana va vaqt:"
+
+#: app/templates/hr/application_details.html:124
+msgid "Location:"
+msgstr "Manzil:"
+
+#: app/templates/hr/application_details.html:149
+msgid "Application Status"
+msgstr ""
+
+#: app/templates/hr/application_details.html:158
+msgid "Accepted (Offer)"
+msgstr ""
+
+#: app/templates/hr/application_details.html:163
+msgid "Update Status"
+msgstr "Holatni yangilash"
+
+#: app/templates/hr/application_details.html:171
+msgid "Schedule Interview"
+msgstr "Suhbat belgilash"
+
+#: app/templates/hr/application_details.html:177
+msgid "Interview Type"
+msgstr "Suhbat turi"
+
+#: app/templates/hr/application_details.html:179
+msgid "On-Site Interview"
+msgstr "Universitetda suhbat"
+
+#: app/templates/hr/application_details.html:180
+msgid "Online (Zoom/Meet)"
+msgstr "Onlayn (Zoom/Meet)"
+
+#: app/templates/hr/application_details.html:185
+msgid "Date & Time"
+msgstr "Sana va vaqt"
+
+#: app/templates/hr/application_details.html:190
+#: app/templates/hr/application_details.html:218
+msgid "University Location"
+msgstr "Universitet manzili"
+
+#: app/templates/hr/application_details.html:191
+msgid "e.g., Room 402, Building A"
+msgstr "masalan: A bino, 402-xona"
+
+#: app/templates/hr/application_details.html:195
+msgid "HR Coordinator Notes"
+msgstr "HR koordinator eslatmalari"
+
+#: app/templates/hr/application_details.html:196
+msgid "e.g. Please bring original passport..."
+msgstr "masalan, Pasportingizning asl nusxasini olib keling..."
+
+#: app/templates/hr/application_details.html:200
+msgid "Schedule & Invite"
+msgstr "Rejalashtirish va taklif qilish"
+
+#: app/templates/hr/application_details.html:215
+msgid "Zoom / Online Meeting Link"
+msgstr "Zoom / Onlayn uchrashuv havolasi"
+
+#: app/templates/hr/applications.html:6
+msgid "Manage Job Applications"
+msgstr "Arizalarni boshqarish"
+
+#: app/templates/hr/applications.html:16
+msgid "Highest Degree"
+msgstr "Eng yuqori daraja"
+
+#: app/templates/hr/chats.html:6
+msgid "Live Support Desk"
+msgstr "Jonli yordam stoli"
+
+#: app/templates/hr/chats.html:13
+msgid "Active Visitors"
+msgstr ""
+
+#: app/templates/hr/chats.html:35
+msgid "No messages yet."
+msgstr "Xabarlar yo'q."
+
+#: app/templates/hr/chats.html:43
+msgid "No visitor chat sessions yet."
+msgstr "Hozircha chat seanslari yo'q."
+
+#: app/templates/hr/chats.html:53
+msgid "Select a conversation to start chatting"
+msgstr "Suhbatni boshlash uchun muloqotni tanlang"
+
+#: app/templates/hr/chats.html:61
+msgid "Active conversations will display messaging and shared files here."
+msgstr ""
+
+#: app/templates/hr/chats.html:70
+msgid "Visitor is typing..."
+msgstr "Mehmon yozmoqda..."
+
+#: app/templates/hr/chats.html:80
+msgid "Type your response..."
+msgstr "Javob yozing..."
+
+#: app/templates/hr/contact_requests.html:6
+msgid "Visitor Contact Requests"
+msgstr "Mijozlar murojaatlari"
+
+#: app/templates/hr/contact_requests.html:25
+msgid "Resolved"
+msgstr "Hal qilindi"
+
+#: app/templates/hr/contact_requests.html:30
+msgid "Mark as Resolved"
+msgstr "Hal qilingan deb belgilash"
+
+#: app/templates/hr/contact_requests.html:44
+msgid "No contact requests received yet."
+msgstr "Hozircha aloqa uchun so'rovlar kelib tushmadi."
+
+#: app/templates/hr/dashboard.html:10
+msgid "My Active Vacancies"
+msgstr "Mening faol bo'sh ish o'rinlarim"
+
+#: app/templates/hr/dashboard.html:19
+msgid "New Submissions"
+msgstr "Yangi arizalar"
+
+#: app/templates/hr/dashboard.html:28
+msgid "Pending Inquiries"
+msgstr "Ko'rib chiqilayotgan so'rovlar"
+
+#: app/templates/hr/dashboard.html:29
+msgid "Respond"
+msgstr "Javob berish"
+
+#: app/templates/hr/dashboard.html:37
+msgid "Active Chat Sessions"
+msgstr "Faol suhbatlar"
+
+#: app/templates/hr/dashboard.html:38
+msgid "Open Chat"
+msgstr "Chatni ochish"
+
+#: app/templates/hr/dashboard.html:47
+msgid "Applicants Awaiting Review"
+msgstr ""
+
+#: app/templates/hr/dashboard.html:54
+msgid "Candidate"
+msgstr ""
+
+#: app/templates/hr/dashboard.html:56
+msgid "Academic Degree"
+msgstr ""
+
+#: app/templates/hr/dashboard.html:58
+msgid "Action"
+msgstr "Amal"
+
+#: app/templates/hr/dashboard.html:85
+msgid "Review Details"
+msgstr "Tafsilotlarni ko'rib chiqish"
+
+#: app/templates/hr/faculties_departments.html:8
+msgid "Faculties & Departments Management"
+msgstr "Fakultetlar va bo'limlarni boshqarish"
+
+#: app/templates/hr/faculties_departments.html:10
+msgid ""
+"View, create, and manage academic faculties and their respective "
+"departments."
+msgstr "Akademik fakultetlar va ularning tegishli bo'limlarini ko'rish, yaratish hamda boshqarish."
+
+#: app/templates/hr/faculties_departments.html:31
+msgid "Are you sure you want to delete this faculty?"
+msgstr ""
+
+#: app/templates/hr/faculties_departments.html:33
+msgid "Delete Faculty"
+msgstr "Fakultetni o'chirish"
+
+#: app/templates/hr/faculties_departments.html:40
+msgid "No faculties registered yet."
+msgstr "Hozircha fakultetlar ro'yxatdan o'tkazilmagan."
+
+#: app/templates/hr/faculties_departments.html:46
+msgid "Add New Faculty"
+msgstr ""
+
+#: app/templates/hr/faculties_departments.html:51
+msgid "Faculty Name (English)"
+msgstr "Fakultet nomi (Inglizcha)"
+
+#: app/templates/hr/faculties_departments.html:56
+msgid "Faculty Name (Uzbek)"
+msgstr "Fakultet nomi (O'zbekcha)"
+
+#: app/templates/hr/faculties_departments.html:61
+msgid "Faculty Name (Russian)"
+msgstr "Fakultet nomi (Ruscha)"
+
+#: app/templates/hr/faculties_departments.html:65
+msgid "Create Faculty"
+msgstr ""
+
+#: app/templates/hr/faculties_departments.html:73
+msgid "Departments"
+msgstr "Bo'limlar"
+
+#: app/templates/hr/faculties_departments.html:86
+msgid "Are you sure you want to delete this department?"
+msgstr ""
+
+#: app/templates/hr/faculties_departments.html:88
+msgid "Delete Department"
+msgstr "Bo'limni o'chirish"
+
+#: app/templates/hr/faculties_departments.html:95
+msgid "No departments registered yet."
+msgstr "Hozircha bo'limlar ro'yxatdan o'tkazilmagan."
+
+#: app/templates/hr/faculties_departments.html:101
+msgid "Add New Department"
+msgstr ""
+
+#: app/templates/hr/faculties_departments.html:107
+msgid "Department Name (English)"
+msgstr "Bo'lim nomi (Inglizcha)"
+
+#: app/templates/hr/faculties_departments.html:112
+msgid "Department Name (Uzbek)"
+msgstr "Bo'lim nomi (O'zbekcha)"
+
+#: app/templates/hr/faculties_departments.html:117
+msgid "Department Name (Russian)"
+msgstr "Bo'lim nomi (Ruscha)"
+
+#: app/templates/hr/faculties_departments.html:121
+msgid "Create Department"
+msgstr ""
+
+#: app/templates/hr/vacancies.html:6
+msgid "Manage Institutional Vacancies"
+msgstr "Muassasa bo'sh ish o'rinlarini boshqarish"
+
+#: app/templates/hr/vacancies.html:8
+msgid "Create Vacancy"
+msgstr "Bo'sh ish o'rni yaratish"
+
+#: app/templates/hr/vacancies.html:17
+msgid "Title"
+msgstr "Nomi"
+
+#: app/templates/hr/vacancies.html:46
+msgid "Edit Vacancy"
+msgstr "Bo'sh ish o'rnini tahrirlash"
+
+#: app/templates/hr/vacancies.html:52
+msgid "Close Vacancy"
+msgstr ""
+
+#: app/templates/hr/vacancies.html:66
+msgid "No vacancies created yet. Click Create Vacancy to add one."
+msgstr "Hozircha bo'sh ish o'rinlari yaratilmagan. Yangisini qo'shish uchun \"Bo'sh ish o'rni yaratish\" tugmasini bosing."
+
+#: app/templates/hr/vacancy_form.html:7
+msgid "Edit Vacancy Details"
+msgstr "Bo'sh ish o'rni tafsilotlarini tahrirlash"
+
+#: app/templates/hr/vacancy_form.html:7
+msgid "Create New Vacancy"
+msgstr "Yangi bo'sh ish o'rni yaratish"
+
+#: app/templates/hr/vacancy_form.html:14
+msgid "Target Academic Placement"
+msgstr "Akademik joylashuv"
+
+#: app/templates/hr/vacancy_form.html:17
+msgid "Academic Faculty"
+msgstr ""
+
+#: app/templates/hr/vacancy_form.html:19
+msgid "-- Choose Faculty --"
+msgstr ""
+
+#: app/templates/hr/vacancy_form.html:31
+msgid "-- Choose Department --"
+msgstr ""
+
+#: app/templates/hr/vacancy_form.html:47
+msgid "Publication Status"
+msgstr "E'lon qilinish holati"
+
+#: app/templates/hr/vacancy_form.html:57
+msgid "Multilingual Content Entry"
+msgstr "Ko'p tilli kontent kiritish"
+
+#: app/templates/hr/vacancy_form.html:82
+msgid "Position Title (EN)"
+msgstr "Lavozim nomi (EN)"
+
+#: app/templates/hr/vacancy_form.html:86
+msgid "Position Type (EN)"
+msgstr "Lavozim turi (EN)"
+
+#: app/templates/hr/vacancy_form.html:90
+msgid "Employment Type (EN)"
+msgstr "Bandlik turi (EN)"
+
+#: app/templates/hr/vacancy_form.html:94
+msgid "Salary Details (EN)"
+msgstr "Ish haqi ma'lumotlari (EN)"
+
+#: app/templates/hr/vacancy_form.html:99
+msgid "Description (EN)"
+msgstr "Tavsif (EN)"
+
+#: app/templates/hr/vacancy_form.html:103
+msgid "Requirements (EN)"
+msgstr "Talablar (EN)"
+
+#: app/templates/hr/vacancy_form.html:107
+msgid "Responsibilities (EN)"
+msgstr "Majburiyatlar (EN)"
+
+#: app/templates/hr/vacancy_form.html:117
+msgid "Position Title (UZ)"
+msgstr "Lavozim nomi (UZ)"
+
+#: app/templates/hr/vacancy_form.html:121
+msgid "Position Type (UZ)"
+msgstr "Lavozim turi (UZ)"
+
+#: app/templates/hr/vacancy_form.html:125
+msgid "Employment Type (UZ)"
+msgstr "Bandlik turi (UZ)"
+
+#: app/templates/hr/vacancy_form.html:129
+msgid "Salary Details (UZ)"
+msgstr "Ish haqi ma'lumotlari (UZ)"
+
+#: app/templates/hr/vacancy_form.html:134
+msgid "Description (UZ)"
+msgstr "Tavsif (UZ)"
+
+#: app/templates/hr/vacancy_form.html:138
+msgid "Requirements (UZ)"
+msgstr "Talablar (UZ)"
+
+#: app/templates/hr/vacancy_form.html:142
+msgid "Responsibilities (UZ)"
+msgstr "Majburiyatlar (UZ)"
+
+#: app/templates/hr/vacancy_form.html:152
+msgid "Position Title (RU)"
+msgstr "Lavozim nomi (RU)"
+
+#: app/templates/hr/vacancy_form.html:156
+msgid "Position Type (RU)"
+msgstr "Lavozim turi (RU)"
+
+#: app/templates/hr/vacancy_form.html:160
+msgid "Employment Type (RU)"
+msgstr "Bandlik turi (RU)"
+
+#: app/templates/hr/vacancy_form.html:164
+msgid "Salary Details (RU)"
+msgstr "Ish haqi ma'lumotlari (RU)"
+
+#: app/templates/hr/vacancy_form.html:169
+msgid "Description (RU)"
+msgstr "Tavsif (RU)"
+
+#: app/templates/hr/vacancy_form.html:173
+msgid "Requirements (RU)"
+msgstr "Talablar (RU)"
+
+#: app/templates/hr/vacancy_form.html:177
+msgid "Responsibilities (RU)"
+msgstr "Majburiyatlar (RU)"
+
+#: app/templates/hr/vacancy_form.html:188
+msgid "Publish Vacancy"
+msgstr "E'lon qilish"
+
+#~ msgid "Build Your Academic Future at"
+#~ msgstr ""
+
+#~ msgid "Al-Khwarizmi University"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "We are searching for passionate "
+#~ "researchers, educators, and staff to "
+#~ "join our progressive institution and "
+#~ "contribute to the scientific world."
+#~ msgstr ""
+
+#~ msgid "Empowering the next generation of academic leaders."
+#~ msgstr ""
+
+#~ msgid "Staff Members"
+#~ msgstr ""
+
+#~ msgid "Parent Faculty"
+#~ msgstr ""
+
+#~ msgid "Select Faculty"
+#~ msgstr ""
+

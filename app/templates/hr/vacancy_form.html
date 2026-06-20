@@ -1,0 +1,343 @@
+{% extends 'dashboard_base.html' %}
+
+{% block dashboard_content %}
+<div class="glass-panel p-4 mb-4">
+    <h3 class="text-white border-bottom border-secondary pb-3 mb-4">
+        <i class="bi bi-file-earmark-medical me-2 text-warning"></i>
+        {% if vacancy %}{{ _('Edit Vacancy Details') }}{% else %}{{ _('Create New Vacancy') }}{% endif %}
+    </h3>
+
+    <!-- Validation Alert Box -->
+    <div id="validationAlert" class="alert alert-danger d-none mb-3" role="alert">
+        <i class="bi bi-exclamation-triangle-fill me-2"></i>
+        <span id="validationMsg"></span>
+    </div>
+
+    <form method="POST" id="vacancyForm" action="{% if vacancy %}{{ url_for('hr.vacancy_edit', vacancy_id=vacancy.id) }}{% else %}{{ url_for('hr.vacancy_create') }}{% endif %}" novalidate>
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+        <!-- Faculty & Department Selectors -->
+        <h5 class="text-white mb-2"><i class="bi bi-building me-2 text-primary"></i>{{ _('Target Academic Placement') }}</h5>
+        <p class="text-secondary small mb-3">
+            <i class="bi bi-info-circle me-1"></i>
+            {{ _('Select either a Faculty or a Department — only one can be assigned per vacancy.') }}
+            &nbsp;|&nbsp;
+            Fakultet yoki Bo'limdan faqat bittasini tanlang — ikkala maydon birga to'ldirilishi mumkin emas.
+        </p>
+
+        <div class="row g-3 mb-4">
+            <!-- Faculty -->
+            <div class="col-md-4">
+                <label class="form-label text-white small fw-bold" for="faculty_id">
+                    {{ _('Academic Faculty') }}
+                </label>
+                <select id="faculty_id" name="faculty_id" class="form-select form-select-custom">
+                    <option value="">{{ _('-- Choose Faculty --') }}</option>
+                    {% for fac in faculties %}
+                        <option value="{{ fac.id }}" {% if vacancy and vacancy.faculty_id == fac.id %}selected{% endif %}>
+                            {{ fac.get_name(g.lang_code) }}
+                        </option>
+                    {% endfor %}
+                </select>
+                <div id="facultyHelp" class="form-text text-secondary small mt-1">
+                    Leave empty if assigning to a Department only.
+                </div>
+            </div>
+
+            <!-- Department -->
+            <div class="col-md-4">
+                <label class="form-label text-white small fw-bold" for="department_id">
+                    {{ _('Department') }}
+                </label>
+                <select id="department_id" name="department_id" class="form-select form-select-custom">
+                    <option value="">{{ _('-- Choose Department --') }}</option>
+                    {% for dept in departments %}
+                        <option value="{{ dept.id }}" {% if vacancy and vacancy.department_id == dept.id %}selected{% endif %}>
+                            {{ dept.get_name(g.lang_code) }}
+                        </option>
+                    {% endfor %}
+                </select>
+                <div id="deptHelp" class="form-text text-secondary small mt-1">
+                    Leave empty if assigning to a Faculty only.
+                </div>
+            </div>
+
+            <!-- Deadline -->
+            <div class="col-md-4">
+                <label class="form-label text-white small fw-bold" for="deadline">
+                    {{ _('Application Deadline') }} <span class="text-danger">*</span>
+                </label>
+                <input type="date" id="deadline" name="deadline" class="form-control form-control-custom text-white" required
+                    value="{% if vacancy %}{{ vacancy.deadline.strftime('%Y-%m-%d') }}{% endif %}">
+            </div>
+
+            {% if vacancy %}
+            <div class="col-md-4">
+                <label class="form-label text-white small fw-bold">{{ _('Publication Status') }}</label>
+                <select name="status" class="form-select form-select-custom" required>
+                    <option value="open" {% if vacancy.status == 'open' %}selected{% endif %}>{{ _('Open & Active') }}</option>
+                    <option value="closed" {% if vacancy.status == 'closed' %}selected{% endif %}>{{ _('Closed') }}</option>
+                </select>
+            </div>
+            {% endif %}
+        </div>
+
+        <!-- Tabbed Language Inputs -->
+        <h5 class="text-white mb-3 mt-4"><i class="bi bi-translate me-2 text-info"></i>{{ _('Multilingual Content Entry') }}</h5>
+
+        <ul class="nav nav-tabs border-secondary mb-3" id="langTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link nav-link-custom active" id="en-tab" data-bs-toggle="tab"
+                    data-bs-target="#en-content" type="button" role="tab" aria-controls="en-content" aria-selected="true">
+                    English
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link nav-link-custom" id="uz-tab" data-bs-toggle="tab"
+                    data-bs-target="#uz-content" type="button" role="tab" aria-controls="uz-content" aria-selected="false">
+                    O'zbekcha
+                </button>
+            </li>
+        </ul>
+
+        <div class="tab-content" id="langTabsContent">
+            <!-- ENGLISH PANEL -->
+            <div class="tab-pane fade show active" id="en-content" role="tabpanel" aria-labelledby="en-tab">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label class="form-label text-white small fw-bold">{{ _('Position Title (EN)') }} <span class="text-danger">*</span></label>
+                        <input type="text" name="title_en" class="form-control form-control-custom text-white"
+                            value="{% if vacancy %}{{ vacancy.title_en }}{% endif %}"
+                            placeholder="e.g. Associate Professor in AI" required>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label text-white small fw-bold">{{ _('Position Type (EN)') }} <span class="text-danger">*</span></label>
+                        <input type="text" name="position_type_en" class="form-control form-control-custom text-white"
+                            value="{% if vacancy %}{{ vacancy.position_type_en }}{% endif %}"
+                            placeholder="e.g. Professor, Assistant" required>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label text-white small fw-bold">{{ _('Employment Type (EN)') }} <span class="text-danger">*</span></label>
+                        <input type="text" name="employment_type_en" class="form-control form-control-custom text-white"
+                            value="{% if vacancy %}{{ vacancy.employment_type_en }}{% endif %}"
+                            placeholder="e.g. Full-time" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label text-white small fw-bold">{{ _('Salary Details (EN)') }} <span class="text-danger">*</span></label>
+                        <input type="text" name="salary_en" class="form-control form-control-custom text-white"
+                            value="{% if vacancy %}{{ vacancy.salary_en }}{% endif %}"
+                            placeholder="e.g. Negotiable" required>
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label text-white small fw-bold">{{ _('Description (EN)') }} <span class="text-danger">*</span></label>
+                        <textarea name="description_en" class="form-control form-control-custom text-white" rows="3" required
+                            placeholder="Job description details...">{% if vacancy %}{{ vacancy.description_en }}{% endif %}</textarea>
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label text-white small fw-bold">{{ _('Requirements (EN)') }} <span class="text-danger">*</span></label>
+                        <textarea name="requirements_en" class="form-control form-control-custom text-white" rows="3" required
+                            placeholder="Academic requirements (one per line)...">{% if vacancy %}{{ vacancy.requirements_en }}{% endif %}</textarea>
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label text-white small fw-bold">{{ _('Responsibilities (EN)') }} <span class="text-danger">*</span></label>
+                        <textarea name="responsibilities_en" class="form-control form-control-custom text-white" rows="3" required
+                            placeholder="Academic responsibilities (one per line)...">{% if vacancy %}{{ vacancy.responsibilities_en }}{% endif %}</textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- UZBEK PANEL -->
+            <div class="tab-pane fade" id="uz-content" role="tabpanel" aria-labelledby="uz-tab">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label class="form-label text-white small fw-bold">{{ _('Position Title (UZ)') }} <span class="text-danger">*</span></label>
+                        <input type="text" name="title_uz" class="form-control form-control-custom text-white"
+                            value="{% if vacancy %}{{ vacancy.title_uz }}{% endif %}"
+                            placeholder="masalan, AI bo'yicha dotsent" required>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label text-white small fw-bold">{{ _('Position Type (UZ)') }} <span class="text-danger">*</span></label>
+                        <input type="text" name="position_type_uz" class="form-control form-control-custom text-white"
+                            value="{% if vacancy %}{{ vacancy.position_type_uz }}{% endif %}"
+                            placeholder="masalan, Professor, Assistent" required>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label text-white small fw-bold">{{ _('Employment Type (UZ)') }} <span class="text-danger">*</span></label>
+                        <input type="text" name="employment_type_uz" class="form-control form-control-custom text-white"
+                            value="{% if vacancy %}{{ vacancy.employment_type_uz }}{% endif %}"
+                            placeholder="masalan, To'liq bandlik" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label text-white small fw-bold">{{ _('Salary Details (UZ)') }} <span class="text-danger">*</span></label>
+                        <input type="text" name="salary_uz" class="form-control form-control-custom text-white"
+                            value="{% if vacancy %}{{ vacancy.salary_uz }}{% endif %}"
+                            placeholder="masalan, Kelishilgan holda" required>
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label text-white small fw-bold">{{ _('Description (UZ)') }} <span class="text-danger">*</span></label>
+                        <textarea name="description_uz" class="form-control form-control-custom text-white" rows="3" required
+                            placeholder="Vakansiya tavsifi...">{% if vacancy %}{{ vacancy.description_uz }}{% endif %}</textarea>
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label text-white small fw-bold">{{ _('Requirements (UZ)') }} <span class="text-danger">*</span></label>
+                        <textarea name="requirements_uz" class="form-control form-control-custom text-white" rows="3" required
+                            placeholder="Nomzodga talablar...">{% if vacancy %}{{ vacancy.requirements_uz }}{% endif %}</textarea>
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label text-white small fw-bold">{{ _('Responsibilities (UZ)') }} <span class="text-danger">*</span></label>
+                        <textarea name="responsibilities_uz" class="form-control form-control-custom text-white" rows="3" required
+                            placeholder="Vazifalar majburiyati...">{% if vacancy %}{{ vacancy.responsibilities_uz }}{% endif %}</textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Submit Actions -->
+        <div class="border-top border-secondary pt-4 text-end mt-4">
+            <a href="{{ url_for('hr.vacancies_list') }}" class="btn btn-custom-secondary me-2">{{ _('Cancel') }}</a>
+            <button type="submit" class="btn btn-custom-primary px-4" id="submitBtn">
+                <i class="bi bi-check-lg me-1"></i>
+                {% if vacancy %}{{ _('Save Changes') }}{% else %}{{ _('Publish Vacancy') }}{% endif %}
+            </button>
+        </div>
+    </form>
+</div>
+
+<script>
+(function () {
+    'use strict';
+
+    var langCode = "{{ g.lang_code }}";
+
+    var msgs = {
+        bothSelected: {
+            en: "You cannot select both a Faculty and a Department. Please choose only one.",
+            uz: "Fakultet va Bo'limni bir vaqtda tanlash mumkin emas. Iltimos, faqat bittasini tanlang."
+        },
+        noneSelected: {
+            en: "Please select either a Faculty or a Department before submitting.",
+            uz: "Iltimos, Fakultet yoki Bo'limdan kamida bittasini tanlang."
+        },
+        emptyFields: {
+            en: "Please fill in all required fields (marked with *).",
+            uz: "Iltimos, barcha majburiy maydonlarni to'ldiring (* bilan belgilangan)."
+        }
+    };
+
+    function msg(key) {
+        var lang = (langCode === 'uz') ? 'uz' : 'en';
+        return msgs[key][lang];
+    }
+
+    function showAlert(message) {
+        var box = document.getElementById('validationAlert');
+        var span = document.getElementById('validationMsg');
+        span.textContent = message;
+        box.classList.remove('d-none');
+        box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    function hideAlert() {
+        var box = document.getElementById('validationAlert');
+        box.classList.add('d-none');
+    }
+
+    var facultySelect = document.getElementById('faculty_id');
+    var deptSelect = document.getElementById('department_id');
+
+    // Mutual exclusion: when faculty is picked, clear department (and vice versa)
+    facultySelect.addEventListener('change', function () {
+        if (this.value) {
+            deptSelect.value = '';
+            deptSelect.classList.add('select-muted');
+            facultySelect.classList.remove('select-muted');
+        } else {
+            deptSelect.classList.remove('select-muted');
+        }
+        hideAlert();
+    });
+
+    deptSelect.addEventListener('change', function () {
+        if (this.value) {
+            facultySelect.value = '';
+            facultySelect.classList.add('select-muted');
+            deptSelect.classList.remove('select-muted');
+        } else {
+            facultySelect.classList.remove('select-muted');
+        }
+        hideAlert();
+    });
+
+    // Form submit validation
+    document.getElementById('vacancyForm').addEventListener('submit', function (e) {
+        hideAlert();
+
+        var facVal = facultySelect.value;
+        var deptVal = deptSelect.value;
+
+        // Should not happen due to mutual exclusion, but guard anyway
+        if (facVal && deptVal) {
+            e.preventDefault();
+            showAlert(msg('bothSelected'));
+            return;
+        }
+
+        if (!facVal && !deptVal) {
+            e.preventDefault();
+            showAlert(msg('noneSelected'));
+            return;
+        }
+
+        // Check all required fields
+        var required = this.querySelectorAll('[required]');
+        var empty = false;
+        var firstEmpty = null;
+
+        for (var i = 0; i < required.length; i++) {
+            var field = required[i];
+            if (!field.value.trim()) {
+                field.classList.add('is-invalid');
+                empty = true;
+                if (!firstEmpty) firstEmpty = field;
+            } else {
+                field.classList.remove('is-invalid');
+            }
+        }
+
+        if (empty) {
+            e.preventDefault();
+            showAlert(msg('emptyFields'));
+            // Switch to the tab that has the first empty field
+            if (firstEmpty) {
+                var panel = firstEmpty.closest('.tab-pane');
+                if (panel) {
+                    var tabId = panel.id.replace('-content', '-tab');
+                    var tabBtn = document.getElementById(tabId);
+                    if (tabBtn) tabBtn.click();
+                }
+                firstEmpty.focus();
+            }
+        }
+    });
+
+    // Remove invalid highlight on input
+    document.getElementById('vacancyForm').addEventListener('input', function (e) {
+        if (e.target.classList.contains('is-invalid') && e.target.value.trim()) {
+            e.target.classList.remove('is-invalid');
+        }
+    });
+})();
+</script>
+
+<style>
+.select-muted {
+    opacity: 0.45;
+    pointer-events: none;
+}
+.form-control.is-invalid,
+.form-select.is-invalid {
+    border-color: #dc3545 !important;
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25) !important;
+}
+</style>
+{% endblock %}

@@ -1,0 +1,74 @@
+{% extends 'dashboard_base.html' %}
+
+{% block dashboard_content %}
+<div class="glass-panel p-4 mb-4">
+    <div class="d-flex justify-content-between align-items-center border-bottom border-secondary pb-3 mb-4 flex-wrap gap-2">
+        <h3 class="text-white mb-0"><i class="bi bi-briefcase me-2 text-warning"></i>{{ _('Manage Institutional Vacancies') }}</h3>
+        <a href="{{ url_for('hr.vacancy_create') }}" class="btn btn-custom-primary btn-sm">
+            <i class="bi bi-plus-lg me-1"></i>{{ _('Create Vacancy') }}
+        </a>
+    </div>
+    
+    {% if vacancies %}
+        <div class="table-responsive">
+            <table class="table table-dark table-hover align-middle mb-0">
+                <thead>
+                    <tr class="text-muted small">
+                        <th>{{ _('Title') }}</th>
+                        <th>{{ _('Faculty / Department') }}</th>
+                        <th>{{ _('Salary') }}</th>
+                        <th>{{ _('Deadline') }}</th>
+                        <th>{{ _('Status') }}</th>
+                        <th class="text-end">{{ _('Actions') }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for vacancy in vacancies %}
+                        <tr>
+                            <td>
+                                <div class="fw-bold text-white">{{ vacancy.get_title(g.lang_code) }}</div>
+                                <span class="badge bg-secondary mt-1 small" style="font-size: 0.7rem;">{{ vacancy.get_position_type(g.lang_code) }}</span>
+                            </td>
+                            <td>
+                                {% if vacancy.faculty %}
+                                <div class="small text-white">{{ vacancy.faculty.get_name(g.lang_code) }}</div>
+                                {% endif %}
+                                {% if vacancy.department %}
+                                <span class="text-secondary small" style="font-size: 0.75rem;">{{ vacancy.department.get_name(g.lang_code) }}</span>
+                                {% endif %}
+                            </td>
+                            <td class="small">{{ vacancy.get_salary(g.lang_code) }}</td>
+                            <td class="small text-secondary">{{ vacancy.deadline.strftime('%Y-%m-%d') }}</td>
+                            <td>
+                                {% if vacancy.status == 'open' %}
+                                    <span class="badge bg-success-subtle text-success border border-success">{{ _('Open') }}</span>
+                                {% else %}
+                                    <span class="badge bg-danger-subtle text-danger border border-danger">{{ _('Closed') }}</span>
+                                {% endif %}
+                            </td>
+                            <td class="text-end">
+                                <a href="{{ url_for('hr.vacancy_edit', vacancy_id=vacancy.id) }}" class="btn btn-outline-warning btn-sm me-1" title="{{ _('Edit Vacancy') }}">
+                                    <i class="bi bi-pencil"></i>
+                                </a>
+                                {% if vacancy.status == 'open' %}
+                                    <form method="POST" action="{{ url_for('hr.vacancy_close', vacancy_id=vacancy.id) }}" class="d-inline">
+                                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                        <button type="submit" class="btn btn-outline-danger btn-sm" title="{{ _('Close Vacancy') }}">
+                                            <i class="bi bi-lock"></i>
+                                        </button>
+                                    </form>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <div class="text-center py-5 text-muted small">
+            <i class="bi bi-briefcase mb-2" style="font-size: 2.5rem;"></i>
+            <div>{{ _('No vacancies created yet. Click Create Vacancy to add one.') }}</div>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

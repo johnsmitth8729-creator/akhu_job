@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container my-4">
+    <div class="row">
+        <div class="col-lg-6 mx-auto">
+            <div class="glass-panel p-4 mb-4">
+                <h2 class="text-white text-center mb-3"><i class="bi bi-envelope me-2 text-warning"></i>{{ _('Contact Admissions & HR') }}</h2>
+                <p class="text-secondary text-center small mb-4">
+                    {{ _('Have questions about open vacancies, application requirements, or the hiring process? Send us a message and our team will respond.') }}
+                </p>
+                
+                <form method="POST" action="{{ url_for('main.contact') }}">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                    
+                    <div class="mb-3">
+                        <label class="form-label text-white small fw-bold">{{ _('Your Name') }} <span class="text-danger">*</span></label>
+                        <input type="text" name="name" class="form-control form-control-custom text-white" required placeholder="{{ _('e.g., Muhammad ibn Musa') }}">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label text-white small fw-bold">{{ _('Email Address') }} <span class="text-danger">*</span></label>
+                        <input type="email" name="email" class="form-control form-control-custom text-white" required placeholder="name@domain.com">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label text-white small fw-bold">{{ _('Phone Number') }} <span class="text-danger">*</span></label>
+                        <input type="tel" name="phone" class="form-control form-control-custom text-white" required placeholder="+998 (90) 123-45-67">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label text-white small fw-bold">{{ _('Your Message') }} <span class="text-danger">*</span></label>
+                        <textarea name="message" class="form-control form-control-custom text-white" rows="4" required placeholder="{{ _('Describe your question or request details here...') }}"></textarea>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <button type="submit" class="btn btn-custom-primary w-100 py-2 justify-content-center">
+                            <i class="bi bi-send-fill me-2"></i>{{ _('Send Message') }}
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

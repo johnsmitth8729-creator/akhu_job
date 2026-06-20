@@ -1,0 +1,92 @@
+{% extends 'dashboard_base.html' %}
+
+{% block dashboard_content %}
+<!-- Dashboard Stats Cards -->
+<div class="row g-3 mb-4">
+    <!-- Stat 1: Open Vacancies -->
+    <div class="col-md-4 col-sm-6">
+        <div class="glass-panel p-3 text-center">
+            <h3 class="stats-number">{{ active_vacancies }} <span class="fs-6 text-muted">/ {{ vacancies_count }}</span></h3>
+            <div class="text-secondary small fw-bold">{{ _('My Active Vacancies') }}</div>
+            <a href="{{ url_for('hr.vacancies_list') }}" class="btn btn-link btn-sm text-warning mt-2 p-0">{{ _('Manage') }} <i class="bi bi-arrow-right"></i></a>
+        </div>
+    </div>
+    
+    <!-- Stat 2: Pending Dossiers -->
+    <div class="col-md-4 col-sm-6">
+        <div class="glass-panel p-3 text-center">
+            <h3 class="stats-number text-info">{{ pending_apps }} <span class="fs-6 text-muted">/ {{ total_apps }}</span></h3>
+            <div class="text-secondary small fw-bold">{{ _('New Submissions') }}</div>
+            <a href="{{ url_for('hr.applications_list') }}" class="btn btn-link btn-sm text-warning mt-2 p-0">{{ _('Review') }} <i class="bi bi-arrow-right"></i></a>
+        </div>
+    </div>
+    
+    <!-- Stat 3: Contact Inquiries -->
+    <div class="col-md-4 col-sm-12">
+        <div class="glass-panel p-3 text-center">
+            <h3 class="stats-number text-warning">{{ unresolved_contacts }}</h3>
+            <div class="text-secondary small fw-bold">{{ _('Pending Inquiries') }}</div>
+            <a href="{{ url_for('hr.contact_requests') }}" class="btn btn-link btn-sm text-warning mt-2 p-0">{{ _('Respond') }} <i class="bi bi-arrow-right"></i></a>
+        </div>
+    </div>
+</div>
+
+<!-- Recent Submissions for HR Review -->
+<div class="row">
+    <div class="col-12">
+        <div class="glass-panel p-4 mb-4">
+            <h4 class="text-white border-bottom border-secondary pb-2 mb-3"><i class="bi bi-hourglass-split me-2 text-info"></i>{{ _('Applicants Awaiting Review') }}</h4>
+            
+            {% if recent_apps %}
+                <div class="table-responsive">
+                    <table class="table table-dark table-hover align-middle mb-0">
+                        <thead>
+                            <tr class="text-muted small">
+                                <th>{{ _('Candidate') }}</th>
+                                <th>{{ _('Position Applied') }}</th>
+                                <th>{{ _('Academic Degree') }}</th>
+                                <th>{{ _('Status') }}</th>
+                                <th class="text-end">{{ _('Action') }}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for app in recent_apps %}
+                                <tr>
+                                    <td>
+                                        <div class="fw-bold text-white">{{ app.full_name }}</div>
+                                        <span class="text-secondary small">{{ app.application_number }}</span>
+                                    </td>
+                                    <td class="text-warning text-truncate" style="max-width: 200px;">{{ app.vacancy.get_title('en') }}</td>
+                                    <td class="small">{{ app.degree }} ({{ app.university }})</td>
+                                    <td>
+                                        {% if app.status == 'received' %}
+                                            <span class="badge bg-info text-dark">{{ _('Received') }}</span>
+                                        {% elif app.status == 'under_review' %}
+                                            <span class="badge bg-warning text-dark">{{ _('Under Review') }}</span>
+                                        {% elif app.status == 'interview' %}
+                                            <span class="badge bg-primary">{{ _('Interview') }}</span>
+                                        {% elif app.status == 'accepted' %}
+                                            <span class="badge bg-success">{{ _('Accepted') }}</span>
+                                        {% else %}
+                                            <span class="badge bg-danger">{{ _('Rejected') }}</span>
+                                        {% endif %}
+                                    </td>
+                                    <td class="text-end">
+                                        <a href="{{ url_for('hr.application_details', app_id=app.id) }}" class="btn btn-custom-secondary btn-sm">
+                                            {{ _('Review Details') }} <i class="bi bi-chevron-right"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% else %}
+                <div class="text-center py-4 text-muted small">
+                    {{ _('No job applications submitted yet.') }}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

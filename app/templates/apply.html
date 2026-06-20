@@ -1,0 +1,174 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container my-4">
+    <div class="row">
+        <!-- Back button -->
+        <div class="col-12 mb-3">
+            <a href="{{ url_for('main.vacancy_details', vacancy_id=vacancy.id) }}" class="text-secondary small d-inline-flex align-items-center gap-1">
+                <i class="bi bi-arrow-left"></i> {{ _('Back to Position Details') }}
+            </a>
+        </div>
+        
+        <!-- Form Card -->
+        <div class="col-lg-10 mx-auto">
+            <div class="glass-panel p-4 mb-4">
+                <h2 class="text-white mb-1">{{ _('Application Form') }}</h2>
+                <p class="text-secondary small mb-4">
+                    {{ _('Applying for the position of:') }} <strong class="text-warning">{{ vacancy.get_title(g.lang_code) }}</strong>
+                </p>
+                
+                <form method="POST" action="{{ url_for('main.apply', vacancy_id=vacancy.id) }}" enctype="multipart/form-data">
+                    <!-- CSRF Token -->
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                    
+                    <!-- Section 1: Personal Information -->
+                    <h4 class="text-white border-bottom border-secondary pb-2 mb-3"><i class="bi bi-person me-2"></i>{{ _('Personal Information') }}</h4>
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-6">
+                            <label class="form-label text-white small fw-bold">{{ _('Full Name') }} <span class="text-danger">*</span></label>
+                            <input type="text" name="full_name" class="form-control form-control-custom text-white" required placeholder="{{ _('e.g., Al-Khwarizmi Muhammad') }}">
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <label class="form-label text-white small fw-bold">{{ _('Birth Date') }} <span class="text-danger">*</span></label>
+                            <input type="date" name="birth_date" class="form-control form-control-custom text-white" required>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <label class="form-label text-white small fw-bold">{{ _('Phone Number') }} <span class="text-danger">*</span></label>
+                            <input type="tel" name="phone" class="form-control form-control-custom text-white" required placeholder="+998 (90) 123-45-67">
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <label class="form-label text-white small fw-bold">{{ _('Email Address') }} <span class="text-danger">*</span></label>
+                            <input type="email" name="email" class="form-control form-control-custom text-white" required placeholder="name@domain.com">
+                        </div>
+                        
+                        <div class="col-12">
+                            <label class="form-label text-white small fw-bold">{{ _('Current Address') }} <span class="text-danger">*</span></label>
+                            <textarea name="address" class="form-control form-control-custom text-white" rows="2" required placeholder="{{ _('Street, Apartment, City, Country') }}"></textarea>
+                        </div>
+                    </div>
+                    
+                    <!-- Section 2: Education -->
+                    <h4 class="text-white border-bottom border-secondary pb-2 mb-3"><i class="bi bi-mortarboard me-2"></i>{{ _('Educational Background') }}</h4>
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-4">
+                            <label class="form-label text-white small fw-bold">{{ _('Highest Academic Degree') }} <span class="text-danger">*</span></label>
+                            <select name="degree" class="form-select form-select-custom" required>
+                                <option value="">{{ _('-- Select Degree --') }}</option>
+                                <option value="Bachelor">{{ _('Bachelor') }}</option>
+                                <option value="Master">{{ _('Master') }}</option>
+                                <option value="PhD">{{ _('PhD / Doctor of Sciences') }}</option>
+                                <option value="Associate">{{ _('Associate Degree') }}</option>
+                                <option value="Other">{{ _('Other') }}</option>
+                            </select>
+                        </div>
+                        
+                        <div class="col-md-5">
+                            <label class="form-label text-white small fw-bold">{{ _('University Name') }} <span class="text-danger">*</span></label>
+                            <input type="text" name="university" class="form-control form-control-custom text-white" required placeholder="{{ _('e.g., Al-Khwarizmi University') }}">
+                        </div>
+                        
+                        <div class="col-md-3">
+                            <label class="form-label text-white small fw-bold">{{ _('Graduation Year') }} <span class="text-danger">*</span></label>
+                            <input type="number" name="graduation_year" min="1950" max="2035" class="form-control form-control-custom text-white" required placeholder="2020">
+                        </div>
+                    </div>
+                    
+                    <!-- Section 3: Documents Upload -->
+                    <h4 class="text-white border-bottom border-secondary pb-2 mb-2"><i class="bi bi-file-earmark-arrow-up me-2"></i>{{ _('Documents Upload') }}</h4>
+                    <p class="text-muted small mb-4">
+                        {{ _('Supported formats: PDF, DOC, DOCX, JPG, JPEG, PNG. Maximum file size: 20 MB per file.') }}
+                    </p>
+                    
+                    <div class="row g-4 mb-5">
+                        <!-- 1. Passport Scan -->
+                        <div class="col-md-6">
+                            <div class="p-3 border border-secondary rounded bg-dark-subtle">
+                                <label class="form-label text-white fw-bold mb-2">{{ _('Passport Scan') }} <span class="text-danger">*</span></label>
+                                <input type="file" id="passport" name="passport" class="d-none" required accept=".pdf, .doc, .docx, .jpg, .jpeg, .png">
+                                <div id="drop-zone-passport" class="upload-drop-zone">
+                                    <i class="bi bi-file-earmark-person upload-icon"></i>
+                                    <div class="text-white small fw-bold">{{ _('Drag and drop passport here') }}</div>
+                                    <div class="text-muted small mt-1">{{ _('or click to browse local files') }}</div>
+                                </div>
+                                <div id="preview-passport" class="preview-container"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- 2. Resume / CV -->
+                        <div class="col-md-6">
+                            <div class="p-3 border border-secondary rounded bg-dark-subtle">
+                                <label class="form-label text-white fw-bold mb-2">{{ _('Resume / CV') }} <span class="text-danger">*</span></label>
+                                <input type="file" id="resume" name="resume" class="d-none" required accept=".pdf, .doc, .docx, .jpg, .jpeg, .png">
+                                <div id="drop-zone-resume" class="upload-drop-zone">
+                                    <i class="bi bi-file-earmark-text upload-icon"></i>
+                                    <div class="text-white small fw-bold">{{ _('Drag and drop resume here') }}</div>
+                                    <div class="text-muted small mt-1">{{ _('or click to browse local files') }}</div>
+                                </div>
+                                <div id="preview-resume" class="preview-container"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- 3. University Diploma -->
+                        <div class="col-md-6">
+                            <div class="p-3 border border-secondary rounded bg-dark-subtle">
+                                <label class="form-label text-white fw-bold mb-2">{{ _('Diploma scan') }} <span class="text-danger">*</span></label>
+                                <input type="file" id="diploma" name="diploma" class="d-none" required accept=".pdf, .doc, .docx, .jpg, .jpeg, .png">
+                                <div id="drop-zone-diploma" class="upload-drop-zone">
+                                    <i class="bi bi-journal-check upload-icon"></i>
+                                    <div class="text-white small fw-bold">{{ _('Drag and drop diploma here') }}</div>
+                                    <div class="text-muted small mt-1">{{ _('or click to browse local files') }}</div>
+                                </div>
+                                <div id="preview-diploma" class="preview-container"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- 4. Academic Certificates (Optional) -->
+                        <div class="col-md-6">
+                            <div class="p-3 border border-secondary rounded bg-dark-subtle">
+                                <label class="form-label text-white fw-bold mb-2">{{ _('Academic Certificates (Optional)') }}</label>
+                                <input type="file" id="certificates" name="certificates" class="d-none" accept=".pdf, .doc, .docx, .jpg, .jpeg, .png">
+                                <div id="drop-zone-certificates" class="upload-drop-zone">
+                                    <i class="bi bi-award upload-icon"></i>
+                                    <div class="text-white small fw-bold">{{ _('Drag and drop certificates here') }}</div>
+                                    <div class="text-muted small mt-1">{{ _('or click to browse local files') }}</div>
+                                </div>
+                                <div id="preview-certificates" class="preview-container"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- 5. Additional Documents (Optional) -->
+                        <div class="col-md-6 mx-auto">
+                            <div class="p-3 border border-secondary rounded bg-dark-subtle">
+                                <label class="form-label text-white fw-bold mb-2">{{ _('Additional Documents (Optional)') }}</label>
+                                <input type="file" id="additional" name="additional" class="d-none" accept=".pdf, .doc, .docx, .jpg, .jpeg, .png">
+                                <div id="drop-zone-additional" class="upload-drop-zone">
+                                    <i class="bi bi-folder-plus upload-icon"></i>
+                                    <div class="text-white small fw-bold">{{ _('Drag and drop additional files') }}</div>
+                                    <div class="text-muted small mt-1">{{ _('or click to browse local files') }}</div>
+                                </div>
+                                <div id="preview-additional" class="preview-container"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Submit Actions -->
+                    <div class="border-top border-secondary pt-4 text-end">
+                        <button type="submit" class="btn btn-custom-primary btn-lg px-5">
+                            <i class="bi bi-send-check me-2"></i>{{ _('Submit Application') }}
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<!-- Form Upload Script -->
+<script src="{{ url_for('static', filename='js/upload.js') }}"></script>
+{% endblock %}

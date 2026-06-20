@@ -1,0 +1,157 @@
+{% extends 'dashboard_base.html' %}
+
+{% block dashboard_content %}
+<!-- Dashboard Stats Cards -->
+<div class="row g-3 mb-4">
+    <!-- Stat 1: HR Users -->
+    <div class="col-md-3 col-sm-6">
+        <div class="glass-panel p-3 text-center">
+            <h3 class="stats-number">{{ hr_count }}</h3>
+            <div class="text-secondary small fw-bold">{{ _('HR Recruiter Users') }}</div>
+            <a href="{{ url_for('admin.users_list') }}" class="btn btn-link btn-sm text-warning mt-2 p-0">{{ _('Manage') }} <i class="bi bi-arrow-right"></i></a>
+        </div>
+    </div>
+    
+    <!-- Stat 2: Vacancies -->
+    <div class="col-md-3 col-sm-6">
+        <div class="glass-panel p-3 text-center">
+            <h3 class="stats-number">{{ open_vacancies }} <span class="fs-6 text-muted">/ {{ vacancy_count }}</span></h3>
+            <div class="text-secondary small fw-bold">{{ _('Active Vacancies') }}</div>
+            <a href="{{ url_for('admin.vacancies') }}" class="btn btn-link btn-sm text-warning mt-2 p-0">{{ _('View all') }} <i class="bi bi-arrow-right"></i></a>
+        </div>
+    </div>
+    
+    <!-- Stat 3: Applications -->
+    <div class="col-md-3 col-sm-6">
+        <div class="glass-panel p-3 text-center">
+            <h3 class="stats-number">{{ apps_received }} <span class="fs-6 text-muted">/ {{ apps_count }}</span></h3>
+            <div class="text-secondary small fw-bold">{{ _('New Applications') }}</div>
+            <a href="{{ url_for('admin.applications') }}" class="btn btn-link btn-sm text-warning mt-2 p-0">{{ _('Review') }} <i class="bi bi-arrow-right"></i></a>
+        </div>
+    </div>
+    
+    <!-- Stat 4: Interviews -->
+    <div class="col-md-3 col-sm-6">
+        <div class="glass-panel p-3 text-center">
+            <h3 class="stats-number">{{ interviews_count }}</h3>
+            <div class="text-secondary small fw-bold">{{ _('Interviews Scheduled') }}</div>
+            <a href="{{ url_for('admin.interviews') }}" class="btn btn-link btn-sm text-warning mt-2 p-0">{{ _('View schedule') }} <i class="bi bi-arrow-right"></i></a>
+        </div>
+    </div>
+</div>
+
+<!-- Workflow and Status Breakdown Panel -->
+<div class="row g-4">
+    <div class="col-lg-6">
+        <div class="glass-panel p-4 mb-4">
+            <h4 class="text-white border-bottom border-secondary pb-2 mb-3"><i class="bi bi-activity me-2"></i>{{ _('Application Funnel') }}</h4>
+            
+            {% set total = apps_count if apps_count > 0 else 1 %}
+            
+            <!-- Received -->
+            <div class="mb-3">
+                <div class="d-flex justify-content-between text-secondary small mb-1">
+                    <span>{{ _('Received') }}</span>
+                    <span class="text-white fw-bold">{{ apps_received }} ({{ ((apps_received / total) * 100)|round|int }}%)</span>
+                </div>
+                <div class="progress" style="height: 8px; background-color: var(--bg-primary);">
+                    <div class="progress-bar bg-info" style="width: {{ (apps_received / total) * 100 }}%;"></div>
+                </div>
+            </div>
+            
+            <!-- Under Review -->
+            <div class="mb-3">
+                <div class="d-flex justify-content-between text-secondary small mb-1">
+                    <span>{{ _('Under Review') }}</span>
+                    <span class="text-white fw-bold">{{ apps_under_review }} ({{ ((apps_under_review / total) * 100)|round|int }}%)</span>
+                </div>
+                <div class="progress" style="height: 8px; background-color: var(--bg-primary);">
+                    <div class="progress-bar bg-warning" style="width: {{ (apps_under_review / total) * 100 }}%;"></div>
+                </div>
+            </div>
+            
+            <!-- Interview -->
+            <div class="mb-3">
+                <div class="d-flex justify-content-between text-secondary small mb-1">
+                    <span>{{ _('Interview') }}</span>
+                    <span class="text-white fw-bold">{{ apps_interview }} ({{ ((apps_interview / total) * 100)|round|int }}%)</span>
+                </div>
+                <div class="progress" style="height: 8px; background-color: var(--bg-primary);">
+                    <div class="progress-bar bg-primary" style="width: {{ (apps_interview / total) * 100 }}%;"></div>
+                </div>
+            </div>
+            
+            <!-- Accepted -->
+            <div class="mb-3">
+                <div class="d-flex justify-content-between text-secondary small mb-1">
+                    <span>{{ _('Accepted Offer') }}</span>
+                    <span class="text-white fw-bold">{{ apps_accepted }} ({{ ((apps_accepted / total) * 100)|round|int }}%)</span>
+                </div>
+                <div class="progress" style="height: 8px; background-color: var(--bg-primary);">
+                    <div class="progress-bar bg-success" style="width: {{ (apps_accepted / total) * 100 }}%;"></div>
+                </div>
+            </div>
+            
+            <!-- Rejected -->
+            <div class="mb-3">
+                <div class="d-flex justify-content-between text-secondary small mb-1">
+                    <span>{{ _('Unsuccessful') }}</span>
+                    <span class="text-white fw-bold">{{ apps_rejected }} ({{ ((apps_rejected / total) * 100)|round|int }}%)</span>
+                </div>
+                <div class="progress" style="height: 8px; background-color: var(--bg-primary);">
+                    <div class="progress-bar bg-danger" style="width: {{ (apps_rejected / total) * 100 }}%;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Recent Applications Table -->
+    <div class="col-lg-6">
+        <div class="glass-panel p-4 mb-4">
+            <h4 class="text-white border-bottom border-secondary pb-2 mb-3"><i class="bi bi-clock-history me-2"></i>{{ _('Recent Submissions') }}</h4>
+            
+            {% if recent_applications %}
+                <div class="table-responsive">
+                    <table class="table table-dark table-hover mb-0">
+                        <thead>
+                            <tr class="text-muted small">
+                                <th>{{ _('Applicant') }}</th>
+                                <th>{{ _('Vacancy') }}</th>
+                                <th>{{ _('Status') }}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for app in recent_applications %}
+                                <tr class="align-middle small">
+                                    <td>
+                                        <div class="fw-bold text-white">{{ app.full_name }}</div>
+                                        <span class="text-muted" style="font-size: 0.75rem;">{{ app.application_number }}</span>
+                                    </td>
+                                    <td class="text-warning text-truncate" style="max-width: 150px;">{{ app.vacancy.get_title('en') }}</td>
+                                    <td>
+                                        {% if app.status == 'received' %}
+                                            <span class="badge bg-info text-dark">{{ _('Received') }}</span>
+                                        {% elif app.status == 'under_review' %}
+                                            <span class="badge bg-warning text-dark">{{ _('Review') }}</span>
+                                        {% elif app.status == 'interview' %}
+                                            <span class="badge bg-primary">{{ _('Interview') }}</span>
+                                        {% elif app.status == 'accepted' %}
+                                            <span class="badge bg-success">{{ _('Accepted') }}</span>
+                                        {% else %}
+                                            <span class="badge bg-danger">{{ _('Rejected') }}</span>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% else %}
+                <div class="text-center py-4 text-muted small">
+                    {{ _('No job applications submitted yet.') }}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

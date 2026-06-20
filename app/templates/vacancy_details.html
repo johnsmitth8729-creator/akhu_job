@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container my-4">
+    <div class="row">
+        <!-- Back to search -->
+        <div class="col-12 mb-3">
+            <a href="{{ url_for('main.home') }}" class="text-secondary small d-inline-flex align-items-center gap-1">
+                <i class="bi bi-arrow-left"></i> {{ _('Back to Vacancies') }}
+            </a>
+        </div>
+        
+        <!-- Vacancy Core Header Card -->
+        <div class="col-lg-8">
+            <div class="glass-panel p-4 mb-4">
+                <div class="d-flex align-items-center justify-content-between mb-3 flex-wrap gap-2">
+                    <span class="vacancy-badge">
+                        {{ vacancy.get_position_type(g.lang_code) }}
+                    </span>
+                    
+                    {% if vacancy.status == 'open' %}
+                        <span class="badge bg-success-subtle text-success border border-success px-3 py-2 rounded-pill small">
+                            <i class="bi bi-check-circle me-1"></i>{{ _('Open & Active') }}
+                        </span>
+                    {% else %}
+                        <span class="badge bg-danger-subtle text-danger border border-danger px-3 py-2 rounded-pill small">
+                            <i class="bi bi-x-circle me-1"></i>{{ _('Closed') }}
+                        </span>
+                    {% endif %}
+                </div>
+                
+                <h2 class="text-white mb-3">{{ vacancy.get_title(g.lang_code) }}</h2>
+                
+                <div class="d-flex flex-wrap gap-4 text-secondary small border-top border-secondary pt-3 mt-3">
+                    {% if vacancy.faculty %}
+                    <div><i class="bi bi-building me-1"></i><strong>{{ _('Faculty:') }}</strong> {{ vacancy.faculty.get_name(g.lang_code) }}</div>
+                    {% endif %}
+                    {% if vacancy.department %}
+                    <div><i class="bi bi-diagram-3 me-1"></i><strong>{{ _('Department:') }}</strong> {{ vacancy.department.get_name(g.lang_code) }}</div>
+                    {% endif %}
+                </div>
+            </div>
+            
+            <!-- Detailed content panels -->
+            <div class="glass-panel p-4 mb-4">
+                <h4 class="text-white border-bottom border-secondary pb-2 mb-3">{{ _('Job Description') }}</h4>
+                <div class="text-secondary" style="line-height: 1.6;">
+                    {{ vacancy.get_description(g.lang_code)|replace('\n', '<br>')|safe }}
+                </div>
+            </div>
+            
+            <div class="glass-panel p-4 mb-4">
+                <h4 class="text-white border-bottom border-secondary pb-2 mb-3">{{ _('Candidate Requirements') }}</h4>
+                <div class="text-secondary" style="line-height: 1.6;">
+                    {{ vacancy.get_requirements(g.lang_code)|replace('\n', '<br>')|safe }}
+                </div>
+            </div>
+            
+            <div class="glass-panel p-4 mb-4">
+                <h4 class="text-white border-bottom border-secondary pb-2 mb-3">{{ _('Responsibilities') }}</h4>
+                <div class="text-secondary" style="line-height: 1.6;">
+                    {{ vacancy.get_responsibilities(g.lang_code)|replace('\n', '<br>')|safe }}
+                </div>
+            </div>
+        </div>
+        
+        <!-- Sidebar Meta Summary Box -->
+        <div class="col-lg-4">
+            <div class="glass-panel p-4 mb-4 position-sticky" style="top: 100px;">
+                <h4 class="text-white mb-4">{{ _('Job Overview') }}</h4>
+                
+                <div class="d-flex flex-column gap-3 mb-4">
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="bg-dark rounded p-2 text-warning d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                            <i class="bi bi-cash fs-5"></i>
+                        </div>
+                        <div>
+                            <div class="text-muted small">{{ _('Salary') }}</div>
+                            <div class="text-white fw-bold">{{ vacancy.get_salary(g.lang_code) }}</div>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="bg-dark rounded p-2 text-warning d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                            <i class="bi bi-clock-history fs-5"></i>
+                        </div>
+                        <div>
+                            <div class="text-muted small">{{ _('Employment Type') }}</div>
+                            <div class="text-white fw-bold">{{ vacancy.get_employment_type(g.lang_code) }}</div>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="bg-dark rounded p-2 text-danger d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                            <i class="bi bi-calendar-event fs-5"></i>
+                        </div>
+                        <div>
+                            <div class="text-muted small">{{ _('Application Deadline') }}</div>
+                            <div class="text-white fw-bold">{{ vacancy.deadline.strftime('%Y-%m-%d') }}</div>
+                        </div>
+                    </div>
+                </div>
+                
+                {% if vacancy.status == 'open' %}
+                    <a href="{{ url_for('main.apply', vacancy_id=vacancy.id) }}" class="btn btn-custom-primary w-100 py-3 justify-content-center">
+                        <i class="bi bi-file-earmark-plus me-1"></i>{{ _('Apply For Position') }}
+                    </a>
+                {% else %}
+                    <button class="btn btn-secondary w-100 py-3 d-flex align-items-center justify-content-center gap-2" disabled>
+                        <i class="bi bi-lock"></i>{{ _('Applications Closed') }}
+                    </button>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

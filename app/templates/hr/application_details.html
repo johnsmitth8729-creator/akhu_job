@@ -1,0 +1,223 @@
+{% extends 'dashboard_base.html' %}
+
+{% block dashboard_content %}
+<div class="row">
+    <!-- Back to applications list -->
+    <div class="col-12 mb-3">
+        <a href="{{ url_for('hr.applications_list') }}" class="text-secondary small d-inline-flex align-items-center gap-1">
+            <i class="bi bi-arrow-left"></i> {{ _('Back to Applications') }}
+        </a>
+    </div>
+    
+    <!-- Candidate Overview Card -->
+    <div class="col-lg-8">
+        <div class="glass-panel p-4 mb-4">
+            <div class="d-flex justify-content-between align-items-start border-bottom border-secondary pb-3 mb-4 flex-wrap gap-2">
+                <div>
+                    <h3 class="text-white mb-1">{{ app.full_name }}</h3>
+                    <span class="text-secondary small">{{ _('Tracking Code:') }} <strong>{{ app.application_number }}</strong></span>
+                </div>
+                <div>
+                    {% if app.status == 'received' %}
+                        <span class="badge bg-info text-dark">{{ _('Received') }}</span>
+                    {% elif app.status == 'under_review' %}
+                        <span class="badge bg-warning text-dark">{{ _('Under Review') }}</span>
+                    {% elif app.status == 'interview' %}
+                        <span class="badge bg-primary">{{ _('Interview Scheduled') }}</span>
+                    {% elif app.status == 'accepted' %}
+                        <span class="badge bg-success">{{ _('Accepted') }}</span>
+                    {% else %}
+                        <span class="badge bg-danger">{{ _('Rejected') }}</span>
+                    {% endif %}
+                </div>
+            </div>
+            
+            <!-- Applicant Info Details -->
+            <div class="row g-3">
+                <div class="col-md-6 text-secondary small">
+                    <strong>{{ _('Position:') }}</strong> <span class="text-white">{{ app.vacancy.get_title(g.lang_code) }}</span>
+                </div>
+                <div class="col-md-6 text-secondary small">
+                    <strong>{{ _('Birth Date:') }}</strong> <span class="text-white">{{ app.birth_date.strftime('%Y-%m-%d') }}</span>
+                </div>
+                <div class="col-md-6 text-secondary small">
+                    <strong>{{ _('Phone:') }}</strong> <a href="tel:{{ app.phone }}" class="text-warning">{{ app.phone }}</a>
+                </div>
+                <div class="col-md-6 text-secondary small">
+                    <strong>{{ _('Email:') }}</strong> <a href="mailto:{{ app.email }}" class="text-warning">{{ app.email }}</a>
+                </div>
+                <div class="col-12 text-secondary small">
+                    <strong>{{ _('Address:') }}</strong> <span class="text-white">{{ app.address }}</span>
+                </div>
+            </div>
+            
+            <hr class="border-secondary my-4">
+            
+            <!-- Education Profile -->
+            <h5 class="text-white mb-3"><i class="bi bi-mortarboard me-2 text-primary"></i>{{ _('Education Profile') }}</h5>
+            <div class="row g-3 text-secondary small">
+                <div class="col-md-4">
+                    <strong>{{ _('Academic Degree:') }}</strong> <span class="text-white">{{ app.degree }}</span>
+                </div>
+                <div class="col-md-5">
+                    <strong>{{ _('University:') }}</strong> <span class="text-white">{{ app.university }}</span>
+                </div>
+                <div class="col-md-3">
+                    <strong>{{ _('Graduation Year:') }}</strong> <span class="text-white">{{ app.graduation_year }}</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Uploaded Documents & Previews -->
+        <div class="glass-panel p-4 mb-4">
+            <h5 class="text-white border-bottom border-secondary pb-2 mb-3"><i class="bi bi-file-earmark-check me-2 text-primary"></i>{{ _('Uploaded Documents') }}</h5>
+            
+            {% if app.documents %}
+                <div class="d-flex flex-column gap-3">
+                    {% for doc in app.documents %}
+                        <div class="p-3 border border-secondary rounded bg-dark d-flex align-items-center justify-content-between flex-wrap gap-2">
+                            <div class="d-flex align-items-center gap-3">
+                                <i class="bi bi-file-earmark-pdf text-danger fs-3"></i>
+                                <div>
+                                    <div class="text-white fw-bold text-break" style="max-width: 300px;">{{ doc.file_name }}</div>
+                                    <span class="text-secondary small">{{ doc.doc_type.replace('_', ' ').capitalize() }} • {{(doc.file_size / (1024 * 1024))|round(2)}} MB</span>
+                                </div>
+                            </div>
+                            
+                            <div class="d-flex gap-2">
+                                <!-- View attachment in new tab -->
+                                <a href="/{{ doc.file_path }}" target="_blank" class="btn btn-outline-warning btn-sm">
+                                    <i class="bi bi-eye-fill me-1"></i>{{ _('Open Preview') }}
+                                </a>
+                                <!-- Download attachment -->
+                                <a href="/{{ doc.file_path }}" download class="btn btn-outline-secondary btn-sm text-white">
+                                    <i class="bi bi-download"></i>
+                                </a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="text-center py-3 text-muted small">
+                    {{ _('No files uploaded.') }}
+                </div>
+            {% endif %}
+        </div>
+        
+        <!-- Interview Schedule History -->
+        {% if app.interviews %}
+            <div class="glass-panel p-4 mb-4 border border-primary">
+                <h5 class="text-white border-bottom border-secondary pb-2 mb-3"><i class="bi bi-calendar2-check me-2 text-primary"></i>{{ _('Interview History') }}</h5>
+                <div class="d-flex flex-column gap-3">
+                    {% for interview in app.interviews %}
+                        <div class="p-3 bg-dark rounded text-secondary small">
+                            <div class="row g-2">
+                                <div class="col-md-6">
+                                    <strong>{{ _('Type:') }}</strong>
+                                    <span class="text-white">{{ interview.interview_type.replace('_', ' ').capitalize() }}</span>
+                                </div>
+                                <div class="col-md-6">
+                                    <strong>{{ _('Date & Time:') }}</strong>
+                                    <span class="text-white">{{ interview.date_time.strftime('%Y-%m-%d at %H:%M') }}</span>
+                                </div>
+                                <div class="col-12 mt-2">
+                                    <strong>{% if interview.interview_type == 'online' %}{{ _('Zoom Link:') }}{% else %}{{ _('Location:') }}{% endif %}</strong>
+                                    {% if interview.interview_type == 'online' %}
+                                        <a href="{{ interview.location_or_link }}" target="_blank" class="text-warning text-break">{{ interview.location_or_link }}</a>
+                                    {% else %}
+                                        <span class="text-white">{{ interview.location_or_link }}</span>
+                                    {% endif %}
+                                </div>
+                                {% if interview.notes %}
+                                    <div class="col-12 mt-2 border-top border-secondary pt-2">
+                                        <strong>{{ _('HR Notes:') }}</strong>
+                                        <p class="mb-0 text-white mt-1">{{ interview.notes }}</p>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+    </div>
+    
+    <!-- Action Sidebar panel -->
+    <div class="col-lg-4">
+        <!-- Status management card -->
+        <div class="glass-panel p-4 mb-4">
+            <h5 class="text-white mb-3">{{ _('Application Status') }}</h5>
+            <form method="POST" action="{{ url_for('hr.application_status_change', app_id=app.id) }}">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                
+                <div class="mb-3">
+                    <select name="status" class="form-select form-select-custom text-white" required>
+                        <option value="received" {% if app.status == 'received' %}selected{% endif %}>{{ _('Received') }}</option>
+                        <option value="under_review" {% if app.status == 'under_review' %}selected{% endif %}>{{ _('Under Review') }}</option>
+                        <option value="interview" {% if app.status == 'interview' %}selected{% endif %}>{{ _('Interview') }}</option>
+                        <option value="accepted" {% if app.status == 'accepted' %}selected{% endif %}>{{ _('Accepted (Offer)') }}</option>
+                        <option value="rejected" {% if app.status == 'rejected' %}selected{% endif %}>{{ _('Rejected') }}</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-custom-primary w-100 py-2 justify-content-center">
+                    {{ _('Update Status') }}
+                </button>
+            </form>
+        </div>
+        
+        <!-- Interview Schedule card -->
+        {% if app.status != 'accepted' and app.status != 'rejected' %}
+        <div class="glass-panel p-4 mb-4">
+            <h5 class="text-white mb-3"><i class="bi bi-calendar-plus me-1 text-warning"></i>{{ _('Schedule Interview') }}</h5>
+            <form method="POST" action="{{ url_for('hr.interview_schedule') }}">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <input type="hidden" name="application_id" value="{{ app.id }}">
+                
+                <div class="mb-3">
+                    <label class="form-label text-white small fw-bold">{{ _('Interview Type') }}</label>
+                    <select name="interview_type" id="interview_type" class="form-select form-select-custom" required onchange="toggleInterviewInput(this.value)">
+                        <option value="on_site">{{ _('On-Site Interview') }}</option>
+                        <option value="online">{{ _('Online (Zoom/Meet)') }}</option>
+                    </select>
+                </div>
+                
+                <div class="mb-3">
+                    <label class="form-label text-white small fw-bold">{{ _('Date & Time') }}</label>
+                    <input type="datetime-local" name="date_time" class="form-control form-control-custom text-white" required>
+                </div>
+                
+                <div class="mb-3">
+                    <label class="form-label text-white small fw-bold" id="location-label">{{ _('University Location') }}</label>
+                    <input type="text" name="location_or_link" id="location-input" class="form-control form-control-custom text-white" required placeholder="{{ _('e.g., Room 402, Building A') }}">
+                </div>
+                
+                <div class="mb-3">
+                    <label class="form-label text-white small fw-bold">{{ _('HR Coordinator Notes') }}</label>
+                    <textarea name="notes" class="form-control form-control-custom text-white" rows="2" placeholder="{{ _('e.g. Please bring original passport...') }}"></textarea>
+                </div>
+                
+                <button type="submit" class="btn btn-outline-warning w-100 py-2">
+                    <i class="bi bi-calendar-event me-1"></i>{{ _('Schedule & Invite') }}
+                </button>
+            </form>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+function toggleInterviewInput(val) {
+    const label = document.getElementById('location-label');
+    const input = document.getElementById('location-input');
+    if (val === 'online') {
+        label.textContent = "{{ _('Zoom / Online Meeting Link') }}";
+        input.placeholder = "https://zoom.us/j/1234567890";
+    } else {
+        label.textContent = "{{ _('University Location') }}";
+        input.placeholder = "e.g., Room 402, Building A";
+    }
+}
+</script>
+{% endblock %}

@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row mb-4">
+        <div class="col-12 text-center py-4">
+            <h1 class="display-5 fw-bold text-white mb-2">{{ _('Explore Job Opportunities') }}</h1>
+            <p class="text-secondary max-width-md mx-auto" style="max-width: 600px;">
+                {{ _('Join our progressive academic community. Search vacancies, filter by faculty or department, and submit your application online.') }}
+            </p>
+        </div>
+    </div>
+    
+    <!-- Vacancy Search Filter Container -->
+    <div class="row mb-5 search-container">
+        <div class="col-12">
+            <form method="GET" action="{{ url_for('main.vacancies_list') }}" class="search-box">
+                <div class="row g-3">
+                    <!-- Search text input -->
+                    <div class="col-lg-4 col-md-6">
+                        <label class="form-label text-white small fw-bold">{{ _('Search Keyword') }}</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-primary border-secondary text-secondary"><i class="bi bi-search"></i></span>
+                            <input type="text" name="search" class="form-control form-control-custom text-white" placeholder="{{ _('e.g., Professor, Assistant...') }}" value="{{ search_query }}">
+                        </div>
+                    </div>
+                    
+                    <!-- Faculty dropdown -->
+                    <div class="col-lg-3 col-md-6">
+                        <label class="form-label text-white small fw-bold">{{ _('Faculty') }}</label>
+                        <select id="faculty_id" name="faculty" class="form-select form-select-custom">
+                            <option value="">{{ _('-- All Faculties --') }}</option>
+                            {% for fac in faculties %}
+                                <option value="{{ fac.id }}" {% if selected_faculty|string == fac.id|string %}selected{% endif %}>
+                                    {{ fac.get_name(g.lang_code) }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    
+                    <!-- Department dropdown -->
+                    <div class="col-lg-3 col-md-6">
+                        <label class="form-label text-white small fw-bold">{{ _('Department') }}</label>
+                        <select id="department_id" name="department" class="form-select form-select-custom">
+                            <option value="">{{ _('-- All Departments --') }}</option>
+                            {% for dept in departments %}
+                                <option value="{{ dept.id }}" {% if selected_department|string == dept.id|string %}selected{% endif %}>
+                                    {{ dept.get_name(g.lang_code) }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    
+                    <!-- Submit and Clear -->
+                    <div class="col-lg-2 col-md-6 d-flex align-items-end gap-2">
+                        <button type="submit" class="btn btn-custom-primary w-100 py-2 justify-content-center">
+                            {{ _('Search') }}
+                        </button>
+                        {% if search_query or selected_faculty or selected_department %}
+                            <a href="{{ url_for('main.vacancies_list') }}" class="btn btn-custom-secondary py-2" title="{{ _('Reset Filters') }}">
+                                <i class="bi bi-x-lg"></i>
+                            </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Open Vacancies List -->
+    <div class="row">
+        <div class="col-12 mb-4">
+            <h3 class="border-bottom border-secondary pb-2 d-flex justify-content-between align-items-center">
+                <span>{{ _('Available Positions') }}</span>
+                <span class="badge bg-secondary fs-6 fw-normal">{{ vacancies|length }} {{ _('vacancies found') }}</span>
+            </h3>
+        </div>
+        
+        {% if vacancies %}
+            <div class="col-12 d-flex flex-column gap-3">
+                {% for vacancy in vacancies %}
+                    <div class="card glass-panel glass-panel-hover p-4 vacancy-card" onclick="window.location.href='{{ url_for('main.vacancy_details', vacancy_id=vacancy.id) }}'">
+                        <div class="card-body p-0">
+                            <div class="row align-items-center">
+                                <div class="col-md-8">
+                                    <span class="vacancy-badge mb-2 d-inline-block">
+                                        {{ vacancy.get_position_type(g.lang_code) }}
+                                    </span>
+                                    <h4 class="card-title text-white mb-2">{{ vacancy.get_title(g.lang_code) }}</h4>
+                                    <div class="d-flex flex-wrap gap-3 text-secondary small">
+                                        {% if vacancy.faculty %}
+                                        <div><i class="bi bi-building me-1"></i>{{ vacancy.faculty.get_name(g.lang_code) }}</div>
+                                        {% endif %}
+                                        {% if vacancy.department %}
+                                        <div><i class="bi bi-diagram-3 me-1"></i>{{ vacancy.department.get_name(g.lang_code) }}</div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="col-md-4 text-md-end mt-3 mt-md-0 d-flex flex-column align-items-md-end gap-2">
+                                    <div class="text-danger small mb-1">
+                                        <i class="bi bi-clock me-1"></i>{{ _('Deadline:') }} {{ vacancy.deadline.strftime('%Y-%m-%d') }}
+                                    </div>
+                                    <div class="text-warning small mb-2">
+                                        <i class="bi bi-cash me-1"></i>{{ vacancy.get_salary(g.lang_code) }}
+                                    </div>
+                                    <a href="{{ url_for('main.vacancy_details', vacancy_id=vacancy.id) }}" class="btn btn-custom-secondary btn-sm align-self-start align-self-md-auto">
+                                        {{ _('View Details') }} <i class="bi bi-chevron-right ms-1"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="col-12 text-center py-5">
+                <div class="glass-panel p-5 max-width-md mx-auto" style="max-width: 500px;">
+                    <i class="bi bi-briefcase text-secondary mb-3" style="font-size: 3rem;"></i>
+                    <h5 class="text-white">{{ _('No Open Positions Found') }}</h5>
+                    <p class="text-secondary small mb-0">{{ _('No vacancies match your active search filters. Try adjusting your selections.') }}</p>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends 'dashboard_base.html' %}
+
+{% block dashboard_content %}
+<div class="glass-panel p-4 mb-4">
+    <h3 class="text-white border-bottom border-secondary pb-3 mb-4">
+        <i class="bi bi-gear-fill me-2 text-warning"></i>{{ _('System Configurations & API Integrations') }}
+    </h3>
+    
+    <form method="POST" action="{{ url_for('admin.settings') }}">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        
+        <!-- Tab 1: General University Settings -->
+        <h5 class="text-white mb-3 mt-2"><i class="bi bi-building me-2 text-primary"></i>{{ _('General Institution Details') }}</h5>
+        <div class="row g-3 mb-4">
+            <div class="col-md-6">
+                <label class="form-label text-white small fw-bold">{{ _('University Name (EN)') }}</label>
+                <input type="text" name="university_name_en" class="form-control form-control-custom text-white" value="{{ settings.university_name_en }}" required>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label text-white small fw-bold">{{ _('University Name (UZ)') }}</label>
+                <input type="text" name="university_name_uz" class="form-control form-control-custom text-white" value="{{ settings.university_name_uz }}" required>
+            </div>
+        </div>
+        
+        <hr class="border-secondary my-4">
+        
+        <!-- Tab 3: Email (SMTP) Mail Server Integration -->
+        <h5 class="text-white mb-2"><i class="bi bi-envelope-at me-2 text-warning"></i>{{ _('SMTP Outbound Email Service') }}</h5>
+        <p class="text-muted small mb-3">
+            {{ _('Configure connection parameters to send automatic confirmation emails, interview invitations, and decision notices to applicants.') }}
+        </p>
+        <div class="row g-3 mb-4">
+            <div class="col-md-6">
+                <label class="form-label text-white small fw-bold">{{ _('SMTP Host') }}</label>
+                <input type="text" name="email_smtp_host" class="form-control form-control-custom text-white" value="{{ settings.email_smtp_host }}" required placeholder="e.g., smtp.gmail.com">
+            </div>
+            <div class="col-md-3">
+                <label class="form-label text-white small fw-bold">{{ _('SMTP Port') }}</label>
+                <input type="text" name="email_smtp_port" class="form-control form-control-custom text-white" value="{{ settings.email_smtp_port }}" required placeholder="587">
+            </div>
+            <div class="col-md-3">
+                <label class="form-label text-white small fw-bold">{{ _('Enable TLS') }}</label>
+                <select name="email_use_tls" class="form-select form-select-custom" required>
+                    <option value="True" {% if settings.email_use_tls == 'True' %}selected{% endif %}>{{ _('Yes (Recommended)') }}</option>
+                    <option value="False" {% if settings.email_use_tls == 'False' %}selected{% endif %}>{{ _('No') }}</option>
+                </select>
+            </div>
+            
+            <div class="col-md-4">
+                <label class="form-label text-white small fw-bold">{{ _('SMTP Username / Email') }}</label>
+                <input type="text" name="email_smtp_user" class="form-control form-control-custom text-white" value="{{ settings.email_smtp_user }}" placeholder="user@domain.com">
+            </div>
+            <div class="col-md-4">
+                <label class="form-label text-white small fw-bold">{{ _('SMTP Password') }}</label>
+                <input type="password" name="email_smtp_password" class="form-control form-control-custom text-white" value="{{ settings.email_smtp_password }}" placeholder="••••••••••••••••">
+            </div>
+            <div class="col-md-4">
+                <label class="form-label text-white small fw-bold">{{ _('From Sender Address') }}</label>
+                <input type="email" name="email_from_address" class="form-control form-control-custom text-white" value="{{ settings.email_from_address }}" required placeholder="no-reply@akhu.edu.uz">
+            </div>
+        </div>
+        
+        <!-- Submit Button -->
+        <div class="border-top border-secondary pt-4 text-end mt-4">
+            <button type="submit" class="btn btn-custom-primary px-5 py-2">
+                <i class="bi bi-save me-1"></i>{{ _('Save Configurations') }}
+            </button>
+        </div>
+    </form>
+</div>
+{% endblock %}

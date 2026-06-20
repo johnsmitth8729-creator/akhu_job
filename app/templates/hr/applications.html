@@ -1,0 +1,72 @@
+{% extends 'dashboard_base.html' %}
+
+{% block dashboard_content %}
+<div class="glass-panel p-4 mb-4">
+    <div class="d-flex justify-content-between align-items-center border-bottom border-secondary pb-3 mb-4 flex-wrap gap-2">
+        <h3 class="text-white mb-0"><i class="bi bi-file-earmark-person me-2 text-warning"></i>{{ _('Manage Job Applications') }}</h3>
+    </div>
+    
+    {% if applications %}
+        <div class="table-responsive">
+            <table class="table table-dark table-hover align-middle mb-0">
+                <thead>
+                    <tr class="text-muted small">
+                        <th>{{ _('Applicant') }}</th>
+                        <th>{{ _('Position Applied') }}</th>
+                        <th>{{ _('Highest Degree') }}</th>
+                        <th>{{ _('Submitted Date') }}</th>
+                        <th>{{ _('Status') }}</th>
+                        <th class="text-end">{{ _('Review') }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for app in applications %}
+                        <tr>
+                            <td>
+                                <div class="fw-bold text-white">{{ app.full_name }}</div>
+                                <span class="text-secondary small" style="font-size: 0.75rem;">{{ app.application_number }}</span>
+                            </td>
+                            <td>
+                                <div class="text-white small">{{ app.vacancy.get_title(g.lang_code) }}</div>
+                                {% if app.vacancy.department %}
+                                <span class="text-secondary small" style="font-size: 0.75rem;">{{ app.vacancy.department.get_name(g.lang_code) }}</span>
+                                {% elif app.vacancy.faculty %}
+                                <span class="text-secondary small" style="font-size: 0.75rem;">{{ app.vacancy.faculty.get_name(g.lang_code) }}</span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                <div class="text-white small">{{ app.degree }}</div>
+                                <span class="text-secondary small" style="font-size: 0.75rem;">{{ app.university }}</span>
+                            </td>
+                            <td class="small text-secondary">{{ app.created_at.strftime('%Y-%m-%d') }}</td>
+                            <td>
+                                {% if app.status == 'received' %}
+                                    <span class="badge bg-info text-dark">{{ _('Received') }}</span>
+                                {% elif app.status == 'under_review' %}
+                                    <span class="badge bg-warning text-dark">{{ _('Under Review') }}</span>
+                                {% elif app.status == 'interview' %}
+                                    <span class="badge bg-primary">{{ _('Interview') }}</span>
+                                {% elif app.status == 'accepted' %}
+                                    <span class="badge bg-success">{{ _('Accepted') }}</span>
+                                {% else %}
+                                    <span class="badge bg-danger">{{ _('Rejected') }}</span>
+                                {% endif %}
+                            </td>
+                            <td class="text-end">
+                                <a href="{{ url_for('hr.application_details', app_id=app.id) }}" class="btn btn-custom-secondary btn-sm">
+                                    {{ _('Review') }} <i class="bi bi-chevron-right ms-1"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <div class="text-center py-5 text-muted small">
+            <i class="bi bi-file-earmark-person mb-2" style="font-size: 2.5rem;"></i>
+            <div>{{ _('No job applications submitted yet.') }}</div>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

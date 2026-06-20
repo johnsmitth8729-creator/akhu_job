@@ -1,0 +1,173 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container hero-container">
+        <div class="row align-items-center py-5">
+            <!-- Left Column: Title & Descriptions -->
+            <div class="col-lg-7 text-start mb-5 mb-lg-0 animate-fade-in-left">
+                <h1 class="hero-title">
+                    {{ _('Shape the Future') }}
+                    <span class="d-block text-accent mt-2">{{ _('with Al-Khwarizmi University') }}</span>
+                </h1>
+                
+                <div class="hero-divider"></div>
+                
+                <p class="hero-subtitle mb-4">
+                    {{ _('Empowering minds. Advancing knowledge.') }}<br>
+                    {{ _('Building a better tomorrow.') }}
+                </p>
+                
+                <div class="hero-buttons d-flex flex-wrap gap-3">
+                    <a href="#vacancies-section" class="btn btn-hero-gold">
+                        {{ _('BROWSE VACANCIES') }} <i class="bi bi-arrow-right ms-2"></i>
+                    </a>
+                    <a href="{{ url_for('main.contact') }}" class="btn btn-hero-outline">
+                        {{ _('LEARN MORE') }}
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Right Column: Glowing University Logo with Rotating Rings -->
+            <div class="col-lg-5 text-center d-flex justify-content-center align-items-center animate-fade-in-right">
+                <div class="logo-glow-wrapper">
+                    <!-- Concentric animated glowing rings -->
+                    <div class="glow-ring ring-outer"></div>
+                    <div class="glow-ring ring-middle"></div>
+                    <div class="glow-ring ring-inner"></div>
+                    <div class="logo-bg-glow"></div>
+                    
+                    <!-- University Logo -->
+                    <img src="{{ url_for('static', filename='images/logo-light.png') }}" alt="Al-Khwarizmi University Logo" class="hero-university-logo logo-dark-only">
+                    <img src="{{ url_for('static', filename='images/logo-dark.png') }}" alt="Al-Khwarizmi University Logo" class="hero-university-logo logo-light-only">
+                </div>
+            </div>
+        </div>
+        
+        <!-- Bottom Row: Statistics & Tagline -->
+        <div class="hero-bottom-section mt-5 animate-fade-in-bottom">
+            <div class="row justify-content-center g-4">
+                <!-- Card 1: Vacancies -->
+                <div class="col-xl-3 col-md-6 col-sm-6">
+                    <div class="glass-stats-card">
+                        <div class="card-icon-wrapper">
+                            <i class="bi bi-briefcase"></i>
+                        </div>
+                        <div class="card-text-wrapper">
+                            <div class="stats-num">{{ open_positions_count }}</div>
+                            <div class="stats-lbl">{{ _('Open Vacancies') }}</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 2: Applications -->
+                <div class="col-xl-3 col-md-6 col-sm-6">
+                    <div class="glass-stats-card">
+                        <div class="card-icon-wrapper">
+                            <i class="bi bi-file-earmark-person"></i>
+                        </div>
+                        <div class="card-text-wrapper">
+                            <div class="stats-num">{{ applications_count }}</div>
+                            <div class="stats-lbl">{{ _('Applications') }}</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 3: Faculties -->
+                <div class="col-xl-3 col-md-6 col-sm-6">
+                    <div class="glass-stats-card">
+                        <div class="card-icon-wrapper">
+                            <i class="bi bi-bank"></i>
+                        </div>
+                        <div class="card-text-wrapper">
+                            <div class="stats-num">{{ faculties_count }}</div>
+                            <div class="stats-lbl">{{ _('Faculties') }}</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 4: Interviews Scheduled -->
+                <div class="col-xl-3 col-md-6 col-sm-6">
+                    <div class="glass-stats-card">
+                        <div class="card-icon-wrapper">
+                            <i class="bi bi-calendar-check"></i>
+                        </div>
+                        <div class="card-text-wrapper">
+                            <div class="stats-num">{{ interviews_count }}</div>
+                            <div class="stats-lbl">{{ _('Interviews Scheduled') }}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tagline with centered separator -->
+            <div class="tagline-divider-wrapper mt-5">
+                <div class="tagline-line-left"></div>
+                <div class="tagline-text">{{ _('INNOVATION • EDUCATION • EXCELLENCE') }}</div>
+                <div class="tagline-line-right"></div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Vacancies Section (Latest 3 Open Positions) -->
+<div class="container my-5" id="vacancies-section">
+    <!-- Open Vacancies List -->
+    <div class="row">
+        <div class="col-12 mb-4 text-center">
+            <h2 class="text-white mb-2">{{ _('Latest Open Positions') }}</h2>
+            <p class="text-secondary small">{{ _('Explore our most recently published academic and administrative roles.') }}</p>
+            <div class="mx-auto mt-3" style="width: 80px; height: 3px; background: var(--color-accent); border-radius: 2px;"></div>
+        </div>
+        
+        {% if vacancies %}
+            <div class="col-12 d-flex flex-column gap-3 mb-4">
+                {% for vacancy in vacancies %}
+                    <div class="card glass-panel glass-panel-hover p-4 vacancy-card" onclick="window.location.href='{{ url_for('main.vacancy_details', vacancy_id=vacancy.id) }}'">
+                        <div class="card-body p-0">
+                            <div class="row align-items-center">
+                                <div class="col-md-8">
+                                    <span class="vacancy-badge mb-2 d-inline-block">
+                                        {{ vacancy.get_position_type(g.lang_code) }}
+                                    </span>
+                                    <h4 class="card-title text-white mb-2">{{ vacancy.get_title(g.lang_code) }}</h4>
+                                    <div class="d-flex flex-wrap gap-3 text-secondary small">
+                                        {% if vacancy.faculty %}
+                                        <div><i class="bi bi-building me-1"></i>{{ vacancy.faculty.get_name(g.lang_code) }}</div>
+                                        {% endif %}
+                                        {% if vacancy.department %}
+                                        <div><i class="bi bi-diagram-3 me-1"></i>{{ vacancy.department.get_name(g.lang_code) }}</div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="col-md-4 text-md-end mt-3 mt-md-0 d-flex flex-column align-items-md-end gap-2">
+                                    <div class="text-danger small mb-1">
+                                        <i class="bi bi-clock me-1"></i>{{ _('Deadline:') }} {{ vacancy.deadline.strftime('%Y-%m-%d') }}
+                                    </div>
+                                    <div class="text-warning small mb-2">
+                                        <i class="bi bi-cash me-1"></i>{{ vacancy.get_salary(g.lang_code) }}
+                                    </div>
+                                    <a href="{{ url_for('main.vacancy_details', vacancy_id=vacancy.id) }}" class="btn btn-custom-secondary btn-sm align-self-start align-self-md-auto">
+                                        {{ _('View Details') }} <i class="bi bi-chevron-right ms-1"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            
+            <div class="col-12 text-center mt-3">
+                <a href="{{ url_for('main.vacancies_list') }}" class="btn btn-hero-gold px-5">
+                    {{ _('View All Opportunities') }} <i class="bi bi-arrow-right ms-2"></i>
+                </a>
+            </div>
+        {% else %}
+            <div class="col-12 text-center py-5">
+                <div class="glass-panel p-5 max-width-md mx-auto" style="max-width: 500px;">
+                    <i class="bi bi-briefcase text-secondary mb-3" style="font-size: 3rem;"></i>
+                    <h5 class="text-white">{{ _('No Open Positions Found') }}</h5>
+                    <p class="text-secondary small mb-0">{{ _('There are currently no open vacancies. Please check back later.') }}</p>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

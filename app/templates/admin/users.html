@@ -1,0 +1,154 @@
+{% extends 'dashboard_base.html' %}
+
+{% block dashboard_content %}
+<div class="glass-panel p-4 mb-4">
+    <div class="d-flex justify-content-between align-items-center border-bottom border-secondary pb-3 mb-4 flex-wrap gap-2">
+        <h3 class="text-white mb-0"><i class="bi bi-people me-2 text-warning"></i>{{ _('HR Recruiting Staff Management') }}</h3>
+        <!-- Trigger Modal button -->
+        <button class="btn btn-custom-primary btn-sm" data-bs-toggle="modal" data-bs-target="#createUserModal">
+            <i class="bi bi-person-plus me-1"></i>{{ _('Add Recruiter User') }}
+        </button>
+    </div>
+    
+    <!-- Recruiters List Table -->
+    {% if users %}
+        <div class="table-responsive">
+            <table class="table table-dark table-hover align-middle mb-0">
+                <thead>
+                    <tr class="text-muted small">
+                        <th>{{ _('Full Name') }}</th>
+                        <th>{{ _('Username') }}</th>
+                        <th>{{ _('Email Address') }}</th>
+                        <th>{{ _('Joined Date') }}</th>
+                        <th class="text-end">{{ _('Actions') }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %}
+                        <tr>
+                            <td>
+                                <div class="fw-bold text-white">{{ user.full_name }}</div>
+                            </td>
+                            <td><code class="text-warning">{{ user.username }}</code></td>
+                            <td>{{ user.email }}</td>
+                            <td class="small text-secondary">{{ user.created_at.strftime('%Y-%m-%d') }}</td>
+                            <td class="text-end">
+                                <!-- Edit trigger -->
+                                <button class="btn btn-outline-warning btn-sm me-1" data-bs-toggle="modal" data-bs-target="#editUserModal{{ user.id }}">
+                                    <i class="bi bi-pencil"></i>
+                                </button>
+                                <!-- Delete trigger -->
+                                <button class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteUserModal{{ user.id }}">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        
+                        <!-- EDIT USER MODAL -->
+                        <div class="modal fade" id="editUserModal{{ user.id }}" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content border-0 glass-panel">
+                                    <div class="modal-header border-secondary">
+                                        <h5 class="modal-title text-white" id="editModalLabel">{{ _('Edit HR Recruiter Details') }}</h5>
+                                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <form method="POST" action="{{ url_for('admin.user_edit', user_id=user.id) }}">
+                                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                        <div class="modal-body">
+                                            <div class="mb-3">
+                                                <label class="form-label text-white small fw-bold">{{ _('Full Name') }}</label>
+                                                <input type="text" name="full_name" class="form-control form-control-custom text-white" required value="{{ user.full_name }}">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label text-white small fw-bold">{{ _('Email Address') }}</label>
+                                                <input type="email" name="email" class="form-control form-control-custom text-white" required value="{{ user.email }}">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label text-white small fw-bold">{{ _('New Password') }} <span class="text-muted small">({{ _('Leave blank to keep current') }})</span></label>
+                                                <input type="password" name="password" class="form-control form-control-custom text-white" placeholder="{{ _('Enter new password') }}">
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer border-secondary">
+                                            <button type="button" class="btn btn-custom-secondary" data-bs-dismiss="modal">{{ _('Cancel') }}</button>
+                                            <button type="submit" class="btn btn-custom-primary">{{ _('Save Changes') }}</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- DELETE USER MODAL -->
+                        <div class="modal fade" id="deleteUserModal{{ user.id }}" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content border-0 glass-panel">
+                                    <div class="modal-header border-secondary">
+                                        <h5 class="modal-title text-white" id="deleteModalLabel">{{ _('Confirm Account Deletion') }}</h5>
+                                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p class="text-secondary">{{ _('Are you sure you want to permanently delete the HR account for:') }}</p>
+                                        <div class="p-3 bg-dark-subtle rounded border border-danger text-center">
+                                            <h5 class="text-white mb-1">{{ user.full_name }}</h5>
+                                            <code class="text-warning">{{ user.username }}</code>
+                                        </div>
+                                        <p class="text-danger small mt-2"><i class="bi bi-exclamation-triangle me-1"></i>{{ _('This action cannot be undone.') }}</p>
+                                    </div>
+                                    <div class="modal-footer border-secondary">
+                                        <button type="button" class="btn btn-custom-secondary" data-bs-dismiss="modal">{{ _('Cancel') }}</button>
+                                        <form method="POST" action="{{ url_for('admin.user_delete', user_id=user.id) }}">
+                                            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                            <button type="submit" class="btn btn-danger">{{ _('Delete Account') }}</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <div class="text-center py-5 text-muted small">
+            <i class="bi bi-people mb-2" style="font-size: 2.5rem;"></i>
+            <div>{{ _('No HR Recruiter accounts created yet. Add a user above to get started.') }}</div>
+        </div>
+    {% endif %}
+</div>
+
+<!-- CREATE USER MODAL -->
+<div class="modal fade" id="createUserModal" tabindex="-1" aria-labelledby="createModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content border-0 glass-panel">
+            <div class="modal-header border-secondary">
+                <h5 class="modal-title text-white" id="createModalLabel">{{ _('Create HR Recruiter Account') }}</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form method="POST" action="{{ url_for('admin.user_create') }}">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label text-white small fw-bold">{{ _('Username') }} <span class="text-danger">*</span></label>
+                        <input type="text" name="username" class="form-control form-control-custom text-white" required placeholder="{{ _('e.g. hr_recruiter') }}">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label text-white small fw-bold">{{ _('Password') }} <span class="text-danger">*</span></label>
+                        <input type="password" name="password" class="form-control form-control-custom text-white" required placeholder="{{ _('Enter password') }}">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label text-white small fw-bold">{{ _('Full Name') }} <span class="text-danger">*</span></label>
+                        <input type="text" name="full_name" class="form-control form-control-custom text-white" required placeholder="{{ _('e.g., Jane Cooper') }}">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label text-white small fw-bold">{{ _('Email Address') }} <span class="text-danger">*</span></label>
+                        <input type="email" name="email" class="form-control form-control-custom text-white" required placeholder="jane@akhu.edu.uz">
+                    </div>
+                </div>
+                <div class="modal-footer border-secondary">
+                    <button type="button" class="btn btn-custom-secondary" data-bs-dismiss="modal">{{ _('Cancel') }}</button>
+                    <button type="submit" class="btn btn-custom-primary">{{ _('Create Account') }}</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

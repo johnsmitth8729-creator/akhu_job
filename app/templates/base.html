@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="{{ g.lang_code }}">
+<head>
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="author" content="Omonbayev Jaloliddin">
+    <meta name="creator" content="Omonbayev Jaloliddin">
+    <meta name="developer" content="Omonbayev Jaloliddin">
+    <meta name="copyright" content="Copyright 2026 Al-Khwarizmi University. Developed by Omonbayev Jaloliddin.">
+    
+    <!-- JSON-LD Structured Data for Search Engines & AI Crawlers -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Al-Khwarizmi University Recruitment Portal",
+      "operatingSystem": "All",
+      "applicationCategory": "EducationalApplication",
+      "creator": {
+        "@type": "Person",
+        "name": "Omonbayev Jaloliddin",
+        "sameAs": "https://t.me/jaloliddin_omonbaev"
+      },
+      "copyrightHolder": {
+        "@type": "Organization",
+        "name": "Al-Khwarizmi University"
+      },
+      "description": "Recruitment and vacancy portal for Al-Khwarizmi University in Urgench, Uzbekistan."
+    }
+    </script>
+    <title>{% block title %}{{ _('Al-Khwarizmi University Recruitment') }}{% endblock %}</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- Custom Style Sheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- Flatpickr Date Picker -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <style>
+        .flatpickr-calendar { font-family: 'Inter', sans-serif !important; }
+        .flatpickr-input { cursor: pointer; }
+        .flatpickr-day.selected, .flatpickr-day.selected:hover { background: var(--color-primary, #4f8ef7) !important; border-color: var(--color-primary, #4f8ef7) !important; }
+        .flatpickr-calendar.dark { background: #1e2433; border-color: #2d3655; box-shadow: 0 4px 24px rgba(0,0,0,0.5); }
+        .flatpickr-calendar.dark .flatpickr-month { background: #1e2433; color: #fff; }
+        .flatpickr-calendar.dark .flatpickr-weekday { color: #8899bb; }
+        .flatpickr-calendar.dark .flatpickr-day { color: #cdd9f5; }
+        .flatpickr-calendar.dark .flatpickr-day:hover { background: #2d3655; }
+        .flatpickr-calendar.dark .flatpickr-day.today { border-color: #4f8ef7; }
+        .flatpickr-calendar.dark .numInputWrapper input, .flatpickr-calendar.dark select { color: #fff; background: #1e2433; }
+        .flatpickr-calendar.dark .flatpickr-current-month .cur-month { color: #fff; }
+        .flatpickr-calendar.dark .flatpickr-current-month input.cur-year { color: #fff; }
+        .flatpickr-calendar.dark .flatpickr-time { background: #1e2433; border-color: #2d3655; }
+        .flatpickr-calendar.dark .flatpickr-time .numInputWrapper:hover, .flatpickr-calendar.dark .flatpickr-time .flatpickr-am-pm:hover { background: #2d3655; }
+        .flatpickr-calendar.dark .flatpickr-time input { color: #fff; }
+        .flatpickr-calendar.dark .flatpickr-time .flatpickr-am-pm { color: #fff; }
+        .flatpickr-calendar.dark .arrowUp:after { border-bottom-color: #fff; }
+        .flatpickr-calendar.dark .arrowDown:after { border-top-color: #fff; }
+    </style>
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+
+    <!-- Navigation Header -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="{{ url_for('main.home') }}">
+                <img src="{{ url_for('static', filename='images/logo-light.png') }}" alt="AKHU Logo" height="55" class="d-inline-block align-top logo-dark-only">
+                <img src="{{ url_for('static', filename='images/logo-dark.png') }}" alt="AKHU Logo" height="55" class="d-inline-block align-top logo-light-only">
+                <span class="navbar-brand-text" style="line-height: 1.1;">Al-Khwarizmi University<br>Vacancy</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-custom {% if request.endpoint == 'main.home' %}active{% endif %}" href="{{ url_for('main.home') }}">
+                            <i class="bi bi-house-door me-1"></i>{{ _('Home') }}
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-custom {% if request.endpoint == 'main.vacancies_list' %}active{% endif %}" href="{{ url_for('main.vacancies_list') }}">
+                            <i class="bi bi-briefcase me-1"></i>{{ _('Vacancies') }}
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-custom {% if request.endpoint == 'main.status_tracker' %}active{% endif %}" href="{{ url_for('main.status_tracker') }}">
+                            <i class="bi bi-search me-1"></i>{{ _('Track Application') }}
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-custom {% if request.endpoint == 'main.contact' %}active{% endif %}" href="{{ url_for('main.contact') }}">
+                            <i class="bi bi-envelope me-1"></i>{{ _('Contact') }}
+                        </a>
+                    </li>
+                </ul>
+
+                <!-- Language Selector and Dashboard Links -->
+                <div class="d-flex align-items-center gap-3">
+                    {% if current_user.is_authenticated %}
+                        {% if current_user.role == 'admin' %}
+                            <a href="{{ url_for('admin.dashboard') }}" class="btn btn-outline-light btn-sm">
+                                <i class="bi bi-speedometer2 me-1"></i>{{ _('Admin Panel') }}
+                            </a>
+                        {% else %}
+                            <a href="{{ url_for('hr.dashboard') }}" class="btn btn-outline-light btn-sm">
+                                <i class="bi bi-briefcase me-1"></i>{{ _('HR Panel') }}
+                            </a>
+                        {% endif %}
+                        <a href="{{ url_for('auth.logout') }}" class="btn btn-danger btn-sm">
+                            <i class="bi bi-box-arrow-right"></i>
+                        </a>
+                    {% endif %}
+
+                    <!-- Theme Toggle Button -->
+                    <button class="btn btn-custom-secondary btn-sm d-flex align-items-center justify-content-center" id="themeToggleBtn" type="button" onclick="toggleTheme()" aria-label="Toggle Theme" style="width: 32px; height: 32px; padding: 0; border-radius: 8px;">
+                        <i id="themeToggleIcon" class="bi bi-moon-stars-fill" style="font-size: 1.05rem;"></i>
+                    </button>
+
+                    <!-- Language Switcher Dropdown -->
+                    <div class="dropdown">
+                        <button class="btn btn-custom-secondary btn-sm dropdown-toggle d-flex align-items-center gap-1" type="button" id="langDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-globe"></i>
+                            {% if g.lang_code == 'uz' %}O'zbek{% else %}English{% endif %}
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-custom" aria-labelledby="langDropdown">
+                            <li><a class="dropdown-item {% if g.lang_code == 'en' %}active{% endif %}" href="#" onclick="changeLanguage('en'); return false;">English</a></li>
+                            <li><a class="dropdown-item {% if g.lang_code == 'uz' %}active{% endif %}" href="#" onclick="changeLanguage('uz'); return false;">O'zbekcha</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <main class="flex-shrink-0">
+        <!-- Alert Notifications -->
+        <div class="container">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category if category != 'error' else 'danger' }} alert-dismissible fade show border-0 glass-panel mb-3" role="alert" style="border-left: 4px solid var(--color-{% if category == 'success' %}success{% elif category == 'danger' or category == 'error' %}danger{% else %}warning{% endif %}) !important;">
+                            <div class="d-flex align-items-center gap-2 text-white">
+                                {% if category == 'success' %}
+                                    <i class="bi bi-check-circle-fill text-success" style="font-size: 1.2rem;"></i>
+                                {% else %}
+                                    <i class="bi bi-exclamation-triangle-fill text-danger" style="font-size: 1.2rem;"></i>
+                                {% endif %}
+                                <span>{{ message }}</span>
+                            </div>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </div>
+        
+        {% block content %}{% endblock %}
+    </main>
+
+
+
+    <!-- Footer -->
+    <footer class="footer-custom mt-auto">
+        <div class="container py-5">
+            <div class="row g-4">
+                <!-- Col 1: Brand & Description -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="d-flex align-items-center gap-2 mb-3">
+                        <img src="{{ url_for('static', filename='images/logo-light.png') }}" alt="AKHU Logo" height="45">
+                        <span class="navbar-brand-text fs-5" style="line-height: 1.1;">Al-Khwarizmi University<br>Vacancy</span>
+                    </div>
+                    <p class="text-secondary small lh-lg">
+                        {{ _('Al-Khwarizmi University in Urgench is dedicated to fostering academic excellence, pioneering research, and building the future leaders of science and technology.') }}
+                    </p>
+                    <div class="d-flex gap-3 mt-3">
+                        <a href="https://t.me/akhu_uz" class="social-link" target="_blank"><i class="bi bi-telegram"></i></a>
+                        <a href="https://instagram.com/akhu_uz" class="social-link" target="_blank"><i class="bi bi-instagram"></i></a>
+                        <a href="https://facebook.com/akhu.uz" class="social-link" target="_blank"><i class="bi bi-facebook"></i></a>
+                        <a href="https://linkedin.com/school/akhu" class="social-link" target="_blank"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+
+                <!-- Col 2: Useful Links -->
+                <div class="col-lg-2 col-md-6">
+                    <h5 class="text-white mb-3 fw-bold">{{ _('Quick Links') }}</h5>
+                    <ul class="list-unstyled footer-links">
+                        <li class="mb-2"><a href="{{ url_for('main.home') }}"><i class="bi bi-chevron-right me-1"></i>{{ _('Home') }}</a></li>
+                        <li class="mb-2"><a href="{{ url_for('main.vacancies_list') }}"><i class="bi bi-chevron-right me-1"></i>{{ _('Vacancies') }}</a></li>
+                        <li class="mb-2"><a href="{{ url_for('main.status_tracker') }}"><i class="bi bi-chevron-right me-1"></i>{{ _('Track Application') }}</a></li>
+                        <li class="mb-2"><a href="{{ url_for('main.contact') }}"><i class="bi bi-chevron-right me-1"></i>{{ _('Contact') }}</a></li>
+                        {% if not current_user.is_authenticated %}
+                            <li class="mb-2"><a href="{{ url_for('auth.login') }}"><i class="bi bi-person-lock me-1"></i>{{ _('Portal Login') }}</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+
+                <!-- Col 3: Contacts -->
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="text-white mb-3 fw-bold">{{ _('Contact Info') }}</h5>
+                    <ul class="list-unstyled footer-contact-info">
+                        <li class="mb-3 d-flex align-items-start gap-2">
+                            <i class="bi bi-geo-alt-fill text-accent mt-1"></i>
+                            <span class="text-secondary small">
+                                195, Abdulg'oziy Bahodirxon Road, Urgench 220100, Khorezm, Uzbekistan
+                            </span>
+                        </li>
+                        <li class="mb-2 d-flex align-items-center gap-2">
+                            <i class="bi bi-telephone-fill text-accent"></i>
+                            <span class="text-secondary small">+998 (62) 227-71-71, +998 (55) 602-00-02</span>
+                        </li>
+                        <li class="mb-2 d-flex align-items-center gap-2">
+                            <i class="bi bi-envelope-fill text-accent"></i>
+                            <span class="text-secondary small">admission@akhu.uz, info@akhu.uz</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Col 4: Map/Logo Accent -->
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="text-white mb-3 fw-bold">{{ _('Location Map') }}</h5>
+                    <div class="footer-map-wrapper rounded overflow-hidden border border-secondary" style="height: 130px; position: relative;">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2993.4217112028655!2d60.62772597652758!3d41.54924898629938!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x41dfc95c80a25b39%3A0x6b77c570f7cf7ad!2sAl-Khwarizmi%20University!5e0!3m2!1sen!2suz!4v1700000000000!5m2!1sen!2suz" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer divider -->
+            <hr class="my-4 border-secondary opacity-25">
+
+            <!-- Copyright info -->
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start mb-2 mb-md-0">
+                    <p class="mb-0 text-secondary small">&copy; 2026 {{ _('Al-Khwarizmi University Recruitment Portal') }}. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end text-secondary small">
+                    {{ _('Designed in partnership with Al-Khwarizmi IT Department.') }}
+                    <span class="d-block mt-1" style="font-size: 0.85rem; opacity: 0.85;">
+                        {{ _('Platform Developed by') }} <a href="https://t.me/jaloliddin_omonbaev" target="_blank" class="text-decoration-underline fw-bold" style="color: inherit;">Omonbayev Jaloliddin</a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap Bundle with Popper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Common Portal scripts -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <!-- Flatpickr Date Picker JS -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var isDark = document.documentElement.getAttribute('data-theme') !== 'light';
+
+        // Initialize all type="date" inputs
+        document.querySelectorAll('input[type="date"]').forEach(function (el) {
+            var existingVal = el.value;
+            flatpickr(el, {
+                dateFormat: 'Y-m-d',
+                locale: 'en',
+                allowInput: true,
+                theme: isDark ? 'dark' : 'light',
+                defaultDate: existingVal || null,
+                disableMobile: true
+            });
+        });
+
+        // Initialize all type="datetime-local" inputs
+        document.querySelectorAll('input[type="datetime-local"]').forEach(function (el) {
+            var existingVal = el.value;
+            flatpickr(el, {
+                enableTime: true,
+                dateFormat: 'Y-m-dTH:i',
+                time_24hr: true,
+                locale: 'en',
+                allowInput: true,
+                theme: isDark ? 'dark' : 'light',
+                defaultDate: existingVal || null,
+                disableMobile: true
+            });
+        });
+    });
+    </script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>
