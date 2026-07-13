@@ -1026,6 +1026,14 @@ html[data-theme="light"] .social-link:hover {
     color: #ffffff !important;
 }
 
+/* Hamburger menu button (3 lines) visibility fix for Light Mode */
+html[data-theme="light"] .navbar-toggler {
+    border-color: rgba(14, 24, 58, 0.25) !important;
+}
+html[data-theme="light"] .navbar-toggler-icon {
+    filter: invert(1) grayscale(1) brightness(0.1);
+}
+
 .footer-map-wrapper iframe {
     filter: var(--map-filter);
 }
