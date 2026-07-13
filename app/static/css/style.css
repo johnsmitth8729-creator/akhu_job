@@ -1016,6 +1016,16 @@ input::placeholder {
     box-shadow: 0 4px 10px rgba(245, 158, 11, 0.3);
 }
 
+html[data-theme="light"] .social-link {
+    color: var(--text-primary) !important;
+    background: rgba(14, 24, 58, 0.05);
+    border-color: rgba(14, 24, 58, 0.12);
+}
+html[data-theme="light"] .social-link:hover {
+    background: var(--color-accent);
+    color: #ffffff !important;
+}
+
 .footer-map-wrapper iframe {
     filter: var(--map-filter);
 }
