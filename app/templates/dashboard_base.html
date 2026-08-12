@@ -18,6 +18,9 @@
                         <a class="sidebar-link {% if request.endpoint == 'admin.dashboard' %}active{% endif %}" href="{{ url_for('admin.dashboard') }}">
                             <i class="bi bi-speedometer2"></i>{{ _('Dashboard Statistics') }}
                         </a>
+                        <a class="sidebar-link {% if request.endpoint == 'admin.reports' %}active{% endif %}" href="{{ url_for('admin.reports') }}">
+                            <i class="bi bi-file-earmark-bar-graph"></i>{{ _('Reports & Analytics') }}
+                        </a>
                         <a class="sidebar-link {% if request.endpoint == 'admin.users_list' %}active{% endif %}" href="{{ url_for('admin.users_list') }}">
                             <i class="bi bi-people"></i>{{ _('HR Recruiters CRUD') }}
                         </a>
@@ -40,6 +43,9 @@
                         <!-- HR Recruiting Sidebar Links -->
                         <a class="sidebar-link {% if request.endpoint == 'hr.dashboard' %}active{% endif %}" href="{{ url_for('hr.dashboard') }}">
                             <i class="bi bi-speedometer2"></i>{{ _('Overview Statistics') }}
+                        </a>
+                        <a class="sidebar-link {% if request.endpoint == 'hr.reports' %}active{% endif %}" href="{{ url_for('hr.reports') }}">
+                            <i class="bi bi-file-earmark-bar-graph"></i>{{ _('Reports & Analytics') }}
                         </a>
                         <a class="sidebar-link {% if request.endpoint in ['hr.vacancies_list', 'hr.vacancy_create', 'hr.vacancy_edit'] %}active{% endif %}" href="{{ url_for('hr.vacancies_list') }}">
                             <i class="bi bi-briefcase"></i>{{ _('Job Vacancies') }}

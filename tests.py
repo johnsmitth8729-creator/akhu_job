@@ -198,7 +198,7 @@ class PortalTestCase(unittest.TestCase):
             'responsibilities_uz': 'Darslarni tashkil qilish.'
         }, follow_redirects=True)
         
-        self.assertIn(b'Please select at least academic Faculty or Department.', response.data)
+        self.assertIn(b'Please select at least one: Academic Faculty or Department.', response.data)
         self.assertEqual(Vacancy.query.count(), 0)
 
         # 2. Create vacancy with ONLY Faculty (Should succeed)
@@ -288,5 +288,83 @@ class PortalTestCase(unittest.TestCase):
         self.assertIn(b'Ali Valiyev', response.data)
         self.assertIn(b'Received', response.data)
 
+    def test_reports_and_analytics_access(self):
+        """Verify Reports section works for both Admin and HR roles and provides CSV export"""
+        # Create a test vacancy and application
+        vac = Vacancy(
+            faculty_id=self.test_fac.id,
+            deadline=datetime.date(2026, 12, 31),
+            title_en='Senior Software Engineer',
+            title_uz='Katta dasturiy ta\'minot muhandisi',
+            position_type_en='Engineer',
+            position_type_uz='Muhandis',
+            employment_type_en='Full-time',
+            employment_type_uz='To\'liq',
+            salary_en='Negotiable',
+            salary_uz='Kelishilgan',
+            description_en='Build systems',
+            description_uz='Tizimlarni yaratish',
+            requirements_en='5+ years',
+            requirements_uz='5+ yil',
+            responsibilities_en='Development',
+            responsibilities_uz='Ishlab chiqish',
+            status='open'
+        )
+        db.session.add(vac)
+        db.session.commit()
+
+        app1 = Application(
+            application_number='AKHU-TEST-001',
+            vacancy_id=vac.id,
+            full_name='Dilshod Qodirov',
+            birth_date=datetime.date(1992, 3, 10),
+            phone='+998901112233',
+            email='dilshod@test.uz',
+            address='Urgench, Uzbekistan',
+            degree='PhD',
+            university='TUIT',
+            graduation_year=2016,
+            status='accepted'
+        )
+        db.session.add(app1)
+        db.session.commit()
+
+        # 1. Admin Access to Reports
+        self.login_client('jaloliddin', 'Qwer1234@')
+        response = self.client.get('/en/admin/reports')
+        self.assertEqual(response.status_code, 200)
+        self.assertIn(b'Recruitment Reports & Analytics', response.data)
+        self.assertIn(b'Dilshod Qodirov', response.data)
+
+        # Test Admin CSV export
+        csv_resp = self.client.get('/en/admin/reports/export/applications')
+        self.assertEqual(csv_resp.status_code, 200)
+        self.assertIn('text/csv', csv_resp.content_type)
+        self.assertIn(b'Dilshod Qodirov', csv_resp.data)
+
+        csv_vac_resp = self.client.get('/en/admin/reports/export/vacancies')
+        self.assertEqual(csv_vac_resp.status_code, 200)
+        self.assertIn(b'Senior Software Engineer', csv_vac_resp.data)
+
+        # Logout admin
+        self.client.get('/en/logout')
+
+        # 2. HR Access to Reports
+        self.login_client('hr_staff', 'hr123')
+        response = self.client.get('/en/hr_recruiting/reports')
+        self.assertEqual(response.status_code, 200)
+        self.assertIn(b'Recruitment Reports & Analytics', response.data)
+        self.assertIn(b'Dilshod Qodirov', response.data)
+
+        # Test HR CSV export
+        hr_csv_resp = self.client.get('/en/hr_recruiting/reports/export/applications')
+        self.assertEqual(hr_csv_resp.status_code, 200)
+        self.assertIn(b'Dilshod Qodirov', hr_csv_resp.data)
+
+        # Test Uzbek Locale reports
+        response_uz = self.client.get('/uz/hr_recruiting/reports')
+        self.assertEqual(response_uz.status_code, 200)
+
 if __name__ == '__main__':
     unittest.main()
+

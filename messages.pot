@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-06-18 10:55+0500\n"
+"POT-Creation-Date: 2026-08-12 23:14+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -46,13 +46,13 @@ msgstr ""
 msgid "Birth Date"
 msgstr ""
 
-#: app/templates/apply.html:39 app/templates/contact.html:27
+#: app/templates/apply.html:39 app/templates/contact.html:28
 msgid "Phone Number"
 msgstr ""
 
 #: app/templates/admin/users.html:21 app/templates/admin/users.html:63
 #: app/templates/admin/users.html:142 app/templates/apply.html:44
-#: app/templates/contact.html:22
+#: app/templates/contact.html:23
 msgid "Email Address"
 msgstr ""
 
@@ -168,114 +168,90 @@ msgstr ""
 msgid "Submit Application"
 msgstr ""
 
-#: app/templates/base.html:7
+#: app/templates/base.html:38
 msgid "Al-Khwarizmi University Recruitment"
 msgstr ""
 
-#: app/templates/base.html:32 app/templates/base.html:188
+#: app/templates/base.html:86 app/templates/base.html:196
 msgid "Home"
 msgstr ""
 
-#: app/templates/base.html:37 app/templates/base.html:189
+#: app/templates/base.html:91 app/templates/base.html:197
+#: app/templates/reports_view.html:591 app/templates/reports_view.html:624
 msgid "Vacancies"
 msgstr ""
 
-#: app/templates/base.html:42 app/templates/base.html:190
+#: app/templates/base.html:96 app/templates/base.html:198
 msgid "Track Application"
 msgstr ""
 
-#: app/templates/base.html:47 app/templates/base.html:191
+#: app/templates/base.html:101 app/templates/base.html:199
 msgid "Contact"
 msgstr ""
 
-#: app/templates/base.html:57
+#: app/templates/base.html:111
 msgid "Admin Panel"
 msgstr ""
 
-#: app/templates/base.html:61
+#: app/templates/base.html:115
 msgid "HR Panel"
 msgstr ""
 
-#: app/templates/base.html:69
-msgid "Portal Login"
-msgstr ""
-
-#: app/templates/base.html:119
-msgid "Chat with HR"
-msgstr ""
-
-#: app/templates/base.html:134
-msgid ""
-"Welcome to AKHU Admissions & HR Help Desk. Send a message to start "
-"chatting with support."
-msgstr ""
-
-#: app/templates/base.html:144
-msgid "HR agent is typing..."
-msgstr ""
-
-#: app/templates/base.html:150 app/templates/hr/chats.html:77
-msgid "Attach Document"
-msgstr ""
-
-#: app/templates/base.html:153
-msgid "Type a message..."
-msgstr ""
-
-#: app/templates/base.html:174
-msgid ""
-"Al-Khwarizmi University in Urgench is dedicated to fostering academic "
-"excellence, pioneering research, and building the future leaders of "
-"science and technology."
-msgstr ""
-
-#: app/templates/base.html:186
+#: app/templates/base.html:194
 msgid "Quick Links"
 msgstr ""
 
-#: app/templates/base.html:197
+#: app/templates/base.html:201
+msgid "Portal Login"
+msgstr ""
+
+#: app/templates/base.html:208
 msgid "Contact Info"
 msgstr ""
 
-#: app/templates/base.html:218
+#: app/templates/base.html:229
 msgid "Location Map"
 msgstr ""
 
-#: app/templates/base.html:231
+#: app/templates/base.html:242
 msgid "Al-Khwarizmi University Recruitment Portal"
 msgstr ""
 
-#: app/templates/base.html:234
+#: app/templates/base.html:245
 msgid "Designed in partnership with Al-Khwarizmi IT Department."
 msgstr ""
 
-#: app/templates/contact.html:8
+#: app/templates/base.html:247
+msgid "Platform Developed by"
+msgstr ""
+
+#: app/templates/contact.html:9
 msgid "Contact Admissions & HR"
 msgstr ""
 
-#: app/templates/contact.html:10
+#: app/templates/contact.html:11
 msgid ""
 "Have questions about open vacancies, application requirements, or the "
 "hiring process? Send us a message and our team will respond."
 msgstr ""
 
-#: app/templates/contact.html:17
+#: app/templates/contact.html:18
 msgid "Your Name"
 msgstr ""
 
-#: app/templates/contact.html:18
+#: app/templates/contact.html:19
 msgid "e.g., Muhammad ibn Musa"
 msgstr ""
 
-#: app/templates/contact.html:32
+#: app/templates/contact.html:33
 msgid "Your Message"
 msgstr ""
 
-#: app/templates/contact.html:33
+#: app/templates/contact.html:34
 msgid "Describe your question or request details here..."
 msgstr ""
 
-#: app/templates/contact.html:38
+#: app/templates/contact.html:39
 msgid "Send Message"
 msgstr ""
 
@@ -283,51 +259,51 @@ msgstr ""
 msgid "Dashboard Statistics"
 msgstr ""
 
-#: app/templates/dashboard_base.html:22
-msgid "HR Recruiters CRUD"
+#: app/templates/dashboard_base.html:22 app/templates/dashboard_base.html:48
+msgid "Reports & Analytics"
 msgstr ""
 
 #: app/templates/dashboard_base.html:25
-msgid "Manage Vacancies"
+msgid "HR Recruiters CRUD"
 msgstr ""
 
 #: app/templates/dashboard_base.html:28
-msgid "Manage Applications"
+msgid "Manage Vacancies"
 msgstr ""
 
 #: app/templates/dashboard_base.html:31
+msgid "Manage Applications"
+msgstr ""
+
+#: app/templates/dashboard_base.html:34
 msgid "Scheduled Interviews"
 msgstr ""
 
-#: app/templates/dashboard_base.html:34 app/templates/dashboard_base.html:57
+#: app/templates/dashboard_base.html:37 app/templates/dashboard_base.html:60
 msgid "Faculties & Depts"
 msgstr ""
 
-#: app/templates/dashboard_base.html:37
+#: app/templates/dashboard_base.html:40
 msgid "System & API Settings"
 msgstr ""
 
-#: app/templates/dashboard_base.html:42
+#: app/templates/dashboard_base.html:45
 msgid "Overview Statistics"
 msgstr ""
 
-#: app/templates/dashboard_base.html:45
+#: app/templates/dashboard_base.html:51 app/templates/reports_view.html:321
 msgid "Job Vacancies"
 msgstr ""
 
-#: app/templates/dashboard_base.html:48
+#: app/templates/dashboard_base.html:54
 msgid "Job Applications"
 msgstr ""
 
-#: app/templates/dashboard_base.html:51
+#: app/templates/dashboard_base.html:57
 msgid "Contact Requests"
 msgstr ""
 
-#: app/templates/dashboard_base.html:54
-msgid "Live Support Chats"
-msgstr ""
-
-#: app/templates/dashboard_base.html:62
+#: app/templates/dashboard_base.html:65
 msgid "Sign Out"
 msgstr ""
 
@@ -355,51 +331,51 @@ msgstr ""
 msgid "LEARN MORE"
 msgstr ""
 
-#: app/templates/home.html:58
+#: app/templates/home.html:59
 msgid "Open Vacancies"
 msgstr ""
 
-#: app/templates/admin/vacancies.html:18 app/templates/home.html:70
+#: app/templates/admin/vacancies.html:18 app/templates/home.html:71
 msgid "Applications"
 msgstr ""
 
-#: app/templates/home.html:82 app/templates/hr/faculties_departments.html:18
+#: app/templates/home.html:83 app/templates/hr/faculties_departments.html:18
 msgid "Faculties"
 msgstr ""
 
-#: app/templates/admin/dashboard.html:37 app/templates/home.html:94
+#: app/templates/admin/dashboard.html:37 app/templates/home.html:95
 msgid "Interviews Scheduled"
 msgstr ""
 
-#: app/templates/home.html:103
+#: app/templates/home.html:104
 msgid "INNOVATION • EDUCATION • EXCELLENCE"
 msgstr ""
 
-#: app/templates/home.html:114
+#: app/templates/home.html:115
 msgid "Latest Open Positions"
 msgstr ""
 
-#: app/templates/home.html:115
+#: app/templates/home.html:116
 msgid "Explore our most recently published academic and administrative roles."
 msgstr ""
 
-#: app/templates/home.html:137 app/templates/vacancies.html:97
+#: app/templates/home.html:142 app/templates/vacancies.html:101
 msgid "Deadline:"
 msgstr ""
 
-#: app/templates/home.html:143 app/templates/vacancies.html:103
+#: app/templates/home.html:148 app/templates/vacancies.html:107
 msgid "View Details"
 msgstr ""
 
-#: app/templates/home.html:154
+#: app/templates/home.html:159
 msgid "View All Opportunities"
 msgstr ""
 
-#: app/templates/home.html:161 app/templates/vacancies.html:115
+#: app/templates/home.html:166 app/templates/vacancies.html:119
 msgid "No Open Positions Found"
 msgstr ""
 
-#: app/templates/home.html:162
+#: app/templates/home.html:167
 msgid "There are currently no open vacancies. Please check back later."
 msgstr ""
 
@@ -436,8 +412,404 @@ msgstr ""
 msgid "Secure Login"
 msgstr ""
 
-#: app/templates/login.html:47
-msgid "Default Development Logins:"
+#: app/templates/reports_view.html:142
+msgid "Official Recruitment & HR Analytics Report"
+msgstr ""
+
+#: app/templates/reports_view.html:145
+msgid "Generated on"
+msgstr ""
+
+#: app/templates/reports_view.html:146
+msgid "Generated by"
+msgstr ""
+
+#: app/templates/reports_view.html:155
+msgid "Recruitment Reports & Analytics"
+msgstr ""
+
+#: app/templates/reports_view.html:158
+msgid ""
+"Comprehensive statistical data, application funnel, department metrics, "
+"and performance reports."
+msgstr ""
+
+#: app/templates/reports_view.html:171
+msgid "Export Applicants CSV"
+msgstr ""
+
+#: app/templates/reports_view.html:176
+msgid "Export Vacancies CSV"
+msgstr ""
+
+#: app/templates/reports_view.html:180
+msgid "Print Report"
+msgstr ""
+
+#: app/templates/reports_view.html:191
+msgid "Timeframe"
+msgstr ""
+
+#: app/templates/reports_view.html:193
+msgid "All Time"
+msgstr ""
+
+#: app/templates/reports_view.html:195
+msgid "Today"
+msgstr ""
+
+#: app/templates/reports_view.html:197
+msgid "Last 7 Days"
+msgstr ""
+
+#: app/templates/reports_view.html:199
+msgid "Last 30 Days"
+msgstr ""
+
+#: app/templates/reports_view.html:201
+msgid "This Month"
+msgstr ""
+
+#: app/templates/reports_view.html:203
+msgid "This Year"
+msgstr ""
+
+#: app/templates/reports_view.html:207
+msgid "Advanced Filters"
+msgstr ""
+
+#: app/templates/reports_view.html:218
+msgid "From Date"
+msgstr ""
+
+#: app/templates/reports_view.html:225
+msgid "To Date"
+msgstr ""
+
+#: app/templates/reports_view.html:232 app/templates/vacancies.html:30
+msgid "Faculty"
+msgstr ""
+
+#: app/templates/reports_view.html:234
+msgid "All Faculties"
+msgstr ""
+
+#: app/templates/hr/vacancy_form.html:50 app/templates/reports_view.html:245
+#: app/templates/vacancies.html:43
+msgid "Department"
+msgstr ""
+
+#: app/templates/reports_view.html:247
+msgid "All Departments"
+msgstr ""
+
+#: app/templates/admin/applications.html:18
+#: app/templates/admin/dashboard.html:120 app/templates/admin/vacancies.html:19
+#: app/templates/hr/applications.html:18 app/templates/hr/dashboard.html:48
+#: app/templates/hr/vacancies.html:21 app/templates/reports_view.html:258
+#: app/templates/reports_view.html:453 app/templates/reports_view.html:524
+#: app/templates/reports_view.html:662
+msgid "Status"
+msgstr ""
+
+#: app/templates/reports_view.html:260
+msgid "All Statuses"
+msgstr ""
+
+#: app/templates/reports_view.html:261
+msgid "Received (New)"
+msgstr ""
+
+#: app/templates/admin/dashboard.html:65
+#: app/templates/hr/application_details.html:24
+#: app/templates/hr/application_details.html:156
+#: app/templates/hr/applications.html:46 app/templates/hr/dashboard.html:65
+#: app/templates/reports_view.html:262 app/templates/reports_view.html:488
+#: app/templates/status.html:49 app/templates/status.html:108
+msgid "Under Review"
+msgstr ""
+
+#: app/templates/admin/applications.html:48
+#: app/templates/admin/dashboard.html:76 app/templates/admin/dashboard.html:137
+#: app/templates/hr/application_details.html:157
+#: app/templates/hr/applications.html:48 app/templates/hr/dashboard.html:67
+#: app/templates/reports_view.html:263 app/templates/reports_view.html:490
+#: app/templates/status.html:116
+msgid "Interview"
+msgstr ""
+
+#: app/templates/reports_view.html:264
+msgid "Accepted / Hired"
+msgstr ""
+
+#: app/templates/admin/applications.html:52
+#: app/templates/admin/dashboard.html:141
+#: app/templates/hr/application_details.html:30
+#: app/templates/hr/application_details.html:159
+#: app/templates/hr/applications.html:52 app/templates/hr/dashboard.html:71
+#: app/templates/reports_view.html:265 app/templates/reports_view.html:494
+#: app/templates/reports_view.html:528
+msgid "Rejected"
+msgstr ""
+
+#: app/templates/reports_view.html:272
+msgid "Filter"
+msgstr ""
+
+#: app/templates/reports_view.html:274
+msgid "Reset All Filters"
+msgstr ""
+
+#: app/templates/reports_view.html:289 app/templates/reports_view.html:833
+msgid "Total Applicants"
+msgstr ""
+
+#: app/templates/reports_view.html:292
+msgid "new dossiers"
+msgstr ""
+
+#: app/templates/reports_view.html:305
+msgid "Acceptance Rate"
+msgstr ""
+
+#: app/templates/reports_view.html:308
+msgid "hired"
+msgstr ""
+
+#: app/templates/reports_view.html:308
+msgid "rejected"
+msgstr ""
+
+#: app/templates/reports_view.html:324
+msgid "open"
+msgstr ""
+
+#: app/templates/reports_view.html:324
+msgid "closed"
+msgstr ""
+
+#: app/templates/reports_view.html:337
+msgid "Interviews Conducted"
+msgstr ""
+
+#: app/templates/reports_view.html:340
+msgid "online"
+msgstr ""
+
+#: app/templates/reports_view.html:340
+msgid "on-site"
+msgstr ""
+
+#: app/templates/reports_view.html:357
+msgid "Application Submission Trend"
+msgstr ""
+
+#: app/templates/reports_view.html:359
+msgid "Filtered Timeline"
+msgstr ""
+
+#: app/templates/reports_view.html:371
+msgid "Application Status Funnel"
+msgstr ""
+
+#: app/templates/reports_view.html:385
+msgid "Applicants by Faculty & Department"
+msgstr ""
+
+#: app/templates/reports_view.html:397
+msgid "Applicant Education Level"
+msgstr ""
+
+#: app/templates/reports_view.html:412
+msgid "Applicants Roster"
+msgstr ""
+
+#: app/templates/reports_view.html:417
+msgid "Vacancy Performance"
+msgstr ""
+
+#: app/templates/reports_view.html:422
+msgid "Faculties & Depts Analysis"
+msgstr ""
+
+#: app/templates/reports_view.html:427
+msgid "Contact Inquiries"
+msgstr ""
+
+#: app/templates/reports_view.html:438
+msgid ""
+"Showing filtered applicant records with candidate details and current "
+"recruitment status."
+msgstr ""
+
+#: app/templates/reports_view.html:440
+msgid "Search candidate or position..."
+msgstr ""
+
+#: app/templates/reports_view.html:448
+msgid "Application No"
+msgstr ""
+
+#: app/templates/hr/dashboard.html:45 app/templates/reports_view.html:449
+msgid "Candidate"
+msgstr ""
+
+#: app/templates/reports_view.html:450
+msgid "Position / Unit"
+msgstr ""
+
+#: app/templates/reports_view.html:451
+msgid "Education"
+msgstr ""
+
+#: app/templates/admin/applications.html:17
+#: app/templates/hr/applications.html:17 app/templates/reports_view.html:452
+msgid "Submitted Date"
+msgstr ""
+
+#: app/templates/hr/dashboard.html:49 app/templates/reports_view.html:454
+msgid "Action"
+msgstr ""
+
+#: app/templates/admin/applications.html:44
+#: app/templates/admin/dashboard.html:54 app/templates/admin/dashboard.html:133
+#: app/templates/hr/application_details.html:22
+#: app/templates/hr/application_details.html:155
+#: app/templates/hr/applications.html:44 app/templates/hr/dashboard.html:63
+#: app/templates/reports_view.html:486 app/templates/status.html:47
+msgid "Received"
+msgstr ""
+
+#: app/templates/admin/applications.html:50
+#: app/templates/admin/dashboard.html:139
+#: app/templates/hr/application_details.html:28
+#: app/templates/hr/applications.html:50 app/templates/hr/dashboard.html:69
+#: app/templates/reports_view.html:492 app/templates/reports_view.html:527
+#: app/templates/reports_view.html:593 app/templates/reports_view.html:626
+msgid "Accepted"
+msgstr ""
+
+#: app/templates/reports_view.html:510
+msgid "No applicant records match the selected filter criteria."
+msgstr ""
+
+#: app/templates/admin/vacancies.html:14 app/templates/reports_view.html:521
+msgid "Position Title"
+msgstr ""
+
+#: app/templates/reports_view.html:522
+msgid "Academic Unit"
+msgstr ""
+
+#: app/templates/admin/vacancies.html:16 app/templates/reports_view.html:523
+msgid "Type"
+msgstr ""
+
+#: app/templates/admin/vacancies.html:17 app/templates/hr/vacancies.html:20
+#: app/templates/reports_view.html:525
+msgid "Deadline"
+msgstr ""
+
+#: app/templates/reports_view.html:526
+msgid "Total Apps"
+msgstr ""
+
+#: app/templates/reports_view.html:529
+msgid "Acceptance %"
+msgstr ""
+
+#: app/templates/admin/vacancies.html:44 app/templates/hr/vacancies.html:44
+#: app/templates/reports_view.html:552
+msgid "Open"
+msgstr ""
+
+#: app/templates/admin/vacancies.html:46 app/templates/hr/vacancies.html:46
+#: app/templates/hr/vacancy_form.html:79 app/templates/reports_view.html:554
+#: app/templates/vacancy_details.html:27
+msgid "Closed"
+msgstr ""
+
+#: app/templates/reports_view.html:570
+msgid "No vacancy records found."
+msgstr ""
+
+#: app/templates/reports_view.html:584
+msgid "Faculties Breakdown"
+msgstr ""
+
+#: app/templates/reports_view.html:590
+msgid "Faculty Name"
+msgstr ""
+
+#: app/templates/reports_view.html:592 app/templates/reports_view.html:625
+msgid "Applicants"
+msgstr ""
+
+#: app/templates/reports_view.html:606
+msgid "No faculties registered."
+msgstr ""
+
+#: app/templates/reports_view.html:617
+msgid "Departments Breakdown"
+msgstr ""
+
+#: app/templates/reports_view.html:623
+msgid "Department Name"
+msgstr ""
+
+#: app/templates/reports_view.html:639
+msgid "No departments registered."
+msgstr ""
+
+#: app/templates/reports_view.html:652
+msgid ""
+"Summary of candidate contact inquiries received during the selected "
+"timeframe."
+msgstr ""
+
+#: app/templates/reports_view.html:653
+msgid "resolved"
+msgstr ""
+
+#: app/templates/reports_view.html:653
+msgid "pending"
+msgstr ""
+
+#: app/templates/reports_view.html:659
+msgid "Sender"
+msgstr ""
+
+#: app/templates/reports_view.html:660
+msgid "Message Excerpt"
+msgstr ""
+
+#: app/templates/reports_view.html:661
+msgid "Received At"
+msgstr ""
+
+#: app/templates/hr/contact_requests.html:30
+#: app/templates/reports_view.html:676
+msgid "Resolved"
+msgstr ""
+
+#: app/templates/reports_view.html:678
+msgid "Pending"
+msgstr ""
+
+#: app/templates/reports_view.html:684
+msgid "No contact inquiries received."
+msgstr ""
+
+#: app/templates/reports_view.html:737
+msgid "Applications Submitted"
+msgstr ""
+
+#: app/templates/reports_view.html:831
+msgid "No Applications Yet"
+msgstr ""
+
+#: app/templates/reports_view.html:871
+msgid "No Data"
 msgstr ""
 
 #: app/templates/status.html:9
@@ -466,23 +838,6 @@ msgstr ""
 msgid "Tracking Code:"
 msgstr ""
 
-#: app/templates/admin/applications.html:40
-#: app/templates/admin/dashboard.html:54 app/templates/admin/dashboard.html:133
-#: app/templates/hr/application_details.html:22
-#: app/templates/hr/application_details.html:155
-#: app/templates/hr/applications.html:40 app/templates/hr/dashboard.html:72
-#: app/templates/status.html:47
-msgid "Received"
-msgstr ""
-
-#: app/templates/admin/dashboard.html:65
-#: app/templates/hr/application_details.html:24
-#: app/templates/hr/application_details.html:156
-#: app/templates/hr/applications.html:42 app/templates/hr/dashboard.html:74
-#: app/templates/status.html:49 app/templates/status.html:104
-msgid "Under Review"
-msgstr ""
-
 #: app/templates/hr/application_details.html:26 app/templates/status.html:51
 msgid "Interview Scheduled"
 msgstr ""
@@ -503,73 +858,69 @@ msgstr ""
 msgid "Position Applied:"
 msgstr ""
 
-#: app/templates/status.html:69 app/templates/vacancy_details.html:36
+#: app/templates/status.html:70 app/templates/vacancy_details.html:39
 msgid "Department:"
 msgstr ""
 
-#: app/templates/status.html:72
+#: app/templates/status.html:72 app/templates/vacancy_details.html:36
+msgid "Faculty:"
+msgstr ""
+
+#: app/templates/status.html:76
 msgid "Submission Date:"
 msgstr ""
 
-#: app/templates/status.html:77
+#: app/templates/status.html:81
 msgid "Recruitment Workflow Timeline"
 msgstr ""
 
-#: app/templates/status.html:96
+#: app/templates/status.html:100
 msgid "Submitted"
 msgstr ""
 
-#: app/templates/admin/applications.html:44
-#: app/templates/admin/dashboard.html:76 app/templates/admin/dashboard.html:137
-#: app/templates/hr/application_details.html:157
-#: app/templates/hr/applications.html:44 app/templates/hr/dashboard.html:76
-#: app/templates/status.html:112
-msgid "Interview"
-msgstr ""
-
-#: app/templates/status.html:120
+#: app/templates/status.html:124
 msgid "Decision"
 msgstr ""
 
-#: app/templates/status.html:129
+#: app/templates/status.html:133
 msgid "Interview Schedule Details"
 msgstr ""
 
-#: app/templates/status.html:132
+#: app/templates/status.html:136
 msgid "Interview Mode:"
 msgstr ""
 
-#: app/templates/status.html:138
+#: app/templates/status.html:142
 msgid "Date & Time (Tashkent Time):"
 msgstr ""
 
-#: app/templates/hr/application_details.html:124 app/templates/status.html:142
+#: app/templates/hr/application_details.html:124 app/templates/status.html:146
 msgid "Zoom Link:"
 msgstr ""
 
-#: app/templates/status.html:142
+#: app/templates/status.html:146
 msgid "University Location:"
 msgstr ""
 
-#: app/templates/hr/application_details.html:133 app/templates/status.html:151
+#: app/templates/hr/application_details.html:133 app/templates/status.html:155
 msgid "HR Notes:"
 msgstr ""
 
-#: app/templates/status.html:162
+#: app/templates/status.html:166
 msgid "Application Successful!"
 msgstr ""
 
-#: app/templates/status.html:163
+#: app/templates/status.html:167
 msgid ""
 "We have accepted your application. Our recruitment staff will email you "
 "with your official employment agreement and orientation details."
 msgstr ""
 
-#: app/templates/status.html:167
+#: app/templates/status.html:171
 msgid "Application Completed"
 msgstr ""
 
-#: app/templates/status.html:168
+#: app/templates/status.html:172
 msgid ""
 "Thank you for your application and interest in Al-Khwarizmi University. "
 "Regrettably, we have decided to advance other candidates at this time."
@@ -593,16 +944,8 @@ msgstr ""
 msgid "e.g., Professor, Assistant..."
 msgstr ""
 
-#: app/templates/vacancies.html:30
-msgid "Faculty"
-msgstr ""
-
 #: app/templates/vacancies.html:32
 msgid "-- All Faculties --"
-msgstr ""
-
-#: app/templates/hr/vacancy_form.html:29 app/templates/vacancies.html:43
-msgid "Department"
 msgstr ""
 
 #: app/templates/vacancies.html:45
@@ -625,7 +968,7 @@ msgstr ""
 msgid "vacancies found"
 msgstr ""
 
-#: app/templates/vacancies.html:116
+#: app/templates/vacancies.html:120
 msgid ""
 "No vacancies match your active search filters. Try adjusting your "
 "selections."
@@ -635,52 +978,43 @@ msgstr ""
 msgid "Back to Vacancies"
 msgstr ""
 
-#: app/templates/hr/vacancy_form.html:49 app/templates/vacancy_details.html:23
+#: app/templates/hr/vacancy_form.html:78 app/templates/vacancy_details.html:23
 msgid "Open & Active"
 msgstr ""
 
-#: app/templates/admin/vacancies.html:42 app/templates/hr/vacancies.html:42
-#: app/templates/hr/vacancy_form.html:50 app/templates/vacancy_details.html:27
-msgid "Closed"
-msgstr ""
-
-#: app/templates/vacancy_details.html:35
-msgid "Faculty:"
-msgstr ""
-
-#: app/templates/vacancy_details.html:42
+#: app/templates/vacancy_details.html:46
 msgid "Job Description"
 msgstr ""
 
-#: app/templates/vacancy_details.html:49
+#: app/templates/vacancy_details.html:53
 msgid "Candidate Requirements"
 msgstr ""
 
-#: app/templates/vacancy_details.html:56
+#: app/templates/vacancy_details.html:60
 msgid "Responsibilities"
 msgstr ""
 
-#: app/templates/vacancy_details.html:66
+#: app/templates/vacancy_details.html:70
 msgid "Job Overview"
 msgstr ""
 
-#: app/templates/hr/vacancies.html:19 app/templates/vacancy_details.html:74
+#: app/templates/hr/vacancies.html:19 app/templates/vacancy_details.html:78
 msgid "Salary"
 msgstr ""
 
-#: app/templates/vacancy_details.html:84
+#: app/templates/vacancy_details.html:88
 msgid "Employment Type"
 msgstr ""
 
-#: app/templates/hr/vacancy_form.html:41 app/templates/vacancy_details.html:94
+#: app/templates/hr/vacancy_form.html:68 app/templates/vacancy_details.html:98
 msgid "Application Deadline"
 msgstr ""
 
-#: app/templates/vacancy_details.html:102
+#: app/templates/vacancy_details.html:106
 msgid "Apply For Position"
 msgstr ""
 
-#: app/templates/vacancy_details.html:106
+#: app/templates/vacancy_details.html:110
 msgid "Applications Closed"
 msgstr ""
 
@@ -696,7 +1030,7 @@ msgstr ""
 
 #: app/templates/admin/applications.html:15
 #: app/templates/admin/interviews.html:15 app/templates/hr/applications.html:15
-#: app/templates/hr/dashboard.html:55
+#: app/templates/hr/dashboard.html:46
 msgid "Position Applied"
 msgstr ""
 
@@ -704,44 +1038,17 @@ msgstr ""
 msgid "Degree / School"
 msgstr ""
 
-#: app/templates/admin/applications.html:17
-#: app/templates/hr/applications.html:17
-msgid "Submitted Date"
-msgstr ""
-
-#: app/templates/admin/applications.html:18
-#: app/templates/admin/dashboard.html:120 app/templates/admin/vacancies.html:19
-#: app/templates/hr/applications.html:18 app/templates/hr/dashboard.html:57
-#: app/templates/hr/vacancies.html:21
-msgid "Status"
-msgstr ""
-
 #: app/templates/admin/applications.html:19
-#: app/templates/admin/applications.html:42
+#: app/templates/admin/applications.html:46
 #: app/templates/admin/dashboard.html:29 app/templates/admin/dashboard.html:135
-#: app/templates/hr/applications.html:19 app/templates/hr/applications.html:53
+#: app/templates/hr/applications.html:19 app/templates/hr/applications.html:57
 #: app/templates/hr/dashboard.html:20
 msgid "Review"
 msgstr ""
 
-#: app/templates/admin/applications.html:46
-#: app/templates/admin/dashboard.html:139
-#: app/templates/hr/application_details.html:28
-#: app/templates/hr/applications.html:46 app/templates/hr/dashboard.html:78
-msgid "Accepted"
-msgstr ""
-
-#: app/templates/admin/applications.html:48
-#: app/templates/admin/dashboard.html:141
-#: app/templates/hr/application_details.html:30
-#: app/templates/hr/application_details.html:159
-#: app/templates/hr/applications.html:48 app/templates/hr/dashboard.html:80
-msgid "Rejected"
-msgstr ""
-
-#: app/templates/admin/applications.html:65
-#: app/templates/admin/dashboard.html:151 app/templates/hr/applications.html:64
-#: app/templates/hr/dashboard.html:95
+#: app/templates/admin/applications.html:69
+#: app/templates/admin/dashboard.html:151 app/templates/hr/applications.html:68
+#: app/templates/hr/dashboard.html:86
 msgid "No job applications submitted yet."
 msgstr ""
 
@@ -805,15 +1112,28 @@ msgstr ""
 msgid "Location / Meeting Link"
 msgstr ""
 
-#: app/templates/admin/interviews.html:34
+#: app/templates/admin/interviews.html:19 app/templates/admin/users.html:23
+#: app/templates/hr/vacancies.html:22
+msgid "Actions"
+msgstr ""
+
+#: app/templates/admin/interviews.html:39
 msgid "Online"
 msgstr ""
 
-#: app/templates/admin/interviews.html:36
+#: app/templates/admin/interviews.html:41
 msgid "On-Site"
 msgstr ""
 
+#: app/templates/admin/interviews.html:55
+msgid "Are you sure you want to cancel and delete this scheduled interview?"
+msgstr ""
+
 #: app/templates/admin/interviews.html:57
+msgid "Cancel Interview"
+msgstr ""
+
+#: app/templates/admin/interviews.html:70
 msgid "No interviews scheduled yet."
 msgstr ""
 
@@ -833,71 +1153,49 @@ msgstr ""
 msgid "University Name (UZ)"
 msgstr ""
 
-#: app/templates/admin/settings.html:24
-msgid "University Name (RU)"
-msgstr ""
-
-#: app/templates/admin/settings.html:32
-msgid "Telegram Bot Alerts"
-msgstr ""
-
-#: app/templates/admin/settings.html:34
-msgid ""
-"Receive immediate mobile notifications on new applications, contact form "
-"submissions, chat messages, and reminders."
-msgstr ""
-
-#: app/templates/admin/settings.html:38
-msgid "Telegram Bot Token"
-msgstr ""
-
-#: app/templates/admin/settings.html:42
-msgid "Target Chat / Group ID"
-msgstr ""
-
-#: app/templates/admin/settings.html:50
+#: app/templates/admin/settings.html:28
 msgid "SMTP Outbound Email Service"
 msgstr ""
 
-#: app/templates/admin/settings.html:52
+#: app/templates/admin/settings.html:30
 msgid ""
 "Configure connection parameters to send automatic confirmation emails, "
 "interview invitations, and decision notices to applicants."
 msgstr ""
 
-#: app/templates/admin/settings.html:56
+#: app/templates/admin/settings.html:34
 msgid "SMTP Host"
 msgstr ""
 
-#: app/templates/admin/settings.html:60
+#: app/templates/admin/settings.html:38
 msgid "SMTP Port"
 msgstr ""
 
-#: app/templates/admin/settings.html:64
+#: app/templates/admin/settings.html:42
 msgid "Enable TLS"
 msgstr ""
 
-#: app/templates/admin/settings.html:66
+#: app/templates/admin/settings.html:44
 msgid "Yes (Recommended)"
 msgstr ""
 
-#: app/templates/admin/settings.html:67
+#: app/templates/admin/settings.html:45
 msgid "No"
 msgstr ""
 
-#: app/templates/admin/settings.html:72
+#: app/templates/admin/settings.html:50
 msgid "SMTP Username / Email"
 msgstr ""
 
-#: app/templates/admin/settings.html:76
+#: app/templates/admin/settings.html:54
 msgid "SMTP Password"
 msgstr ""
 
-#: app/templates/admin/settings.html:80
+#: app/templates/admin/settings.html:58
 msgid "From Sender Address"
 msgstr ""
 
-#: app/templates/admin/settings.html:88
+#: app/templates/admin/settings.html:66
 msgid "Save Configurations"
 msgstr ""
 
@@ -911,10 +1209,6 @@ msgstr ""
 
 #: app/templates/admin/users.html:22
 msgid "Joined Date"
-msgstr ""
-
-#: app/templates/admin/users.html:23 app/templates/hr/vacancies.html:22
-msgid "Actions"
 msgstr ""
 
 #: app/templates/admin/users.html:52
@@ -934,11 +1228,11 @@ msgid "Enter new password"
 msgstr ""
 
 #: app/templates/admin/users.html:72 app/templates/admin/users.html:97
-#: app/templates/admin/users.html:147 app/templates/hr/vacancy_form.html:186
+#: app/templates/admin/users.html:147 app/templates/hr/vacancy_form.html:197
 msgid "Cancel"
 msgstr ""
 
-#: app/templates/admin/users.html:73 app/templates/hr/vacancy_form.html:188
+#: app/templates/admin/users.html:73 app/templates/hr/vacancy_form.html:200
 msgid "Save Changes"
 msgstr ""
 
@@ -982,27 +1276,11 @@ msgstr ""
 msgid "University Vacancies Overview"
 msgstr ""
 
-#: app/templates/admin/vacancies.html:14
-msgid "Position Title"
-msgstr ""
-
 #: app/templates/admin/vacancies.html:15 app/templates/hr/vacancies.html:18
 msgid "Faculty / Department"
 msgstr ""
 
-#: app/templates/admin/vacancies.html:16
-msgid "Type"
-msgstr ""
-
-#: app/templates/admin/vacancies.html:17 app/templates/hr/vacancies.html:20
-msgid "Deadline"
-msgstr ""
-
-#: app/templates/admin/vacancies.html:40 app/templates/hr/vacancies.html:40
-msgid "Open"
-msgstr ""
-
-#: app/templates/admin/vacancies.html:53
+#: app/templates/admin/vacancies.html:57
 msgid "No vacancies created yet."
 msgstr ""
 
@@ -1139,51 +1417,17 @@ msgstr ""
 msgid "Highest Degree"
 msgstr ""
 
-#: app/templates/hr/chats.html:6
-msgid "Live Support Desk"
+#: app/templates/hr/contact_requests.html:7
+msgid ""
+"Visitor Contact\n"
+"            Requests"
 msgstr ""
 
-#: app/templates/hr/chats.html:13
-msgid "Active Visitors"
-msgstr ""
-
-#: app/templates/hr/chats.html:35
-msgid "No messages yet."
-msgstr ""
-
-#: app/templates/hr/chats.html:43
-msgid "No visitor chat sessions yet."
-msgstr ""
-
-#: app/templates/hr/chats.html:53
-msgid "Select a conversation to start chatting"
-msgstr ""
-
-#: app/templates/hr/chats.html:61
-msgid "Active conversations will display messaging and shared files here."
-msgstr ""
-
-#: app/templates/hr/chats.html:70
-msgid "Visitor is typing..."
-msgstr ""
-
-#: app/templates/hr/chats.html:80
-msgid "Type your response..."
-msgstr ""
-
-#: app/templates/hr/contact_requests.html:6
-msgid "Visitor Contact Requests"
-msgstr ""
-
-#: app/templates/hr/contact_requests.html:25
-msgid "Resolved"
-msgstr ""
-
-#: app/templates/hr/contact_requests.html:30
+#: app/templates/hr/contact_requests.html:35
 msgid "Mark as Resolved"
 msgstr ""
 
-#: app/templates/hr/contact_requests.html:44
+#: app/templates/hr/contact_requests.html:50
 msgid "No contact requests received yet."
 msgstr ""
 
@@ -1203,31 +1447,15 @@ msgstr ""
 msgid "Respond"
 msgstr ""
 
-#: app/templates/hr/dashboard.html:37
-msgid "Active Chat Sessions"
-msgstr ""
-
 #: app/templates/hr/dashboard.html:38
-msgid "Open Chat"
-msgstr ""
-
-#: app/templates/hr/dashboard.html:47
 msgid "Applicants Awaiting Review"
 msgstr ""
 
-#: app/templates/hr/dashboard.html:54
-msgid "Candidate"
-msgstr ""
-
-#: app/templates/hr/dashboard.html:56
+#: app/templates/hr/dashboard.html:47
 msgid "Academic Degree"
 msgstr ""
 
-#: app/templates/hr/dashboard.html:58
-msgid "Action"
-msgstr ""
-
-#: app/templates/hr/dashboard.html:85
+#: app/templates/hr/dashboard.html:76
 msgid "Review Details"
 msgstr ""
 
@@ -1265,47 +1493,39 @@ msgstr ""
 msgid "Faculty Name (Uzbek)"
 msgstr ""
 
-#: app/templates/hr/faculties_departments.html:61
-msgid "Faculty Name (Russian)"
-msgstr ""
-
-#: app/templates/hr/faculties_departments.html:65
+#: app/templates/hr/faculties_departments.html:62
 msgid "Create Faculty"
 msgstr ""
 
-#: app/templates/hr/faculties_departments.html:73
+#: app/templates/hr/faculties_departments.html:70
 msgid "Departments"
 msgstr ""
 
-#: app/templates/hr/faculties_departments.html:86
+#: app/templates/hr/faculties_departments.html:83
 msgid "Are you sure you want to delete this department?"
 msgstr ""
 
-#: app/templates/hr/faculties_departments.html:88
+#: app/templates/hr/faculties_departments.html:85
 msgid "Delete Department"
 msgstr ""
 
-#: app/templates/hr/faculties_departments.html:95
+#: app/templates/hr/faculties_departments.html:92
 msgid "No departments registered yet."
 msgstr ""
 
-#: app/templates/hr/faculties_departments.html:101
+#: app/templates/hr/faculties_departments.html:98
 msgid "Add New Department"
 msgstr ""
 
-#: app/templates/hr/faculties_departments.html:107
+#: app/templates/hr/faculties_departments.html:104
 msgid "Department Name (English)"
 msgstr ""
 
-#: app/templates/hr/faculties_departments.html:112
+#: app/templates/hr/faculties_departments.html:109
 msgid "Department Name (Uzbek)"
 msgstr ""
 
-#: app/templates/hr/faculties_departments.html:117
-msgid "Department Name (Russian)"
-msgstr ""
-
-#: app/templates/hr/faculties_departments.html:121
+#: app/templates/hr/faculties_departments.html:115
 msgid "Create Department"
 msgstr ""
 
@@ -1321,15 +1541,15 @@ msgstr ""
 msgid "Title"
 msgstr ""
 
-#: app/templates/hr/vacancies.html:46
+#: app/templates/hr/vacancies.html:50
 msgid "Edit Vacancy"
 msgstr ""
 
-#: app/templates/hr/vacancies.html:52
+#: app/templates/hr/vacancies.html:56
 msgid "Close Vacancy"
 msgstr ""
 
-#: app/templates/hr/vacancies.html:66
+#: app/templates/hr/vacancies.html:70
 msgid "No vacancies created yet. Click Create Vacancy to add one."
 msgstr ""
 
@@ -1341,115 +1561,93 @@ msgstr ""
 msgid "Create New Vacancy"
 msgstr ""
 
-#: app/templates/hr/vacancy_form.html:14
+#: app/templates/hr/vacancy_form.html:20
 msgid "Target Academic Placement"
 msgstr ""
 
-#: app/templates/hr/vacancy_form.html:17
+#: app/templates/hr/vacancy_form.html:23
+msgid ""
+"Select either a Faculty or a Department — only one can be assigned per "
+"vacancy."
+msgstr ""
+
+#: app/templates/hr/vacancy_form.html:32
 msgid "Academic Faculty"
 msgstr ""
 
-#: app/templates/hr/vacancy_form.html:19
+#: app/templates/hr/vacancy_form.html:35
 msgid "-- Choose Faculty --"
 msgstr ""
 
-#: app/templates/hr/vacancy_form.html:31
+#: app/templates/hr/vacancy_form.html:53
 msgid "-- Choose Department --"
 msgstr ""
 
-#: app/templates/hr/vacancy_form.html:47
+#: app/templates/hr/vacancy_form.html:76
 msgid "Publication Status"
 msgstr ""
 
-#: app/templates/hr/vacancy_form.html:57
+#: app/templates/hr/vacancy_form.html:86
 msgid "Multilingual Content Entry"
 msgstr ""
 
-#: app/templates/hr/vacancy_form.html:82
+#: app/templates/hr/vacancy_form.html:108
 msgid "Position Title (EN)"
 msgstr ""
 
-#: app/templates/hr/vacancy_form.html:86
+#: app/templates/hr/vacancy_form.html:114
 msgid "Position Type (EN)"
 msgstr ""
 
-#: app/templates/hr/vacancy_form.html:90
+#: app/templates/hr/vacancy_form.html:120
 msgid "Employment Type (EN)"
 msgstr ""
 
-#: app/templates/hr/vacancy_form.html:94
+#: app/templates/hr/vacancy_form.html:126
 msgid "Salary Details (EN)"
 msgstr ""
 
-#: app/templates/hr/vacancy_form.html:99
+#: app/templates/hr/vacancy_form.html:132
 msgid "Description (EN)"
 msgstr ""
 
-#: app/templates/hr/vacancy_form.html:103
+#: app/templates/hr/vacancy_form.html:137
 msgid "Requirements (EN)"
 msgstr ""
 
-#: app/templates/hr/vacancy_form.html:107
+#: app/templates/hr/vacancy_form.html:142
 msgid "Responsibilities (EN)"
 msgstr ""
 
-#: app/templates/hr/vacancy_form.html:117
+#: app/templates/hr/vacancy_form.html:153
 msgid "Position Title (UZ)"
 msgstr ""
 
-#: app/templates/hr/vacancy_form.html:121
+#: app/templates/hr/vacancy_form.html:159
 msgid "Position Type (UZ)"
 msgstr ""
 
-#: app/templates/hr/vacancy_form.html:125
+#: app/templates/hr/vacancy_form.html:165
 msgid "Employment Type (UZ)"
 msgstr ""
 
-#: app/templates/hr/vacancy_form.html:129
+#: app/templates/hr/vacancy_form.html:171
 msgid "Salary Details (UZ)"
 msgstr ""
 
-#: app/templates/hr/vacancy_form.html:134
+#: app/templates/hr/vacancy_form.html:177
 msgid "Description (UZ)"
 msgstr ""
 
-#: app/templates/hr/vacancy_form.html:138
+#: app/templates/hr/vacancy_form.html:182
 msgid "Requirements (UZ)"
 msgstr ""
 
-#: app/templates/hr/vacancy_form.html:142
+#: app/templates/hr/vacancy_form.html:187
 msgid "Responsibilities (UZ)"
 msgstr ""
 
-#: app/templates/hr/vacancy_form.html:152
-msgid "Position Title (RU)"
-msgstr ""
-
-#: app/templates/hr/vacancy_form.html:156
-msgid "Position Type (RU)"
-msgstr ""
-
-#: app/templates/hr/vacancy_form.html:160
-msgid "Employment Type (RU)"
-msgstr ""
-
-#: app/templates/hr/vacancy_form.html:164
-msgid "Salary Details (RU)"
-msgstr ""
-
-#: app/templates/hr/vacancy_form.html:169
-msgid "Description (RU)"
-msgstr ""
-
-#: app/templates/hr/vacancy_form.html:173
-msgid "Requirements (RU)"
-msgstr ""
-
-#: app/templates/hr/vacancy_form.html:177
-msgid "Responsibilities (RU)"
-msgstr ""
-
-#: app/templates/hr/vacancy_form.html:188
+#: app/templates/hr/vacancy_form.html:200
 msgid "Publish Vacancy"
 msgstr ""
 

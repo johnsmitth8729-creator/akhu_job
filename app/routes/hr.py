@@ -1,9 +1,10 @@
 import datetime
-from flask import Blueprint, render_template, request, redirect, url_for, flash, g
+from flask import Blueprint, render_template, request, redirect, url_for, flash, g, Response
 from flask_login import login_required, current_user
 from app.models import db, Vacancy, Faculty, Department, Application, Interview, ContactRequest
 from app.routes.utils import hr_required
 from app.routes.notifications import send_email_notification
+from app.routes.reports_helper import get_reports_data, generate_applications_csv, generate_vacancies_csv
 
 hr_bp = Blueprint('hr', __name__, url_prefix='/<any(en, uz):lang_code>/hr_recruiting')
 
@@ -492,4 +493,100 @@ def department_delete(dept_id):
     db.session.commit()
     flash('Department deleted successfully.', 'success')
     return redirect(url_for('hr.faculties_departments'))
+
+# ----------------- REPORTS & ANALYTICS -----------------
+@hr_bp.route('/reports')
+@login_required
+@hr_required
+def reports():
+    date_preset = request.args.get('date_preset', 'all')
+    start_date = request.args.get('start_date', '')
+    end_date = request.args.get('end_date', '')
+    faculty_id = request.args.get('faculty_id', '')
+    department_id = request.args.get('department_id', '')
+    vacancy_id = request.args.get('vacancy_id', '')
+    status = request.args.get('status', 'all')
+
+    data = get_reports_data(
+        start_date=start_date,
+        end_date=end_date,
+        faculty_id=faculty_id,
+        department_id=department_id,
+        vacancy_id=vacancy_id,
+        status=status,
+        date_preset=date_preset,
+        lang_code=g.lang_code
+    )
+
+    return render_template('hr/reports.html', **data)
+
+@hr_bp.route('/reports/export/applications')
+@login_required
+@hr_required
+def export_applications_csv():
+    date_preset = request.args.get('date_preset', 'all')
+    start_date = request.args.get('start_date', '')
+    end_date = request.args.get('end_date', '')
+    faculty_id = request.args.get('faculty_id', '')
+    department_id = request.args.get('department_id', '')
+    vacancy_id = request.args.get('vacancy_id', '')
+    status = request.args.get('status', 'all')
+
+    data = get_reports_data(
+        start_date=start_date,
+        end_date=end_date,
+        faculty_id=faculty_id,
+        department_id=department_id,
+        vacancy_id=vacancy_id,
+        status=status,
+        date_preset=date_preset,
+        lang_code=g.lang_code
+    )
+
+    csv_data = generate_applications_csv(data['filtered_applications'], lang_code=g.lang_code)
+    filename = f"akhu_hr_applications_report_{datetime.date.today().strftime('%Y%m%d')}.csv"
+    
+    return Response(
+        csv_data,
+        mimetype='text/csv',
+        headers={
+            'Content-Disposition': f'attachment; filename="{filename}"'
+        }
+    )
+
+@hr_bp.route('/reports/export/vacancies')
+@login_required
+@hr_required
+def export_vacancies_csv():
+    date_preset = request.args.get('date_preset', 'all')
+    start_date = request.args.get('start_date', '')
+    end_date = request.args.get('end_date', '')
+    faculty_id = request.args.get('faculty_id', '')
+    department_id = request.args.get('department_id', '')
+    vacancy_id = request.args.get('vacancy_id', '')
+    status = request.args.get('status', 'all')
+
+    data = get_reports_data(
+        start_date=start_date,
+        end_date=end_date,
+        faculty_id=faculty_id,
+        department_id=department_id,
+        vacancy_id=vacancy_id,
+        status=status,
+        date_preset=date_preset,
+        lang_code=g.lang_code
+    )
+
+    csv_data = generate_vacancies_csv(data['vacancies_performance'], lang_code=g.lang_code)
+    filename = f"akhu_hr_vacancies_report_{datetime.date.today().strftime('%Y%m%d')}.csv"
+    
+    return Response(
+        csv_data,
+        mimetype='text/csv',
+        headers={
+            'Content-Disposition': f'attachment; filename="{filename}"'
+        }
+    )
+
+
 
