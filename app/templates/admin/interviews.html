@@ -1,14 +1,46 @@
 {% extends 'dashboard_base.html' %}
+{% from 'pagination_macro.html' import render_pagination %}
 
 {% block dashboard_content %}
 <div class="glass-panel p-4 mb-4">
     <div class="d-flex justify-content-between align-items-center border-bottom border-secondary pb-3 mb-4 flex-wrap gap-2">
         <h3 class="text-white mb-0"><i class="bi bi-calendar3 me-2 text-warning"></i>{{ _('Scheduled Academic Interviews') }}</h3>
+        {% if pagination and pagination.total > 0 %}
+            <span class="badge bg-primary bg-opacity-25 text-primary border border-primary px-3 py-2">
+                {{ _('Total Interviews') }}: {{ pagination.total }}
+            </span>
+        {% endif %}
+    </div>
+
+    <!-- Filter & Control Bar -->
+    <div class="row g-3 mb-4 align-items-center">
+        <!-- Live Client Search -->
+        <div class="col-lg-4 col-md-5">
+            <div class="input-group input-group-sm">
+                <span class="input-group-text bg-dark text-secondary border-secondary"><i class="bi bi-search"></i></span>
+                <input type="text" id="interviewsSearch" class="form-control form-control-sm bg-dark text-white border-secondary" placeholder="{{ _('Search candidate or position...') }}">
+            </div>
+        </div>
+
+        <!-- Year Server Filter Form -->
+        <div class="col-lg-8 col-md-7">
+            <form method="GET" action="{{ url_for('admin.interviews') }}" class="d-flex gap-2 justify-content-md-end align-items-center flex-wrap">
+                <div class="d-flex align-items-center gap-1">
+                    <span class="text-secondary small fw-semibold"><i class="bi bi-calendar3 me-1"></i>{{ _('Year') }}:</span>
+                    <select name="year" class="form-select form-select-sm bg-dark text-white border-secondary" style="min-width: 110px;" onchange="this.form.submit()">
+                        <option value="all" {% if selected_year == 'all' %}selected{% endif %}>{{ _('All Years') }}</option>
+                        {% for y in available_years %}
+                            <option value="{{ y }}" {% if selected_year|string == y|string %}selected{% endif %}>{{ y }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </form>
+        </div>
     </div>
     
     {% if interviews %}
         <div class="table-responsive">
-            <table class="table table-dark table-hover align-middle mb-0">
+            <table class="table table-dark table-hover align-middle mb-0" id="interviewsTable">
                 <thead>
                     <tr class="text-muted small">
                         <th>{{ _('Applicant') }}</th>
@@ -27,11 +59,11 @@
                                 <span class="text-muted small" style="font-size: 0.75rem;">{{ interview.application.application_number }}</span>
                             </td>
                             <td>
-                                <div class="text-white small">{{ interview.application.vacancy.get_title(g.lang_code) }}</div>
+                                <div class="text-white small fw-semibold">{{ interview.application.vacancy.get_title(g.lang_code) }}</div>
                                 {% if interview.application.vacancy.department %}
-                                <span class="text-secondary small">{{ interview.application.vacancy.department.get_name(g.lang_code) }}</span>
+                                <span class="text-secondary small" style="font-size: 0.75rem;">{{ interview.application.vacancy.department.get_name(g.lang_code) }}</span>
                                 {% elif interview.application.vacancy.faculty %}
-                                <span class="text-secondary small">{{ interview.application.vacancy.faculty.get_name(g.lang_code) }}</span>
+                                <span class="text-secondary small" style="font-size: 0.75rem;">{{ interview.application.vacancy.faculty.get_name(g.lang_code) }}</span>
                                 {% endif %}
                             </td>
                             <td>
@@ -64,6 +96,10 @@
                 </tbody>
             </table>
         </div>
+
+        <!-- Pagination -->
+        {{ render_pagination(pagination, selected_year, 'all') }}
+
     {% else %}
         <div class="text-center py-5 text-muted small">
             <i class="bi bi-calendar3 mb-2" style="font-size: 2.5rem;"></i>
@@ -71,4 +107,22 @@
         </div>
     {% endif %}
 </div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('interviewsSearch');
+    if (searchInput) {
+        searchInput.addEventListener('input', function() {
+            const query = this.value.toLowerCase().trim();
+            const rows = document.querySelectorAll('#interviewsTable tbody tr');
+            rows.forEach(row => {
+                const text = row.textContent.toLowerCase();
+                row.style.display = text.includes(query) ? '' : 'none';
+            });
+        });
+    }
+});
+</script>
 {% endblock %}

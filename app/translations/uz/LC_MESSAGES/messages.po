@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-08-12 23:13+0500\n"
+"POT-Creation-Date: 2026-08-13 21:19+0500\n"
 "PO-Revision-Date: 2026-06-18 09:51+0500\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: uz\n"
@@ -34,8 +34,8 @@ msgstr "Quyidagi lavozimga ariza topshirilmoqda:"
 msgid "Personal Information"
 msgstr "Shaxsiy ma'lumotlar"
 
-#: app/templates/admin/users.html:19 app/templates/admin/users.html:59
-#: app/templates/admin/users.html:138 app/templates/apply.html:29
+#: app/templates/admin/users.html:29 app/templates/admin/users.html:69
+#: app/templates/admin/users.html:148 app/templates/apply.html:29
 msgid "Full Name"
 msgstr "To'liq ism-sharif"
 
@@ -51,8 +51,8 @@ msgstr "Tug'ilgan sana"
 msgid "Phone Number"
 msgstr "Telefon raqami"
 
-#: app/templates/admin/users.html:21 app/templates/admin/users.html:63
-#: app/templates/admin/users.html:142 app/templates/apply.html:44
+#: app/templates/admin/users.html:31 app/templates/admin/users.html:73
+#: app/templates/admin/users.html:152 app/templates/apply.html:44
 #: app/templates/contact.html:23
 msgid "Email Address"
 msgstr "Elektron pochta manzili"
@@ -343,7 +343,7 @@ msgstr "BATAFSIL MA'LUMOT"
 msgid "Open Vacancies"
 msgstr "Ochiq bo'sh ish o'rinlari"
 
-#: app/templates/admin/vacancies.html:18 app/templates/home.html:71
+#: app/templates/admin/vacancies.html:61 app/templates/home.html:71
 msgid "Applications"
 msgstr "Arizalar"
 
@@ -397,7 +397,7 @@ msgstr "Xodimlar portali"
 msgid "Access Admin and HR dashboards."
 msgstr ""
 
-#: app/templates/admin/users.html:20 app/templates/admin/users.html:130
+#: app/templates/admin/users.html:30 app/templates/admin/users.html:140
 #: app/templates/login.html:18
 msgid "Username"
 msgstr "Foydalanuvchi nomi"
@@ -406,11 +406,11 @@ msgstr "Foydalanuvchi nomi"
 msgid "Enter username"
 msgstr "Foydalanuvchi nomini kiriting"
 
-#: app/templates/admin/users.html:134 app/templates/login.html:26
+#: app/templates/admin/users.html:144 app/templates/login.html:26
 msgid "Password"
 msgstr "Parol"
 
-#: app/templates/admin/users.html:135 app/templates/login.html:29
+#: app/templates/admin/users.html:145 app/templates/login.html:29
 msgid "Enter password"
 msgstr "Parolni kiriting"
 
@@ -515,38 +515,47 @@ msgstr "Bo'lim"
 msgid "All Departments"
 msgstr "Barcha kafedralar / bo'limlar"
 
-#: app/templates/admin/applications.html:18
-#: app/templates/admin/dashboard.html:120 app/templates/admin/vacancies.html:19
-#: app/templates/hr/applications.html:18 app/templates/hr/dashboard.html:48
-#: app/templates/hr/vacancies.html:21 app/templates/reports_view.html:258
-#: app/templates/reports_view.html:453 app/templates/reports_view.html:524
-#: app/templates/reports_view.html:662
+#: app/templates/admin/applications.html:41
+#: app/templates/admin/applications.html:64
+#: app/templates/admin/dashboard.html:120 app/templates/admin/vacancies.html:41
+#: app/templates/admin/vacancies.html:62 app/templates/hr/applications.html:41
+#: app/templates/hr/applications.html:64 app/templates/hr/dashboard.html:48
+#: app/templates/hr/vacancies.html:39 app/templates/hr/vacancies.html:59
+#: app/templates/reports_view.html:258 app/templates/reports_view.html:453
+#: app/templates/reports_view.html:524 app/templates/reports_view.html:662
 msgid "Status"
 msgstr "Holat"
 
-#: app/templates/reports_view.html:260
+#: app/templates/admin/applications.html:43
+#: app/templates/admin/vacancies.html:43 app/templates/hr/applications.html:43
+#: app/templates/hr/vacancies.html:41 app/templates/reports_view.html:260
 msgid "All Statuses"
 msgstr "Barcha holatlar"
 
-#: app/templates/reports_view.html:261
+#: app/templates/admin/applications.html:44
+#: app/templates/hr/applications.html:44 app/templates/reports_view.html:261
 msgid "Received (New)"
 msgstr "Qabul qilindi (Yangi)"
 
+#: app/templates/admin/applications.html:45
+#: app/templates/admin/applications.html:92
 #: app/templates/admin/dashboard.html:65
 #: app/templates/hr/application_details.html:24
 #: app/templates/hr/application_details.html:156
-#: app/templates/hr/applications.html:46 app/templates/hr/dashboard.html:65
-#: app/templates/reports_view.html:262 app/templates/reports_view.html:488
-#: app/templates/status.html:49 app/templates/status.html:108
+#: app/templates/hr/applications.html:45 app/templates/hr/applications.html:92
+#: app/templates/hr/dashboard.html:65 app/templates/reports_view.html:262
+#: app/templates/reports_view.html:488 app/templates/status.html:49
+#: app/templates/status.html:108
 msgid "Under Review"
 msgstr "Ko'rib chiqilmoqda"
 
-#: app/templates/admin/applications.html:48
+#: app/templates/admin/applications.html:46
+#: app/templates/admin/applications.html:94
 #: app/templates/admin/dashboard.html:76 app/templates/admin/dashboard.html:137
 #: app/templates/hr/application_details.html:157
-#: app/templates/hr/applications.html:48 app/templates/hr/dashboard.html:67
-#: app/templates/reports_view.html:263 app/templates/reports_view.html:490
-#: app/templates/status.html:116
+#: app/templates/hr/applications.html:46 app/templates/hr/applications.html:94
+#: app/templates/hr/dashboard.html:67 app/templates/reports_view.html:263
+#: app/templates/reports_view.html:490 app/templates/status.html:116
 msgid "Interview"
 msgstr "Suhbat"
 
@@ -554,13 +563,14 @@ msgstr "Suhbat"
 msgid "Accepted / Hired"
 msgstr "Ishga qabul qilindi"
 
-#: app/templates/admin/applications.html:52
+#: app/templates/admin/applications.html:48
+#: app/templates/admin/applications.html:98
 #: app/templates/admin/dashboard.html:141
 #: app/templates/hr/application_details.html:30
 #: app/templates/hr/application_details.html:159
-#: app/templates/hr/applications.html:52 app/templates/hr/dashboard.html:71
-#: app/templates/reports_view.html:265 app/templates/reports_view.html:494
-#: app/templates/reports_view.html:528
+#: app/templates/hr/applications.html:48 app/templates/hr/applications.html:98
+#: app/templates/hr/dashboard.html:71 app/templates/reports_view.html:265
+#: app/templates/reports_view.html:494 app/templates/reports_view.html:528
 msgid "Rejected"
 msgstr "Rad etildi"
 
@@ -572,7 +582,9 @@ msgstr "Filtrlash"
 msgid "Reset All Filters"
 msgstr "Filtrlarni tozalash"
 
-#: app/templates/reports_view.html:289 app/templates/reports_view.html:833
+#: app/templates/admin/applications.html:10
+#: app/templates/hr/applications.html:10 app/templates/reports_view.html:289
+#: app/templates/reports_view.html:833
 msgid "Total Applicants"
 msgstr "Jami nomzodlar"
 
@@ -580,7 +592,7 @@ msgstr "Jami nomzodlar"
 msgid "new dossiers"
 msgstr "ta yangi ariza"
 
-#: app/templates/reports_view.html:305
+#: app/templates/reports_view.html:305 app/templates/reports_view.html:529
 msgid "Acceptance Rate"
 msgstr "Qabul qilish ko'rsatkichi"
 
@@ -654,6 +666,8 @@ msgid ""
 "recruitment status."
 msgstr "Tanlangan filtrlar bo'yicha nomzodlar va arizalarning joriy holati."
 
+#: app/templates/admin/applications.html:21
+#: app/templates/admin/interviews.html:21 app/templates/hr/applications.html:21
 #: app/templates/reports_view.html:440
 msgid "Search candidate or position..."
 msgstr "Nomzod yoki lavozimni qidirish..."
@@ -674,8 +688,8 @@ msgstr "Lavozim / Bo'lim"
 msgid "Education"
 msgstr "Ma'lumoti"
 
-#: app/templates/admin/applications.html:17
-#: app/templates/hr/applications.html:17 app/templates/reports_view.html:452
+#: app/templates/admin/applications.html:63
+#: app/templates/hr/applications.html:63 app/templates/reports_view.html:452
 msgid "Submitted Date"
 msgstr "Yuborilgan sana"
 
@@ -683,21 +697,23 @@ msgstr "Yuborilgan sana"
 msgid "Action"
 msgstr "Amal"
 
-#: app/templates/admin/applications.html:44
+#: app/templates/admin/applications.html:90
 #: app/templates/admin/dashboard.html:54 app/templates/admin/dashboard.html:133
 #: app/templates/hr/application_details.html:22
 #: app/templates/hr/application_details.html:155
-#: app/templates/hr/applications.html:44 app/templates/hr/dashboard.html:63
+#: app/templates/hr/applications.html:90 app/templates/hr/dashboard.html:63
 #: app/templates/reports_view.html:486 app/templates/status.html:47
 msgid "Received"
 msgstr "Qabul qilindi"
 
-#: app/templates/admin/applications.html:50
+#: app/templates/admin/applications.html:47
+#: app/templates/admin/applications.html:96
 #: app/templates/admin/dashboard.html:139
 #: app/templates/hr/application_details.html:28
-#: app/templates/hr/applications.html:50 app/templates/hr/dashboard.html:69
-#: app/templates/reports_view.html:492 app/templates/reports_view.html:527
-#: app/templates/reports_view.html:593 app/templates/reports_view.html:626
+#: app/templates/hr/applications.html:47 app/templates/hr/applications.html:96
+#: app/templates/hr/dashboard.html:69 app/templates/reports_view.html:492
+#: app/templates/reports_view.html:527 app/templates/reports_view.html:593
+#: app/templates/reports_view.html:626
 msgid "Accepted"
 msgstr "Qabul qilindi"
 
@@ -705,7 +721,7 @@ msgstr "Qabul qilindi"
 msgid "No applicant records match the selected filter criteria."
 msgstr "Tanlangan filtr mezonlariga mos keladigan nomzodlar topilmadi."
 
-#: app/templates/admin/vacancies.html:14 app/templates/reports_view.html:521
+#: app/templates/admin/vacancies.html:57 app/templates/reports_view.html:521
 msgid "Position Title"
 msgstr "Lavozim nomi"
 
@@ -713,11 +729,11 @@ msgstr "Lavozim nomi"
 msgid "Academic Unit"
 msgstr "Akademik bo'lim"
 
-#: app/templates/admin/vacancies.html:16 app/templates/reports_view.html:523
+#: app/templates/admin/vacancies.html:59 app/templates/reports_view.html:523
 msgid "Type"
 msgstr "Turi"
 
-#: app/templates/admin/vacancies.html:17 app/templates/hr/vacancies.html:20
+#: app/templates/admin/vacancies.html:60 app/templates/hr/vacancies.html:58
 #: app/templates/reports_view.html:525
 msgid "Deadline"
 msgstr "Muddati"
@@ -726,16 +742,14 @@ msgstr "Muddati"
 msgid "Total Apps"
 msgstr "Jami arizalar"
 
-#: app/templates/reports_view.html:529
-msgid "Acceptance %"
-msgstr "Qabul %"
-
-#: app/templates/admin/vacancies.html:44 app/templates/hr/vacancies.html:44
+#: app/templates/admin/vacancies.html:44 app/templates/admin/vacancies.html:87
+#: app/templates/hr/vacancies.html:42 app/templates/hr/vacancies.html:82
 #: app/templates/reports_view.html:552
 msgid "Open"
 msgstr "Ochiq"
 
-#: app/templates/admin/vacancies.html:46 app/templates/hr/vacancies.html:46
+#: app/templates/admin/vacancies.html:45 app/templates/admin/vacancies.html:89
+#: app/templates/hr/vacancies.html:43 app/templates/hr/vacancies.html:84
 #: app/templates/hr/vacancy_form.html:79 app/templates/reports_view.html:554
 #: app/templates/vacancy_details.html:27
 msgid "Closed"
@@ -799,7 +813,7 @@ msgstr "Xabar matni"
 msgid "Received At"
 msgstr "Qabul qilingan vaqti"
 
-#: app/templates/hr/contact_requests.html:30
+#: app/templates/hr/contact_requests.html:58
 #: app/templates/reports_view.html:676
 msgid "Resolved"
 msgstr "Hal qilindi"
@@ -1024,7 +1038,7 @@ msgstr "Majburiyatlar"
 msgid "Job Overview"
 msgstr "Ish haqida umumiy ma'lumot"
 
-#: app/templates/hr/vacancies.html:19 app/templates/vacancy_details.html:78
+#: app/templates/hr/vacancies.html:57 app/templates/vacancy_details.html:78
 msgid "Salary"
 msgstr "Ish haqi"
 
@@ -1044,37 +1058,52 @@ msgstr ""
 msgid "Applications Closed"
 msgstr "Arizalar qabul qilish yopilgan"
 
-#: app/templates/admin/applications.html:6
+#: app/templates/admin/applications.html:7
 msgid "Global Applicant Database"
 msgstr "Nomzodlarning umumiy ma'lumotlar bazasi"
 
-#: app/templates/admin/applications.html:14
+#: app/templates/admin/applications.html:30
+#: app/templates/admin/interviews.html:29 app/templates/admin/vacancies.html:30
+#: app/templates/hr/applications.html:30
+#: app/templates/hr/contact_requests.html:29 app/templates/hr/vacancies.html:28
+#, fuzzy
+msgid "Year"
+msgstr "Shu yil"
+
+#: app/templates/admin/applications.html:32
+#: app/templates/admin/interviews.html:31 app/templates/admin/vacancies.html:32
+#: app/templates/hr/applications.html:32
+#: app/templates/hr/contact_requests.html:31 app/templates/hr/vacancies.html:30
+#, fuzzy
+msgid "All Years"
+msgstr "Barcha kafedralar / bo'limlar"
+
+#: app/templates/admin/applications.html:60
 #: app/templates/admin/dashboard.html:118
-#: app/templates/admin/interviews.html:14 app/templates/hr/applications.html:14
+#: app/templates/admin/interviews.html:46 app/templates/hr/applications.html:60
 msgid "Applicant"
 msgstr "Ariza beruvchi"
 
-#: app/templates/admin/applications.html:15
-#: app/templates/admin/interviews.html:15 app/templates/hr/applications.html:15
+#: app/templates/admin/applications.html:61
+#: app/templates/admin/interviews.html:47 app/templates/hr/applications.html:61
 #: app/templates/hr/dashboard.html:46
 msgid "Position Applied"
 msgstr "Topshirilgan lavozim"
 
-#: app/templates/admin/applications.html:16
+#: app/templates/admin/applications.html:62
 msgid "Degree / School"
 msgstr "Daraja / Ta'lim muassasasi"
 
-#: app/templates/admin/applications.html:19
-#: app/templates/admin/applications.html:46
+#: app/templates/admin/applications.html:65
 #: app/templates/admin/dashboard.html:29 app/templates/admin/dashboard.html:135
-#: app/templates/hr/applications.html:19 app/templates/hr/applications.html:57
+#: app/templates/hr/applications.html:65 app/templates/hr/applications.html:103
 #: app/templates/hr/dashboard.html:20
 msgid "Review"
 msgstr "Ko'rib chiqish"
 
-#: app/templates/admin/applications.html:69
-#: app/templates/admin/dashboard.html:151 app/templates/hr/applications.html:68
-#: app/templates/hr/dashboard.html:86
+#: app/templates/admin/applications.html:118
+#: app/templates/admin/dashboard.html:151
+#: app/templates/hr/applications.html:118 app/templates/hr/dashboard.html:86
 msgid "No job applications submitted yet."
 msgstr "Hozircha arizalar kelib tushmagan."
 
@@ -1122,45 +1151,50 @@ msgstr "So'nggi arizalar"
 msgid "Vacancy"
 msgstr "Bo'sh ish o'rni"
 
-#: app/templates/admin/interviews.html:6
+#: app/templates/admin/interviews.html:7
 msgid "Scheduled Academic Interviews"
 msgstr "Rejalashtirilgan akademik suhbatlar"
 
-#: app/templates/admin/interviews.html:16
+#: app/templates/admin/interviews.html:10
+#, fuzzy
+msgid "Total Interviews"
+msgstr "Suhbat belgilash"
+
+#: app/templates/admin/interviews.html:48
 msgid "Evaluation Mode"
 msgstr "Baholash tartibi"
 
-#: app/templates/admin/interviews.html:17
+#: app/templates/admin/interviews.html:49
 msgid "Scheduled Date & Time"
 msgstr "Rejalashtirilgan sana va vaqt"
 
-#: app/templates/admin/interviews.html:18
+#: app/templates/admin/interviews.html:50
 msgid "Location / Meeting Link"
 msgstr "Manzil / Uchrashuv havolasi"
 
-#: app/templates/admin/interviews.html:19 app/templates/admin/users.html:23
-#: app/templates/hr/vacancies.html:22
+#: app/templates/admin/interviews.html:51 app/templates/admin/users.html:33
+#: app/templates/hr/vacancies.html:60
 msgid "Actions"
 msgstr "Amallar"
 
-#: app/templates/admin/interviews.html:39
+#: app/templates/admin/interviews.html:71
 msgid "Online"
 msgstr "Onlayn (masofaviy)"
 
-#: app/templates/admin/interviews.html:41
+#: app/templates/admin/interviews.html:73
 msgid "On-Site"
 msgstr "Universitetda (oflayn)"
 
-#: app/templates/admin/interviews.html:55
+#: app/templates/admin/interviews.html:87
 msgid "Are you sure you want to cancel and delete this scheduled interview?"
 msgstr ""
 
-#: app/templates/admin/interviews.html:57
+#: app/templates/admin/interviews.html:89
 #, fuzzy
 msgid "Cancel Interview"
 msgstr "Suhbat belgilash"
 
-#: app/templates/admin/interviews.html:70
+#: app/templates/admin/interviews.html:106
 msgid "No interviews scheduled yet."
 msgstr "Hozircha suhbatlar rejalashtirilmagan."
 
@@ -1234,82 +1268,96 @@ msgstr "HR xodimlarini boshqarish"
 msgid "Add Recruiter User"
 msgstr ""
 
-#: app/templates/admin/users.html:22
+#: app/templates/admin/users.html:18
+#, fuzzy
+msgid "Search recruiters..."
+msgstr "HR rekruterlarini boshqarish"
+
+#: app/templates/admin/users.html:32
 msgid "Joined Date"
 msgstr "Qo'shilgan sana"
 
-#: app/templates/admin/users.html:52
+#: app/templates/admin/users.html:62
 msgid "Edit HR Recruiter Details"
 msgstr "HR rekruter ma'lumotlarini tahrirlash"
 
-#: app/templates/admin/users.html:67
+#: app/templates/admin/users.html:77
 msgid "New Password"
 msgstr "Yangi parol"
 
-#: app/templates/admin/users.html:67
+#: app/templates/admin/users.html:77
 msgid "Leave blank to keep current"
 msgstr "O'zgarishsiz qoldirish uchun bo'sh qoldiring"
 
-#: app/templates/admin/users.html:68
+#: app/templates/admin/users.html:78
 msgid "Enter new password"
 msgstr "Yangi parolni kiriting"
 
-#: app/templates/admin/users.html:72 app/templates/admin/users.html:97
-#: app/templates/admin/users.html:147 app/templates/hr/vacancy_form.html:197
+#: app/templates/admin/users.html:82 app/templates/admin/users.html:107
+#: app/templates/admin/users.html:157 app/templates/hr/vacancy_form.html:197
 msgid "Cancel"
 msgstr "Bekor qilish"
 
-#: app/templates/admin/users.html:73 app/templates/hr/vacancy_form.html:200
+#: app/templates/admin/users.html:83 app/templates/hr/vacancy_form.html:200
 msgid "Save Changes"
 msgstr "O'zgarishlarni saqlash"
 
-#: app/templates/admin/users.html:85
+#: app/templates/admin/users.html:95
 msgid "Confirm Account Deletion"
 msgstr ""
 
-#: app/templates/admin/users.html:89
+#: app/templates/admin/users.html:99
 msgid "Are you sure you want to permanently delete the HR account for:"
 msgstr ""
 
-#: app/templates/admin/users.html:94
+#: app/templates/admin/users.html:104
 msgid "This action cannot be undone."
 msgstr "Ushbu amalni bekor qilib bo'lmaydi."
 
-#: app/templates/admin/users.html:100
+#: app/templates/admin/users.html:110
 msgid "Delete Account"
 msgstr "Hisobni o'chirish"
 
-#: app/templates/admin/users.html:113
+#: app/templates/admin/users.html:123
 msgid "No HR Recruiter accounts created yet. Add a user above to get started."
 msgstr ""
 "Hozircha HR rekruter hisoblari yaratilmagan. Boshlash uchun foydalanuvchi"
 " qo'shing."
 
-#: app/templates/admin/users.html:123
+#: app/templates/admin/users.html:133
 msgid "Create HR Recruiter Account"
 msgstr ""
 
-#: app/templates/admin/users.html:131
+#: app/templates/admin/users.html:141
 msgid "e.g. hr_recruiter"
 msgstr "masalan, hr_recruiter"
 
-#: app/templates/admin/users.html:139
+#: app/templates/admin/users.html:149
 msgid "e.g., Jane Cooper"
 msgstr "masalan: Jane Cooper"
 
-#: app/templates/admin/users.html:148
+#: app/templates/admin/users.html:158
 msgid "Create Account"
 msgstr ""
 
-#: app/templates/admin/vacancies.html:6
+#: app/templates/admin/vacancies.html:7
 msgid "University Vacancies Overview"
 msgstr "Universitet bo'sh ish o'rinlari sharhi"
 
-#: app/templates/admin/vacancies.html:15 app/templates/hr/vacancies.html:18
+#: app/templates/admin/vacancies.html:10
+#, fuzzy
+msgid "Total Vacancies"
+msgstr "Bo'sh ish o'rinlari"
+
+#: app/templates/admin/vacancies.html:21 app/templates/hr/vacancies.html:19
+msgid "Search vacancy title..."
+msgstr ""
+
+#: app/templates/admin/vacancies.html:58 app/templates/hr/vacancies.html:56
 msgid "Faculty / Department"
 msgstr "Fakultet / Bo'lim"
 
-#: app/templates/admin/vacancies.html:57
+#: app/templates/admin/vacancies.html:104
 msgid "No vacancies created yet."
 msgstr "Hozircha bo'sh ish o'rinlari yaratilmagan."
 
@@ -1438,26 +1486,33 @@ msgstr "Rejalashtirish va taklif qilish"
 msgid "Zoom / Online Meeting Link"
 msgstr "Zoom / Onlayn uchrashuv havolasi"
 
-#: app/templates/hr/applications.html:6
+#: app/templates/hr/applications.html:7
 msgid "Manage Job Applications"
 msgstr "Arizalarni boshqarish"
 
-#: app/templates/hr/applications.html:16
+#: app/templates/hr/applications.html:62
 msgid "Highest Degree"
 msgstr "Eng yuqori daraja"
 
 #: app/templates/hr/contact_requests.html:7
 #, fuzzy
-msgid ""
-"Visitor Contact\n"
-"            Requests"
+msgid "Visitor Contact Requests"
 msgstr "Mijozlar murojaatlari"
 
-#: app/templates/hr/contact_requests.html:35
+#: app/templates/hr/contact_requests.html:10
+#, fuzzy
+msgid "Total Inquiries"
+msgstr "Murojaatlar"
+
+#: app/templates/hr/contact_requests.html:21
+msgid "Search visitor name, email, message..."
+msgstr ""
+
+#: app/templates/hr/contact_requests.html:63
 msgid "Mark as Resolved"
 msgstr "Hal qilingan deb belgilash"
 
-#: app/templates/hr/contact_requests.html:50
+#: app/templates/hr/contact_requests.html:82
 msgid "No contact requests received yet."
 msgstr "Hozircha aloqa uchun so'rovlar kelib tushmadi."
 
@@ -1561,27 +1616,27 @@ msgstr "Bo'lim nomi (O'zbekcha)"
 msgid "Create Department"
 msgstr ""
 
-#: app/templates/hr/vacancies.html:6
+#: app/templates/hr/vacancies.html:7
 msgid "Manage Institutional Vacancies"
 msgstr "Muassasa bo'sh ish o'rinlarini boshqarish"
 
-#: app/templates/hr/vacancies.html:8
+#: app/templates/hr/vacancies.html:9
 msgid "Create Vacancy"
 msgstr "Bo'sh ish o'rni yaratish"
 
-#: app/templates/hr/vacancies.html:17
+#: app/templates/hr/vacancies.html:55
 msgid "Title"
 msgstr "Nomi"
 
-#: app/templates/hr/vacancies.html:50
+#: app/templates/hr/vacancies.html:88
 msgid "Edit Vacancy"
 msgstr "Bo'sh ish o'rnini tahrirlash"
 
-#: app/templates/hr/vacancies.html:56
+#: app/templates/hr/vacancies.html:94
 msgid "Close Vacancy"
 msgstr ""
 
-#: app/templates/hr/vacancies.html:70
+#: app/templates/hr/vacancies.html:112
 msgid "No vacancies created yet. Click Create Vacancy to add one."
 msgstr ""
 "Hozircha bo'sh ish o'rinlari yaratilmagan. Yangisini qo'shish uchun "
@@ -1823,4 +1878,7 @@ msgstr "E'lon qilish"
 
 #~ msgid "Responsibilities (RU)"
 #~ msgstr "Majburiyatlar (RU)"
+
+#~ msgid "Acceptance %"
+#~ msgstr "Qabul %"
 

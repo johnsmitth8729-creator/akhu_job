@@ -160,29 +160,99 @@ def settings():
 @login_required
 @admin_required
 def vacancies():
-    vacancies_list = Vacancy.query.order_by(Vacancy.created_at.desc()).all()
+    page = request.args.get('page', 1, type=int)
+    year = request.args.get('year', str(datetime.date.today().year))
+    status = request.args.get('status', 'all')
+    
+    query = Vacancy.query
+    if year and year != 'all':
+        try:
+            yr = int(year)
+            query = query.filter(Vacancy.created_at >= datetime.date(yr, 1, 1), Vacancy.created_at <= datetime.date(yr, 12, 31))
+        except ValueError:
+            pass
+    if status and status != 'all':
+        query = query.filter(Vacancy.status == status)
+        
+    pagination = query.order_by(Vacancy.created_at.desc()).paginate(page=page, per_page=10, error_out=False)
+    vacs = pagination.items
+    
     faculties = Faculty.query.all()
     departments = Department.query.all()
+    available_years = list(range(2026, datetime.date.today().year + 1))
+    
     return render_template(
         'admin/vacancies.html',
-        vacancies=vacancies_list,
+        vacancies=vacs,
+        pagination=pagination,
         faculties=faculties,
-        departments=departments
+        departments=departments,
+        selected_year=year,
+        selected_status=status,
+        available_years=available_years
     )
 
 @admin_bp.route('/applications')
 @login_required
 @admin_required
 def applications():
-    applications_list = Application.query.order_by(Application.created_at.desc()).all()
-    return render_template('admin/applications.html', applications=applications_list)
+    page = request.args.get('page', 1, type=int)
+    year = request.args.get('year', str(datetime.date.today().year))
+    status = request.args.get('status', 'all')
+    
+    query = Application.query
+    if year and year != 'all':
+        try:
+            yr = int(year)
+            start_date = datetime.datetime(yr, 1, 1, 0, 0, 0)
+            end_date = datetime.datetime(yr, 12, 31, 23, 59, 59)
+            query = query.filter(Application.created_at >= start_date, Application.created_at <= end_date)
+        except ValueError:
+            pass
+    if status and status != 'all':
+        query = query.filter(Application.status == status)
+        
+    pagination = query.order_by(Application.created_at.desc()).paginate(page=page, per_page=10, error_out=False)
+    apps = pagination.items
+    
+    available_years = list(range(2026, datetime.date.today().year + 1))
+    
+    return render_template(
+        'admin/applications.html',
+        applications=apps,
+        pagination=pagination,
+        selected_year=year,
+        selected_status=status,
+        available_years=available_years
+    )
 
 @admin_bp.route('/interviews')
 @login_required
 @admin_required
 def interviews():
-    interviews_list = Interview.query.order_by(Interview.date_time.desc()).all()
-    return render_template('admin/interviews.html', interviews=interviews_list)
+    page = request.args.get('page', 1, type=int)
+    year = request.args.get('year', str(datetime.date.today().year))
+    
+    query = Interview.query
+    if year and year != 'all':
+        try:
+            yr = int(year)
+            query = query.filter(Interview.date_time >= datetime.datetime(yr, 1, 1), Interview.date_time <= datetime.datetime(yr, 12, 31, 23, 59, 59))
+        except ValueError:
+            pass
+            
+    pagination = query.order_by(Interview.date_time.desc()).paginate(page=page, per_page=10, error_out=False)
+    interviews_list = pagination.items
+    
+    available_years = list(range(2026, datetime.date.today().year + 1))
+    
+    return render_template(
+        'admin/interviews.html',
+        interviews=interviews_list,
+        pagination=pagination,
+        selected_year=year,
+        available_years=available_years
+    )
 
 @admin_bp.route('/interviews/delete/<int:interview_id>', methods=['POST'])
 @login_required

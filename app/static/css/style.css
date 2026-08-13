@@ -1275,3 +1275,132 @@ html[data-theme="light"] .rounded.bg-dark {
 }
 
 /* ─────────────────────────────────────────────────────────────────────────── */
+
+/* ── Premium Unified Tables Styling (Dark/Light Modes) ───────────────────────── */
+.table-responsive {
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--glass-border) !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.table {
+    border-collapse: separate;
+    border-spacing: 0;
+    width: 100%;
+    margin-bottom: 0;
+}
+
+.table thead th {
+    background-color: var(--bg-secondary) !important;
+    color: var(--text-primary) !important;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+    padding: 1rem 1.25rem;
+    border-bottom: 2px solid var(--glass-border) !important;
+    border-top: none;
+}
+
+.table tbody td {
+    padding: 1rem 1.25rem;
+    vertical-align: middle;
+    border-bottom: 1px solid var(--glass-border);
+    transition: var(--transition-smooth);
+    color: var(--text-primary) !important;
+}
+
+.table tbody tr {
+    background-color: var(--glass-bg) !important;
+}
+
+.table tbody tr:hover {
+    background-color: rgba(0, 112, 255, 0.08) !important;
+}
+
+/* Light Theme overrides for consistent design */
+html[data-theme="light"] .table thead th {
+    background-color: var(--bg-tertiary) !important;
+    border-bottom: 2px solid rgba(14, 24, 58, 0.1) !important;
+    color: var(--text-secondary) !important;
+}
+
+html[data-theme="light"] .table tbody tr {
+    background-color: #ffffff !important;
+}
+
+html[data-theme="light"] .table tbody tr:hover {
+    background-color: rgba(59, 130, 246, 0.06) !important;
+}
+
+/* Custom badges inside tables */
+.table .badge {
+    padding: 0.4rem 0.75rem;
+    font-weight: 600;
+    font-size: 0.72rem;
+    border-radius: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+/* Custom Pagination styles */
+.pagination-custom {
+    gap: 0.35rem;
+}
+
+.pagination-custom .page-link {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    color: var(--text-primary);
+    border-radius: 8px !important;
+    padding: 0.5rem 0.95rem;
+    font-weight: 600;
+    font-size: 0.85rem;
+    transition: var(--transition-smooth);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: none;
+}
+
+.pagination-custom .page-link:hover {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: #fff !important;
+    transform: translateY(-1px);
+}
+
+.pagination-custom .page-item.active .page-link {
+    background: var(--color-primary) !important;
+    border-color: var(--color-primary) !important;
+    color: #fff !important;
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(0, 112, 255, 0.3);
+}
+
+html[data-theme="light"] .pagination-custom .page-link {
+    background: #ffffff;
+    border-color: rgba(14, 24, 58, 0.12);
+    color: var(--text-primary);
+}
+
+html[data-theme="light"] .pagination-custom .page-link:hover {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: #fff !important;
+}
+
+.pagination-custom .page-item.disabled .page-link {
+    background: rgba(255, 255, 255, 0.02) !important;
+    border-color: rgba(255, 255, 255, 0.05) !important;
+    color: var(--text-muted) !important;
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+html[data-theme="light"] .pagination-custom .page-item.disabled .page-link {
+    background: #f8fafc !important;
+    border-color: rgba(14, 24, 58, 0.06) !important;
+}
