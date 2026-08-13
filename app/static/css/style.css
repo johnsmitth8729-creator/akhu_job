@@ -1208,33 +1208,70 @@ html[data-theme="light"] .logo-dark-only {
 html[data-theme="light"] .table {
     color: var(--text-primary) !important;
     border-color: var(--glass-border) !important;
+    --bs-table-bg: transparent;
+    --bs-table-striped-bg: transparent;
+    --bs-table-hover-bg: var(--bg-tertiary);
 }
 
 html[data-theme="light"] .table thead th,
 html[data-theme="light"] .table th {
     color: var(--text-secondary) !important;
     background-color: var(--bg-tertiary) !important;
-    border-color: var(--glass-border) !important;
+    border-color: rgba(14, 24, 58, 0.12) !important;
 }
 
 html[data-theme="light"] .table tbody tr {
-    background-color: var(--bg-secondary) !important;
-    border-color: var(--glass-border) !important;
+    background-color: #ffffff !important;
+    border-color: rgba(14, 24, 58, 0.08) !important;
     color: var(--text-primary) !important;
+    --bs-table-bg: #ffffff;
 }
 
 html[data-theme="light"] .table tbody tr:hover {
-    background-color: var(--bg-tertiary) !important;
+    background-color: #f1f5f9 !important;
 }
 
 html[data-theme="light"] .table td,
 html[data-theme="light"] .table th {
-    border-color: var(--glass-border) !important;
+    border-color: rgba(14, 24, 58, 0.08) !important;
+    color: var(--text-primary) !important;
 }
 
+/* ── Full .table-dark override in light mode ────────────────────────────────── */
 html[data-theme="light"] .table-dark {
+    --bs-table-bg: #ffffff;
+    --bs-table-border-color: rgba(14, 24, 58, 0.08);
+    --bs-table-hover-bg: #f1f5f9;
+    --bs-table-color: var(--text-primary);
     color: var(--text-primary) !important;
-    background-color: var(--bg-secondary) !important;
+    background-color: #ffffff !important;
+}
+
+html[data-theme="light"] .table-dark thead,
+html[data-theme="light"] .table-dark thead tr,
+html[data-theme="light"] .table-dark thead th {
+    background-color: #f1f5f9 !important;
+    color: var(--text-secondary) !important;
+    border-color: rgba(14, 24, 58, 0.12) !important;
+}
+
+html[data-theme="light"] .table-dark tbody tr {
+    background-color: #ffffff !important;
+    --bs-table-bg: #ffffff;
+    color: var(--text-primary) !important;
+}
+
+html[data-theme="light"] .table-dark tbody tr:hover,
+html[data-theme="light"] .table-dark.table-hover tbody tr:hover {
+    --bs-table-bg: #f1f5f9;
+    background-color: #f1f5f9 !important;
+}
+
+html[data-theme="light"] .table-dark td,
+html[data-theme="light"] .table-dark th {
+    background-color: inherit !important;
+    color: var(--text-primary) !important;
+    border-color: rgba(14, 24, 58, 0.08) !important;
 }
 
 /* ── Light Mode: bg-dark / bg-dark-subtle Overrides ────────────────────────── */
@@ -1244,7 +1281,7 @@ html[data-theme="light"] .bg-dark {
 }
 
 html[data-theme="light"] .bg-dark-subtle {
-    background-color: #f1f5f9 !important;
+    background-color: #e2e8f0 !important;
     color: var(--text-primary) !important;
 }
 
@@ -1273,6 +1310,90 @@ html[data-theme="light"] .rounded.bg-dark {
     border-color: var(--glass-border) !important;
     color: var(--text-primary) !important;
 }
+
+/* ── Light Mode: .text-white inside tables ──────────────────────────────────── */
+html[data-theme="light"] .table td .text-white,
+html[data-theme="light"] .table td .fw-bold.text-white,
+html[data-theme="light"] .table-dark td .text-white,
+html[data-theme="light"] .table-dark td .fw-bold {
+    color: var(--text-primary) !important;
+}
+
+html[data-theme="light"] .table td .text-warning,
+html[data-theme="light"] .table-dark td .text-warning {
+    color: #b45309 !important;
+}
+
+html[data-theme="light"] .table td .text-info,
+html[data-theme="light"] .table-dark td .text-info {
+    color: #0284c7 !important;
+}
+
+html[data-theme="light"] .table td .text-success,
+html[data-theme="light"] .table-dark td .text-success {
+    color: #059669 !important;
+}
+
+html[data-theme="light"] .table td .text-danger,
+html[data-theme="light"] .table-dark td .text-danger {
+    color: #dc2626 !important;
+}
+
+html[data-theme="light"] .table td code,
+html[data-theme="light"] .table-dark td code {
+    background-color: #e2e8f0 !important;
+    color: #1e40af !important;
+    border-color: rgba(30, 64, 175, 0.2) !important;
+}
+
+/* ── Light Mode: Tab Table Wrap scrollable container ───────────────────────── */
+html[data-theme="light"] .tab-table-wrap {
+    background-color: #ffffff;
+    border: 1px solid rgba(14, 24, 58, 0.08);
+    border-radius: 8px;
+}
+
+/* ── Light Mode: form controls inside glass panels ─────────────────────────── */
+html[data-theme="light"] .glass-panel input.form-control,
+html[data-theme="light"] .glass-panel select.form-select {
+    background-color: #f8fafc !important;
+    color: var(--text-primary) !important;
+    border-color: rgba(14, 24, 58, 0.15) !important;
+}
+
+html[data-theme="light"] .form-control.bg-dark,
+html[data-theme="light"] .form-select.bg-dark,
+html[data-theme="light"] input.bg-dark,
+html[data-theme="light"] select.bg-dark {
+    background-color: #f8fafc !important;
+    color: var(--text-primary) !important;
+    border-color: rgba(14, 24, 58, 0.15) !important;
+}
+
+/* ── Light Mode: Dashboard stat cards ──────────────────────────────────────── */
+html[data-theme="light"] .report-stat-card {
+    background: #ffffff !important;
+    border-color: rgba(14, 24, 58, 0.1) !important;
+}
+
+/* ── Light Mode: table-responsive border ───────────────────────────────────── */
+html[data-theme="light"] .table-responsive {
+    border-color: rgba(14, 24, 58, 0.1) !important;
+    background: #ffffff;
+}
+
+/* ── Light Mode: Buttons in tables ─────────────────────────────────────────── */
+html[data-theme="light"] .table .btn-outline-secondary {
+    color: var(--text-secondary) !important;
+    border-color: var(--glass-border) !important;
+}
+
+html[data-theme="light"] .table .btn-outline-secondary:hover {
+    background-color: var(--bg-tertiary) !important;
+    color: var(--text-primary) !important;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────── */
 
 /* ─────────────────────────────────────────────────────────────────────────── */
 
