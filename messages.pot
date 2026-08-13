@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-08-13 21:19+0500\n"
+"POT-Creation-Date: 2026-08-13 21:31+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -177,7 +177,7 @@ msgid "Home"
 msgstr ""
 
 #: app/templates/base.html:91 app/templates/base.html:197
-#: app/templates/reports_view.html:591 app/templates/reports_view.html:624
+#: app/templates/reports_view.html:602 app/templates/reports_view.html:635
 msgid "Vacancies"
 msgstr ""
 
@@ -363,7 +363,8 @@ msgstr ""
 msgid "Deadline:"
 msgstr ""
 
-#: app/templates/home.html:148 app/templates/vacancies.html:107
+#: app/templates/home.html:148 app/templates/reports_view.html:506
+#: app/templates/vacancies.html:107
 msgid "View Details"
 msgstr ""
 
@@ -510,7 +511,7 @@ msgstr ""
 #: app/templates/hr/applications.html:64 app/templates/hr/dashboard.html:48
 #: app/templates/hr/vacancies.html:39 app/templates/hr/vacancies.html:59
 #: app/templates/reports_view.html:258 app/templates/reports_view.html:453
-#: app/templates/reports_view.html:524 app/templates/reports_view.html:662
+#: app/templates/reports_view.html:535 app/templates/reports_view.html:673
 msgid "Status"
 msgstr ""
 
@@ -532,7 +533,7 @@ msgstr ""
 #: app/templates/hr/application_details.html:156
 #: app/templates/hr/applications.html:45 app/templates/hr/applications.html:92
 #: app/templates/hr/dashboard.html:65 app/templates/reports_view.html:262
-#: app/templates/reports_view.html:488 app/templates/status.html:49
+#: app/templates/reports_view.html:496 app/templates/status.html:49
 #: app/templates/status.html:108
 msgid "Under Review"
 msgstr ""
@@ -543,7 +544,7 @@ msgstr ""
 #: app/templates/hr/application_details.html:157
 #: app/templates/hr/applications.html:46 app/templates/hr/applications.html:94
 #: app/templates/hr/dashboard.html:67 app/templates/reports_view.html:263
-#: app/templates/reports_view.html:490 app/templates/status.html:116
+#: app/templates/reports_view.html:498 app/templates/status.html:116
 msgid "Interview"
 msgstr ""
 
@@ -558,7 +559,7 @@ msgstr ""
 #: app/templates/hr/application_details.html:159
 #: app/templates/hr/applications.html:48 app/templates/hr/applications.html:98
 #: app/templates/hr/dashboard.html:71 app/templates/reports_view.html:265
-#: app/templates/reports_view.html:494 app/templates/reports_view.html:528
+#: app/templates/reports_view.html:502 app/templates/reports_view.html:539
 msgid "Rejected"
 msgstr ""
 
@@ -572,7 +573,7 @@ msgstr ""
 
 #: app/templates/admin/applications.html:10
 #: app/templates/hr/applications.html:10 app/templates/reports_view.html:289
-#: app/templates/reports_view.html:833
+#: app/templates/reports_view.html:844
 msgid "Total Applicants"
 msgstr ""
 
@@ -580,7 +581,7 @@ msgstr ""
 msgid "new dossiers"
 msgstr ""
 
-#: app/templates/reports_view.html:305 app/templates/reports_view.html:529
+#: app/templates/reports_view.html:305 app/templates/reports_view.html:540
 msgid "Acceptance Rate"
 msgstr ""
 
@@ -690,7 +691,7 @@ msgstr ""
 #: app/templates/hr/application_details.html:22
 #: app/templates/hr/application_details.html:155
 #: app/templates/hr/applications.html:90 app/templates/hr/dashboard.html:63
-#: app/templates/reports_view.html:486 app/templates/status.html:47
+#: app/templates/reports_view.html:494 app/templates/status.html:47
 msgid "Received"
 msgstr ""
 
@@ -699,130 +700,134 @@ msgstr ""
 #: app/templates/admin/dashboard.html:139
 #: app/templates/hr/application_details.html:28
 #: app/templates/hr/applications.html:47 app/templates/hr/applications.html:96
-#: app/templates/hr/dashboard.html:69 app/templates/reports_view.html:492
-#: app/templates/reports_view.html:527 app/templates/reports_view.html:593
-#: app/templates/reports_view.html:626
+#: app/templates/hr/dashboard.html:69 app/templates/reports_view.html:500
+#: app/templates/reports_view.html:538 app/templates/reports_view.html:604
+#: app/templates/reports_view.html:637
 msgid "Accepted"
 msgstr ""
 
-#: app/templates/reports_view.html:510
+#: app/templates/reports_view.html:507
+msgid "View"
+msgstr ""
+
+#: app/templates/reports_view.html:521
 msgid "No applicant records match the selected filter criteria."
 msgstr ""
 
-#: app/templates/admin/vacancies.html:57 app/templates/reports_view.html:521
+#: app/templates/admin/vacancies.html:57 app/templates/reports_view.html:532
 msgid "Position Title"
 msgstr ""
 
-#: app/templates/reports_view.html:522
+#: app/templates/reports_view.html:533
 msgid "Academic Unit"
 msgstr ""
 
-#: app/templates/admin/vacancies.html:59 app/templates/reports_view.html:523
+#: app/templates/admin/vacancies.html:59 app/templates/reports_view.html:534
 msgid "Type"
 msgstr ""
 
 #: app/templates/admin/vacancies.html:60 app/templates/hr/vacancies.html:58
-#: app/templates/reports_view.html:525
+#: app/templates/reports_view.html:536
 msgid "Deadline"
 msgstr ""
 
-#: app/templates/reports_view.html:526
+#: app/templates/reports_view.html:537
 msgid "Total Apps"
 msgstr ""
 
 #: app/templates/admin/vacancies.html:44 app/templates/admin/vacancies.html:87
 #: app/templates/hr/vacancies.html:42 app/templates/hr/vacancies.html:82
-#: app/templates/reports_view.html:552
+#: app/templates/reports_view.html:563
 msgid "Open"
 msgstr ""
 
 #: app/templates/admin/vacancies.html:45 app/templates/admin/vacancies.html:89
 #: app/templates/hr/vacancies.html:43 app/templates/hr/vacancies.html:84
-#: app/templates/hr/vacancy_form.html:79 app/templates/reports_view.html:554
+#: app/templates/hr/vacancy_form.html:79 app/templates/reports_view.html:565
 #: app/templates/vacancy_details.html:27
 msgid "Closed"
 msgstr ""
 
-#: app/templates/reports_view.html:570
+#: app/templates/reports_view.html:581
 msgid "No vacancy records found."
 msgstr ""
 
-#: app/templates/reports_view.html:584
+#: app/templates/reports_view.html:595
 msgid "Faculties Breakdown"
 msgstr ""
 
-#: app/templates/reports_view.html:590
+#: app/templates/reports_view.html:601
 msgid "Faculty Name"
 msgstr ""
 
-#: app/templates/reports_view.html:592 app/templates/reports_view.html:625
+#: app/templates/reports_view.html:603 app/templates/reports_view.html:636
 msgid "Applicants"
 msgstr ""
 
-#: app/templates/reports_view.html:606
+#: app/templates/reports_view.html:617
 msgid "No faculties registered."
 msgstr ""
 
-#: app/templates/reports_view.html:617
+#: app/templates/reports_view.html:628
 msgid "Departments Breakdown"
 msgstr ""
 
-#: app/templates/reports_view.html:623
+#: app/templates/reports_view.html:634
 msgid "Department Name"
 msgstr ""
 
-#: app/templates/reports_view.html:639
+#: app/templates/reports_view.html:650
 msgid "No departments registered."
 msgstr ""
 
-#: app/templates/reports_view.html:652
+#: app/templates/reports_view.html:663
 msgid ""
 "Summary of candidate contact inquiries received during the selected "
 "timeframe."
 msgstr ""
 
-#: app/templates/reports_view.html:653
+#: app/templates/reports_view.html:664
 msgid "resolved"
 msgstr ""
 
-#: app/templates/reports_view.html:653
+#: app/templates/reports_view.html:664
 msgid "pending"
 msgstr ""
 
-#: app/templates/reports_view.html:659
+#: app/templates/reports_view.html:670
 msgid "Sender"
 msgstr ""
 
-#: app/templates/reports_view.html:660
+#: app/templates/reports_view.html:671
 msgid "Message Excerpt"
 msgstr ""
 
-#: app/templates/reports_view.html:661
+#: app/templates/reports_view.html:672
 msgid "Received At"
 msgstr ""
 
 #: app/templates/hr/contact_requests.html:58
-#: app/templates/reports_view.html:676
+#: app/templates/reports_view.html:687
 msgid "Resolved"
 msgstr ""
 
-#: app/templates/reports_view.html:678
+#: app/templates/reports_view.html:689
 msgid "Pending"
 msgstr ""
 
-#: app/templates/reports_view.html:684
+#: app/templates/reports_view.html:695
 msgid "No contact inquiries received."
 msgstr ""
 
-#: app/templates/reports_view.html:737
+#: app/templates/reports_view.html:748
 msgid "Applications Submitted"
 msgstr ""
 
-#: app/templates/reports_view.html:831
+#: app/templates/reports_view.html:842
 msgid "No Applications Yet"
 msgstr ""
 
-#: app/templates/reports_view.html:871
+#: app/templates/reports_view.html:882
 msgid "No Data"
 msgstr ""
 

@@ -1320,6 +1320,15 @@ html[data-theme="light"] .rounded.bg-dark {
     background-color: rgba(0, 112, 255, 0.08) !important;
 }
 
+.text-nowrap {
+    white-space: nowrap !important;
+}
+
+.table code {
+    font-family: var(--font-mono, 'Consolas', monospace);
+    letter-spacing: 0.5px;
+}
+
 /* Light Theme overrides for consistent design */
 html[data-theme="light"] .table thead th {
     background-color: var(--bg-tertiary) !important;

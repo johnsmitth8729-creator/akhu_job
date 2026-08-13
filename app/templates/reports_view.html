@@ -445,28 +445,34 @@
                     <table class="table table-dark table-hover align-middle mb-0" id="applicantTable">
                         <thead>
                             <tr class="text-muted small">
-                                <th>{{ _('Application No') }}</th>
+                                <th class="text-nowrap">{{ _('Application No') }}</th>
                                 <th>{{ _('Candidate') }}</th>
                                 <th>{{ _('Position / Unit') }}</th>
                                 <th>{{ _('Education') }}</th>
-                                <th>{{ _('Submitted Date') }}</th>
-                                <th>{{ _('Status') }}</th>
-                                <th class="text-end no-print">{{ _('Action') }}</th>
+                                <th class="text-nowrap">{{ _('Submitted Date') }}</th>
+                                <th class="text-nowrap">{{ _('Status') }}</th>
+                                <th class="text-end text-nowrap no-print">{{ _('Action') }}</th>
                             </tr>
                         </thead>
                         <tbody>
                             {% for app in filtered_applications %}
                                 <tr>
-                                    <td class="text-info fw-semibold">{{ app.application_number }}</td>
-                                    <td>
-                                        <div class="fw-bold text-white">{{ app.full_name }}</div>
-                                        <div class="text-muted small">{{ app.email }} | {{ app.phone }}</div>
+                                    <td class="text-nowrap">
+                                        <code class="px-2 py-1 bg-dark-subtle rounded border border-info border-opacity-25 text-info fw-bold" style="font-size: 0.82rem;">{{ app.application_number }}</code>
                                     </td>
                                     <td>
-                                        <div class="text-warning text-truncate" style="max-width: 220px;">
+                                        <div class="fw-bold text-white mb-1">{{ app.full_name }}</div>
+                                        <div class="text-muted small text-nowrap">
+                                            <i class="bi bi-envelope me-1"></i>{{ app.email }} 
+                                            <span class="mx-1 text-secondary">|</span> 
+                                            <i class="bi bi-telephone me-1"></i>{{ app.phone }}
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="fw-semibold text-warning" style="font-size: 0.88rem;">
                                             {{ app.vacancy.get_title(g.lang_code) if app.vacancy else '-' }}
                                         </div>
-                                        <div class="text-secondary small">
+                                        <div class="text-secondary small mt-1">
                                             {% if app.vacancy and app.vacancy.faculty %}
                                                 {{ app.vacancy.faculty.get_name(g.lang_code) }}
                                             {% elif app.vacancy and app.vacancy.department %}
@@ -477,11 +483,13 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <span class="badge bg-secondary">{{ app.degree }}</span>
-                                        <div class="text-muted small">{{ app.university }} ({{ app.graduation_year }})</div>
+                                        <span class="badge bg-primary bg-opacity-25 text-primary border border-primary border-opacity-25 mb-1">{{ app.degree }}</span>
+                                        <div class="text-secondary small">{{ app.university }} {% if app.graduation_year %}({{ app.graduation_year }}){% endif %}</div>
                                     </td>
-                                    <td class="small text-secondary">{{ app.created_at.strftime('%Y-%m-%d %H:%M') }}</td>
-                                    <td>
+                                    <td class="small text-secondary text-nowrap">
+                                        <i class="bi bi-clock me-1 text-muted"></i>{{ app.created_at.strftime('%Y-%m-%d %H:%M') }}
+                                    </td>
+                                    <td class="text-nowrap">
                                         {% if app.status == 'received' %}
                                             <span class="badge bg-info text-dark">{{ _('Received') }}</span>
                                         {% elif app.status == 'under_review' %}
@@ -494,9 +502,9 @@
                                             <span class="badge bg-danger">{{ _('Rejected') }}</span>
                                         {% endif %}
                                     </td>
-                                    <td class="text-end no-print">
-                                        <a href="{{ url_for('hr.application_details', app_id=app.id) }}" class="btn btn-outline-info btn-sm">
-                                            <i class="bi bi-eye"></i>
+                                    <td class="text-end text-nowrap no-print">
+                                        <a href="{{ url_for('hr.application_details', app_id=app.id) }}" class="btn btn-outline-info btn-sm" title="{{ _('View Details') }}">
+                                            <i class="bi bi-eye me-1"></i>{{ _('View') }}
                                         </a>
                                     </td>
                                 </tr>
@@ -504,6 +512,9 @@
                         </tbody>
                     </table>
                 </div>
+
+                <!-- Client-Side Pagination Container (10 per page) -->
+                <div id="applicantTablePagination" class="mt-3 d-flex justify-content-center no-print"></div>
             {% else %}
                 <div class="text-center py-5 text-muted">
                     <i class="bi bi-inbox fs-1 d-block mb-2 text-secondary"></i>
@@ -900,6 +911,84 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+
+    // 5. Client-Side Table Pagination & Live Search for Reports Applicants Table (10 per page)
+    const applicantTable = document.getElementById('applicantTable');
+    const applicantSearchInput = document.getElementById('applicantTableSearch');
+    const paginationContainer = document.getElementById('applicantTablePagination');
+
+    if (applicantTable && paginationContainer) {
+        const rows = Array.from(applicantTable.querySelectorAll('tbody tr'));
+        const itemsPerPage = 10;
+        let currentPage = 1;
+        let filteredRows = rows;
+
+        function renderPagination() {
+            const totalPages = Math.ceil(filteredRows.length / itemsPerPage);
+            paginationContainer.innerHTML = '';
+
+            if (totalPages <= 1) return;
+
+            const nav = document.createElement('nav');
+            const ul = document.createElement('ul');
+            ul.className = 'pagination pagination-custom mb-0';
+
+            // Previous Button
+            const prevLi = document.createElement('li');
+            prevLi.className = `page-item ${currentPage === 1 ? 'disabled' : ''}`;
+            prevLi.innerHTML = `<span class="page-link" style="cursor: pointer;"><i class="bi bi-chevron-left"></i></span>`;
+            if (currentPage > 1) {
+                prevLi.addEventListener('click', () => { currentPage--; updateTableDisplay(); });
+            }
+            ul.appendChild(prevLi);
+
+            // Page Number Buttons
+            for (let i = 1; i <= totalPages; i++) {
+                const li = document.createElement('li');
+                li.className = `page-item ${i === currentPage ? 'active' : ''}`;
+                li.innerHTML = `<span class="page-link" style="cursor: pointer;">${i}</span>`;
+                li.addEventListener('click', () => { currentPage = i; updateTableDisplay(); });
+                ul.appendChild(li);
+            }
+
+            // Next Button
+            const nextLi = document.createElement('li');
+            nextLi.className = `page-item ${currentPage === totalPages ? 'disabled' : ''}`;
+            nextLi.innerHTML = `<span class="page-link" style="cursor: pointer;"><i class="bi bi-chevron-right"></i></span>`;
+            if (currentPage < totalPages) {
+                nextLi.addEventListener('click', () => { currentPage++; updateTableDisplay(); });
+            }
+            ul.appendChild(nextLi);
+
+            nav.appendChild(ul);
+            paginationContainer.appendChild(nav);
+        }
+
+        function updateTableDisplay() {
+            const start = (currentPage - 1) * itemsPerPage;
+            const end = start + itemsPerPage;
+
+            rows.forEach(row => row.style.display = 'none');
+
+            filteredRows.slice(start, end).forEach(row => {
+                row.style.display = '';
+            });
+
+            renderPagination();
+        }
+
+        if (applicantSearchInput) {
+            applicantSearchInput.addEventListener('input', function() {
+                const query = this.value.toLowerCase().trim();
+                filteredRows = rows.filter(row => row.textContent.toLowerCase().includes(query));
+                currentPage = 1;
+                updateTableDisplay();
+            });
+        }
+
+        updateTableDisplay();
+    }
 });
 </script>
 {% endblock %}
+
