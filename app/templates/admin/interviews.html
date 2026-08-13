@@ -43,12 +43,12 @@
             <table class="table table-dark table-hover align-middle mb-0" id="interviewsTable" style="width: 100%;">
                 <thead>
                     <tr class="text-muted small">
-                        <th style="width: 22%;">{{ _('Applicant') }}</th>
-                        <th style="width: 24%;">{{ _('Position Applied') }}</th>
-                        <th style="width: 16%;">{{ _('Evaluation Mode') }}</th>
-                        <th style="width: 16%;">{{ _('Scheduled Date & Time') }}</th>
+                        <th style="width: 20%;">{{ _('Applicant') }}</th>
+                        <th style="width: 22%;">{{ _('Position Applied') }}</th>
+                        <th style="width: 15%;">{{ _('Evaluation Mode') }}</th>
+                        <th style="width: 15%;">{{ _('Scheduled Date & Time') }}</th>
                         <th style="width: 18%;">{{ _('Location / Meeting Link') }}</th>
-                        <th class="text-end no-print" style="width: 4%;">{{ _('Actions') }}</th>
+                        <th class="text-end no-print" style="width: 10%;">{{ _('Actions') }}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -100,7 +100,10 @@
                                     </div>
                                 {% endif %}
                             </td>
-                            <td class="text-end no-print">
+                            <td class="text-end text-nowrap no-print">
+                                <a href="{{ url_for('hr.application_details', app_id=interview.application.id) }}" class="btn btn-outline-warning btn-sm me-1" title="{{ _('Edit / View Application') }}">
+                                    <i class="bi bi-pencil-square me-1"></i>{{ _('Edit') }}
+                                </a>
                                 <form method="POST" action="{{ url_for('admin.interview_delete', interview_id=interview.id) }}" class="d-inline" onsubmit="return confirm('{{ _("Are you sure you want to cancel and delete this scheduled interview?") }}');">
                                     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
                                     <button type="submit" class="btn btn-outline-danger btn-sm" title="{{ _('Cancel Interview') }}">
