@@ -82,6 +82,32 @@
         background: var(--glass-bg);
         border: 1px solid var(--glass-border);
         border-radius: 12px;
+        overflow: hidden;
+    }
+    .report-table-card .table-responsive {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    .report-table-card .table {
+        min-width: 100%;
+    }
+    .report-table-card .table th,
+    .report-table-card .table td {
+        white-space: nowrap;
+        font-size: 0.875rem;
+    }
+    .report-table-card .table td.text-wrap-col,
+    .report-table-card .table th.text-wrap-col {
+        white-space: normal;
+        min-width: 160px;
+        max-width: 260px;
+    }
+    /* Scrollable wrapper for inner tabs */
+    .tab-table-wrap {
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        border-radius: 0 0 8px 8px;
     }
     
     /* Print Stylesheet */
@@ -433,43 +459,44 @@
     <div class="tab-content" id="reportTabsContent">
         <!-- TAB 1: Applicants Roster -->
         <div class="tab-pane fade show active" id="applicantsTabPane" role="tabpanel">
-            <div class="d-flex justify-content-between align-items-center mb-3">
+            <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
                 <div class="text-secondary small">
                     {{ _('Showing filtered applicant records with candidate details and current recruitment status.') }}
                 </div>
-                <input type="text" id="applicantTableSearch" class="form-control form-control-sm bg-dark text-white border-secondary w-auto no-print" placeholder="{{ _('Search candidate or position...') }}">
+                <input type="text" id="applicantTableSearch" class="form-control form-control-sm bg-dark text-white border-secondary no-print" style="max-width: 260px;" placeholder="{{ _('Search candidate or position...') }}">
             </div>
             
             {% if filtered_applications %}
-                <div class="table-responsive">
-                    <table class="table table-dark table-hover align-middle mb-0" id="applicantTable">
+                <div class="tab-table-wrap">
+                    <table class="table table-dark table-hover align-middle mb-0" id="applicantTable" style="width: 100%; min-width: 780px;">
                         <thead>
                             <tr class="text-muted small">
-                                <th class="text-nowrap">{{ _('Application No') }}</th>
-                                <th>{{ _('Candidate') }}</th>
-                                <th>{{ _('Position / Unit') }}</th>
-                                <th>{{ _('Education') }}</th>
-                                <th class="text-nowrap">{{ _('Submitted Date') }}</th>
-                                <th class="text-nowrap">{{ _('Status') }}</th>
-                                <th class="text-end text-nowrap no-print">{{ _('Action') }}</th>
+                                <th style="min-width:130px;">{{ _('Application No') }}</th>
+                                <th style="min-width:170px;">{{ _('Candidate') }}</th>
+                                <th style="min-width:180px;">{{ _('Position / Unit') }}</th>
+                                <th style="min-width:160px;">{{ _('Education') }}</th>
+                                <th style="min-width:130px;">{{ _('Submitted Date') }}</th>
+                                <th style="min-width:110px;">{{ _('Status') }}</th>
+                                <th class="text-end no-print" style="min-width:80px;">{{ _('Action') }}</th>
                             </tr>
                         </thead>
                         <tbody>
                             {% for app in filtered_applications %}
                                 <tr>
-                                    <td class="text-nowrap">
+                                    <td>
                                         <code class="px-2 py-1 bg-dark-subtle rounded border border-info border-opacity-25 text-info fw-bold" style="font-size: 0.82rem;">{{ app.application_number }}</code>
                                     </td>
                                     <td>
                                         <div class="fw-bold text-white mb-1">{{ app.full_name }}</div>
-                                        <div class="text-muted small text-nowrap">
-                                            <i class="bi bi-envelope me-1"></i>{{ app.email }} 
-                                            <span class="mx-1 text-secondary">|</span> 
+                                        <div class="text-muted small">
+                                            <i class="bi bi-envelope me-1"></i>{{ app.email }}
+                                        </div>
+                                        <div class="text-muted small">
                                             <i class="bi bi-telephone me-1"></i>{{ app.phone }}
                                         </div>
                                     </td>
                                     <td>
-                                        <div class="fw-semibold text-warning" style="font-size: 0.88rem;">
+                                        <div class="fw-semibold text-warning" style="font-size: 0.88rem; white-space: normal; max-width: 200px;">
                                             {{ app.vacancy.get_title(g.lang_code) if app.vacancy else '-' }}
                                         </div>
                                         <div class="text-secondary small mt-1">
@@ -484,12 +511,13 @@
                                     </td>
                                     <td>
                                         <span class="badge bg-primary bg-opacity-25 text-primary border border-primary border-opacity-25 mb-1">{{ app.degree }}</span>
-                                        <div class="text-secondary small">{{ app.university }} {% if app.graduation_year %}({{ app.graduation_year }}){% endif %}</div>
+                                        <div class="text-secondary small" style="white-space: normal; max-width: 160px;">{{ app.university }} {% if app.graduation_year %}({{ app.graduation_year }}){% endif %}</div>
                                     </td>
                                     <td class="small text-secondary text-nowrap">
-                                        <i class="bi bi-clock me-1 text-muted"></i>{{ app.created_at.strftime('%Y-%m-%d %H:%M') }}
+                                        <i class="bi bi-clock me-1 text-muted"></i>{{ app.created_at.strftime('%Y-%m-%d') }}<br>
+                                        <span class="text-muted">{{ app.created_at.strftime('%H:%M') }}</span>
                                     </td>
-                                    <td class="text-nowrap">
+                                    <td>
                                         {% if app.status == 'received' %}
                                             <span class="badge bg-info text-dark">{{ _('Received') }}</span>
                                         {% elif app.status == 'under_review' %}
@@ -504,7 +532,7 @@
                                     </td>
                                     <td class="text-end text-nowrap no-print">
                                         <a href="{{ url_for('hr.application_details', app_id=app.id) }}" class="btn btn-outline-info btn-sm" title="{{ _('View Details') }}">
-                                            <i class="bi bi-eye me-1"></i>{{ _('View') }}
+                                            <i class="bi bi-eye"></i>
                                         </a>
                                     </td>
                                 </tr>
@@ -525,19 +553,19 @@
 
         <!-- TAB 2: Vacancies Performance -->
         <div class="tab-pane fade" id="vacanciesTabPane" role="tabpanel">
-            <div class="table-responsive">
-                <table class="table table-dark table-hover align-middle mb-0">
+            <div class="tab-table-wrap">
+                <table class="table table-dark table-hover align-middle mb-0" style="min-width: 820px;">
                     <thead>
                         <tr class="text-muted small">
-                            <th>{{ _('Position Title') }}</th>
-                            <th>{{ _('Academic Unit') }}</th>
-                            <th>{{ _('Type') }}</th>
-                            <th>{{ _('Status') }}</th>
-                            <th>{{ _('Deadline') }}</th>
-                            <th class="text-center">{{ _('Total Apps') }}</th>
-                            <th class="text-center">{{ _('Accepted') }}</th>
-                            <th class="text-center">{{ _('Rejected') }}</th>
-                            <th class="text-end">{{ _('Acceptance Rate') }} (%)</th>
+                            <th style="min-width:180px;">{{ _('Position Title') }}</th>
+                            <th style="min-width:140px;">{{ _('Academic Unit') }}</th>
+                            <th style="min-width:100px;">{{ _('Type') }}</th>
+                            <th style="min-width:80px;">{{ _('Status') }}</th>
+                            <th style="min-width:100px;">{{ _('Deadline') }}</th>
+                            <th class="text-center" style="min-width:80px;">{{ _('Total') }}</th>
+                            <th class="text-center" style="min-width:80px;">{{ _('Accepted') }}</th>
+                            <th class="text-center" style="min-width:80px;">{{ _('Rejected') }}</th>
+                            <th class="text-end" style="min-width:120px;">{{ _('Rate') }} (%)</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -659,18 +687,18 @@
 
         <!-- TAB 4: Contact Inquiries -->
         <div class="tab-pane fade" id="contactsTabPane" role="tabpanel">
-            <div class="d-flex justify-content-between align-items-center mb-3">
+            <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
                 <span class="text-secondary small">{{ _('Summary of candidate contact inquiries received during the selected timeframe.') }}</span>
-                <span class="badge bg-info text-dark">{{ resolved_contacts }} {{ _('resolved') }} / {{ pending_contacts }} {{ _('pending') }}</span>
+                <span class="badge bg-info text-dark fs-6 px-3 py-2">{{ resolved_contacts }} {{ _('resolved') }} / {{ pending_contacts }} {{ _('pending') }}</span>
             </div>
-            <div class="table-responsive">
-                <table class="table table-dark table-hover align-middle mb-0">
-                    <thead>
+            <div class="tab-table-wrap">
+                <table class="table table-dark table-hover align-middle mb-0" style="min-width: 640px;">
+                    <thead class="table-header-sticky">
                         <tr class="text-muted small">
-                            <th>{{ _('Sender') }}</th>
-                            <th>{{ _('Message Excerpt') }}</th>
-                            <th>{{ _('Received At') }}</th>
-                            <th>{{ _('Status') }}</th>
+                            <th style="min-width:160px;">{{ _('Sender') }}</th>
+                            <th style="min-width:240px;">{{ _('Message Excerpt') }}</th>
+                            <th style="min-width:130px;">{{ _('Received At') }}</th>
+                            <th style="min-width:90px;">{{ _('Status') }}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -678,21 +706,25 @@
                             <tr>
                                 <td>
                                     <div class="fw-bold text-white">{{ c.name }}</div>
-                                    <div class="text-muted small">{{ c.email }} | {{ c.phone }}</div>
+                                    <div class="text-muted small">{{ c.email }}</div>
+                                    {% if c.phone %}<div class="text-muted small">{{ c.phone }}</div>{% endif %}
                                 </td>
-                                <td class="text-secondary small text-truncate" style="max-width: 320px;">{{ c.message }}</td>
-                                <td class="small text-secondary">{{ c.created_at.strftime('%Y-%m-%d %H:%M') }}</td>
+                                <td class="text-secondary small" style="white-space: normal; max-width: 280px;">{{ c.message[:180] }}{% if c.message|length > 180 %}…{% endif %}</td>
+                                <td class="small text-secondary text-nowrap">{{ c.created_at.strftime('%Y-%m-%d') }}<br><span class="text-muted">{{ c.created_at.strftime('%H:%M') }}</span></td>
                                 <td>
                                     {% if c.is_resolved %}
-                                        <span class="badge bg-success">{{ _('Resolved') }}</span>
+                                        <span class="badge bg-success"><i class="bi bi-check-circle me-1"></i>{{ _('Resolved') }}</span>
                                     {% else %}
-                                        <span class="badge bg-warning text-dark">{{ _('Pending') }}</span>
+                                        <span class="badge bg-warning text-dark"><i class="bi bi-hourglass-split me-1"></i>{{ _('Pending') }}</span>
                                     {% endif %}
                                 </td>
                             </tr>
                         {% else %}
                             <tr>
-                                <td colspan="4" class="text-center py-4 text-muted">{{ _('No contact inquiries received.') }}</td>
+                                <td colspan="4" class="text-center py-5 text-muted">
+                                    <i class="bi bi-inbox fs-2 d-block mb-2"></i>
+                                    {{ _('No contact inquiries received.') }}
+                                </td>
                             </tr>
                         {% endfor %}
                     </tbody>
