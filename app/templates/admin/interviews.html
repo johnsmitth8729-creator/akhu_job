@@ -40,15 +40,15 @@
     
     {% if interviews %}
         <div class="table-responsive rounded-3 border border-secondary border-opacity-25">
-            <table class="table table-dark table-hover align-middle mb-0" id="interviewsTable" style="min-width: 840px;">
+            <table class="table table-dark table-hover align-middle mb-0" id="interviewsTable" style="width: 100%;">
                 <thead>
                     <tr class="text-muted small">
-                        <th style="min-width: 180px;">{{ _('Applicant') }}</th>
-                        <th style="min-width: 200px;">{{ _('Position Applied') }}</th>
-                        <th style="min-width: 140px;">{{ _('Evaluation Mode') }}</th>
-                        <th style="min-width: 160px;">{{ _('Scheduled Date & Time') }}</th>
-                        <th style="min-width: 240px;">{{ _('Location / Meeting Link') }}</th>
-                        <th class="text-end no-print" style="min-width: 90px;">{{ _('Actions') }}</th>
+                        <th style="width: 22%;">{{ _('Applicant') }}</th>
+                        <th style="width: 24%;">{{ _('Position Applied') }}</th>
+                        <th style="width: 16%;">{{ _('Evaluation Mode') }}</th>
+                        <th style="width: 16%;">{{ _('Scheduled Date & Time') }}</th>
+                        <th style="width: 18%;">{{ _('Location / Meeting Link') }}</th>
+                        <th class="text-end no-print" style="width: 4%;">{{ _('Actions') }}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -91,11 +91,11 @@
                             </td>
                             <td>
                                 {% if interview.interview_type == 'online' %}
-                                    <a href="{{ interview.location_or_link }}" target="_blank" class="btn btn-outline-info btn-sm text-truncate d-inline-block" style="max-width: 230px;" title="{{ interview.location_or_link }}">
+                                    <a href="{{ interview.location_or_link }}" target="_blank" class="btn btn-outline-info btn-sm text-truncate d-inline-block mw-100" title="{{ interview.location_or_link }}">
                                         <i class="bi bi-box-arrow-up-right me-1"></i>{{ interview.location_or_link }}
                                     </a>
                                 {% else %}
-                                    <div class="text-secondary small" style="white-space: normal; max-width: 240px; line-height: 1.35;">
+                                    <div class="text-secondary small" style="white-space: normal; line-height: 1.35;">
                                         <i class="bi bi-geo-alt me-1 text-danger"></i>{{ interview.location_or_link }}
                                     </div>
                                 {% endif %}
