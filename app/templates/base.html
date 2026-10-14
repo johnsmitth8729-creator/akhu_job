@@ -70,17 +70,17 @@
 
     <!-- Navigation Header -->
     <nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
-        <div class="container">
-            <a class="navbar-brand d-flex align-items-center gap-2" href="https://akhu.uz/">
+        <div class="container-fluid px-3 px-md-4 px-lg-5">
+            <a class="navbar-brand d-flex align-items-center gap-2 me-lg-4 me-xl-5" href="https://akhu.uz/">
                 <img src="{{ url_for('static', filename='images/logo-light.png') }}" alt="AKHU Logo" height="55" class="d-inline-block align-top logo-dark-only">
                 <img src="{{ url_for('static', filename='images/logo-dark.png') }}" alt="AKHU Logo" height="55" class="d-inline-block align-top logo-light-only">
-                <span class="navbar-brand-text" style="line-height: 1.1;">Al-Khwarizmi University<br>Vacancy</span>
+                <span class="navbar-brand-text text-nowrap">Al-Khwarizmi University</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-2 ms-xl-3">
                     <li class="nav-item">
                         <a class="nav-link nav-link-custom {% if request.endpoint == 'main.home' %}active{% endif %}" href="{{ url_for('main.home') }}">
                             <i class="bi bi-house-door me-1"></i>{{ _('Home') }}
@@ -177,7 +177,7 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="d-flex align-items-center gap-2 mb-3">
                         <img src="{{ url_for('static', filename='images/logo-light.png') }}" alt="AKHU Logo" height="45">
-                        <span class="navbar-brand-text fs-5" style="line-height: 1.1;">Al-Khwarizmi University<br>Vacancy</span>
+                        <span class="navbar-brand-text fs-5">Al-Khwarizmi University</span>
                     </div>
 
                     <div class="d-flex gap-3 mt-3">
